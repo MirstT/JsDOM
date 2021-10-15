@@ -22,7 +22,7 @@ function getNextElement(node) {
     if (!node.nextSibling) return null;
     var nextnode = node.nextSibling;
     if (nextnode.nodeType == 1) return nextnode;
-    return getNextElement(nextnode);//不return怎么返回呢？？？？90%
+    return getNextElement(nextnode)`1`;//不return怎么返回呢？？？？90%
     //html里的回车换行都会是一个sibling看来sibling不是可视化软件显示的那样
 }
 
