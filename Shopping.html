@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Shopping list</title>
+        <style>
+            body{
+                color: wheat;
+                background-color: black;
+            }
+            p{
+                color: red;
+                font-family: "arial",sans-serif;
+                font-size: 1.2em;
+            }
+            .special{
+                font-style: italic;
+            }
+            h2.special{
+                text-transform: uppercase;
+            }
+            #purchases{
+                border: 1px solid white;
+                background-color: #333;
+                color: #ccc;
+                padding: 2em;
+            }
+            #purchases li{
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>What to buy</h1>
+        <p title="a gentle remider">Don't forget to buy this stuff.</p>
+        <ul id="purchases">
+            <li>A tin of beans</li>
+            <li class="sale">Cheese</li>
+            <li class="sale important">Milk</li>
+        </ul>
+        <p class="special">This paragraph has the special class</p>
+        <h2 class="special">So does this headline</h2>
+        <script>
+            // alert(typeof document.getElementById("purchases"));
+            // alert(document.getElementsByTagName("li").length);
+            for(var i =0;i<document.getElementsByTagName("li").length;i++){
+                // alert(typeof document.getElementsByTagName("li")[i]);
+            }
+
+            var items = document.getElementsByTagName("li");
+            for(var i=0;i<items.length;i++){
+                // alert(items[i].innerText);
+            }
+            // alert(document.getElementsByTagName("*").length);
+
+            //id属性值是purchase的元素包含着多少个列表项
+            var Shopping = document.getElementById("purchases");
+            var items = Shopping.getElementsByTagName("*");
+            // alert(items.length);
+
+            //getElementsByClassName
+            //class的顺序无关紧要
+            // alert(document.getElementsByClassName("important sale").length) //1
+
+            var shopping = document.getElementById("purchases");
+            var sales=shopping.getElementsByClassName("sale");
+            // alert(sales.length);
+
+            // alert("raw"+sales.length);
+
+
+            //自定义实现getElementByClassName
+            //nb!!!!
+            function getElementsByClassName(node,classname){
+                if(node.getElementsByClassName){
+                    //有现成方法！！
+                    return node.getElementsByClassName(classname);
+                }else{
+                    var results = new Array();
+                    var elems = node.getElementsByTagName("*");
+                    for(var i=0;i<elems.length;i++)
+                    {
+                        if(elems[i].className.indexOf(classname)!=-1){
+                            results[results.length]=elems[i];
+                        }
+                    }
+                return results;
+                }
+            }
+
+            //示例
+            var shopping =document.getElementById("purchases");//name千万不能，写错，不然，后面就不显示了！！！！
+            // alert(shopping.innerText);
+            var sales=getElementsByClassName(shopping,"sale");
+            // alert("?????????"+sales.length);
+
+            //getAttribute
+            var paras=document.getElementsByTagName("p");
+            for(var i =0;i<paras.length;i++){
+                // alert(paras[i].getAttribute("title"));
+            }
+
+            var paras=document.getElementsByTagName("p");
+            for(var i=0;i<paras.length;i++){
+                var title_text=paras[i].getAttribute("title")
+                // if(title_text) alert(title_text);
+            }
+
+            //setAttribute
+            var shopping = document.getElementById("purchases");
+            alert(shopping.getAttribute("title"));
+            shopping.setAttribute("title","a list of goods")
+            alert(shopping.getAttribute("title"));
+
+            //先加载文档的静态内容，在动态刷新，动态刷新不影响文档的静态内容
+            //DOM对页面内容进行刷新却不需要再浏览器李刷新页面
+            var paras=document.getElementsByTagName("p");
+            for(var i=0;i<paras.length;i++)
+            {
+                var title_text=paras[i].getAttribute("title");
+                if(title_text)
+                {
+                    paras[i].setAttribute("title","brand new title text");
+                    alert(paras[i].getAttribute("title"));
+                }
+            }
+
+        </script>
+    </body>
+</html>

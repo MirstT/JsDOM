@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Just a test</title>
+</head>
+
+<body>``
+    <a href="javascript:popUp('http://www.example.com/');">Example1</a>
+    <a href="#" onclick="popUp('http:\/\/www.example.com/'); return false;">Example2</a>
+    <!-- 平稳退化 -->
+    <a href="http://www.example.com/" onclick="popUp(this.getAttribute('href'));return false;">Example3</a>
+    <a href="http://www.example.com/" onclick="popUp(this.href);return false;">Example4</a>
+
+    <!-- 分离JS -->2                        
+    <a href="http://www.example.com/" class="popup">Example5</a>
+
+
+    <script src="example.js"></script>
+    <script src="scripts/popUp.js"></script>
+</body>
+
+</html>
