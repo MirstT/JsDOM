@@ -4,18 +4,18 @@
  * @Author: Mirst
  * @Date: 2021-10-16 14:44:54
  * @LastEditors: Mirst
- * @LastEditTime: 2021-10-16 14:58:24
+ * @LastEditTime: 2021-10-16 16:13:53
 -->
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Starbuzz Coffee</title>
+    <title>Blog</title>
     <link rel="stylesheet" type="text/css" href="starbuzz.css" />
   </head>
 
   <body>
-    <header>
+    <header class="top">
       <img
         id="headerLogo"
         src="images/headerLogo.gif"
@@ -27,7 +27,15 @@
         alt="Providing all the caffeine you need to power your life."
       />
     </header>
-
+    <nav>
+      <ul>
+        <li class="selected"><a href="index.html">HOME</a></li>
+        <li><a href="blog.html">BLOG</a></li>
+        <li><a href="">INVENTIONS</a></li>
+        <li><a href="">RECIPES</a></li>
+        <li><a href="">LOCATIONS</a></li>
+      </ul>
+    </nav>
     <div id="tableContainer">
       <div id="tableRow">
         <section id="drinks">
@@ -50,7 +58,10 @@
         </section>
         <section id="blog">
           <article>
-            <h1>QUALITY COFFEE, QUALITY CAFFEINE</h1>
+            <header>
+              <h1>QUALITY COFFEE, QUALITY CAFFEINE</h1>
+              <time datetime="2021-10-16">10/16/2021</time>
+            </header>
             <p>
               At Starbuzz Coffee, we are dedicated to filling all your caffeine
               needs through our quality coffees and teas. Sure, we want you to
@@ -72,7 +83,10 @@
             </p>
           </article>
           <article>
-            <h1>OUR STORY</h1>
+            <header>
+              <h1>OUR STORY</h1>
+              <time datetime="2021-10-14">10/14/2021</time>
+            </header>
             <p>
               "A man, a plan, a coffee bean". Okay, that doesn't make a
               palindrome, but it resulted in a damn good cup of coffee.
@@ -89,7 +103,10 @@
             </p>
           </article>
           <article>
-            <h1>STARBUZZ COFFEE BEVERAGES</h1>
+            <header>
+              <h1>STARBUZZ COFFEE BEVERAGES</h1>
+              <time datetime="2021-10-10">10/10/2021</time>
+            </header>
             <p>
               We've got a variety of caffeinated beverages to choose from at
               Starbuzz, including our
@@ -140,7 +157,7 @@
     <!-- tableContainer -->
 
     <footer>
-      &copy; 2012, Starbuzz Coffee
+      &copy; 2021, 视界
       <br />
       All trademarks and registered trademarks appearing on this site are the
       property of their respective owners.

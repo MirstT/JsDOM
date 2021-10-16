@@ -4,14 +4,14 @@ body {
   margin: 0px;
 }
 
-header {
+header.top {
   background-color: #675c47;
   padding: 0 0 0 5px;
   margin: 10px 10px 0px 10px;
   height: 108px;
 }
 
-header img#headerSlogan {
+header.top img#headerSlogan {
   float: right;
 }
 
@@ -50,7 +50,7 @@ section#drinks {
   vertical-align: top;
 }
 
-section#main {
+section#blog {
   display: table-cell;
   background: #efe5d0 url(images/background.gif) top left;
   font-size: 105%;
@@ -61,6 +61,7 @@ section#main {
 aside {
   display: table-cell;
   background: #efe5d0 url(images/background.gif) bottom right;
+  width: 25%;
   font-size: 105%;
   padding: 15px;
   vertical-align: top;
@@ -102,4 +103,30 @@ a:visited {
   color: #675c47;
   text-decoration: none;
   border-bottom: thin dotted #675c47;
+}
+
+nav{
+  background-color: #efe5d0;
+  margin: 10px 10px 0px 10px;
+  padding:5px;
+}
+
+nav ul {
+  margin: 0px;
+  list-style-type: none;
+  padding: 10px 0px;
+}
+
+nav ul li {
+  display: inline;
+  padding: 10px 15px;
+}
+nav ul li a:link,
+nav ul li a:visited {
+  color: #954b4b;
+  border-bottom: none;
+  font-weight: bold;
+}
+nav ul li.selected {
+  background-color: #c8bb9c;
 }
