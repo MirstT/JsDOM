@@ -4,7 +4,7 @@
  * @Author: Mirst
  * @Date: 2021-10-16 09:25:08
  * @LastEditors: Mirst
- * @LastEditTime: 2021-10-16 10:33:42
+ * @LastEditTime: 2021-10-16 10:35:17
  */
 function addLoadEvent(func) {
     var oldonload = window.onload;
@@ -22,7 +22,7 @@ function moveElement(elementID,final_x,final_y,interval){
         return false;
     }
     var element=document.getElementById(elementID);
-    var x_pos=parseInt(element.style.left);
+    var x_pos=parseInt(element.style.left);//数据转换
     var y_pos=parseInt(element.style.top);
     if (x_pos==final_x&&y_pos==final_y) {
         return true;
@@ -53,7 +53,7 @@ function positionMessage(){
     }
     var msg1=document.getElementById("message1");
     // var msg2=document.getElementById("message2");
-    msg1.style.position="absolute";
+    msg1.style.position="absolute";//该函数必须要在absolute下，并且在js里指定left和top属实没用，，
     msg1.style.left="200px";
     msg1.style.top="200px";
     moveElement("message1",100,300,20);
