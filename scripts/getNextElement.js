@@ -4,7 +4,7 @@
  * @Author: Mirst
  * @Date: 2021-10-14 18:43:27
  * @LastEditors: Mirst
- * @LastEditTime: 2021-10-15 14:08:26
+ * @LastEditTime: 2021-10-16 08:08:51
  */
 function addLoadEvent(func) {
     var oldonload = window.onload;
@@ -22,7 +22,7 @@ function getNextElement(node) {
     if (!node.nextSibling) return null;
     var nextnode = node.nextSibling;
     if (nextnode.nodeType == 1) return nextnode;
-    return getNextElement(nextnode)`1`;//不return怎么返回呢？？？？90%
+    return getNextElement(nextnode); //不return怎么返回呢？？？？90%
     //html里的回车换行都会是一个sibling看来sibling不是可视化软件显示的那样
 }
 
@@ -37,16 +37,38 @@ function getNextElement(node) {
 // }
 
 
-function styleHeaderSiblings() {
+// function styleHeaderSiblings() {
+//     if (!document.getElementsByTagName) return false;
+//     var headers = document.getElementsByTagName("h1");
+//     var element;
+//     for (let i = 0; i < headers.length; i++) {
+//         element = getNextElement(headers[i]);
+//         // element=headers[i].nextElementSibling;
+//         if (element==null) continue;//这里就是错误的关键10%！！！element返回为null的时候，无法设置style会使程序中断
+//         element.style.color = "red";
+//     }
+// }
+
+function styleHeaderSiblings(tag, theclass) {
     if (!document.getElementsByTagName) return false;
-    var headers = document.getElementsByTagName("h1");
+    var headers = document.getElementsByTagName(tag);
     var element;
     for (let i = 0; i < headers.length; i++) {
         element = getNextElement(headers[i]);
         // element=headers[i].nextElementSibling;
-        if (element==null) continue;//这里就是错误的关键10%！！！element返回为null的时候，无法设置style会使程序中断
-        element.style.color = "red";
+        if (element == null) continue; //这里就是错误的关键10%！！！element返回为null的时候，无法设置style会使程序中断
+        addClass(element, theclass);
     }
 }
 
-addLoadEvent(styleHeaderSiblings);
+function addClass(element, value) {
+    if (!element.className) {
+        element.className = value;
+    } else {
+        element.className = `${element.className} ${value}`;
+    }
+}
+
+addLoadEvent(function () {
+    styleHeaderSiblings("h1", "intro");
+});
