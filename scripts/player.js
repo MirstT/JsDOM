@@ -4,7 +4,7 @@
  * @Author: Mirst
  * @Date: 2021-10-16 13:31:41
  * @LastEditors: Mirst
- * @LastEditTime: 2021-10-18 17:28:37
+ * @LastEditTime: 2021-10-19 01:15:54
  */
 
 
@@ -27,8 +27,40 @@ function addControls(vid){
     var controls = document.createElement("div");
     controls.setAttribute("class","controls");
 
-    var p;
+    var play =document.createElement("button");
+    play.setAttribute("title","Play");
+    play.innerHTML="&#x25BA;";
+
+    controls.appendChild(play);
+
+    vid.parentNode.insertBefore(controls,vid);
+
+    play.onclick=function(){
+        if (vid.ended) {
+            vid.currentTime=0;
+        }
+        if (vid.pause) {
+            vid.play();
+        }else{
+            vid.pause();
+        }
+    };
+
+    vid.addEventListener("play",function(){
+        play.innerHTML="&#2590;&#2590;";
+        play.setAttribute("paused",true);
+    },false);
+
+    vid.addEventListener("pause",function(){
+        play.removeAttribute("paused");
+        play.innerHTML="&#x25BA;";
+    },false);
+
+    vid.addEventListener("ended",function(){
+        vid.pause();
+    },false);
 }
+
 
 
 window.onload=function(){
