@@ -2,24 +2,41 @@
  * @Descripttion:
  * @version:
  * @Author: Mirst
- * @Date: 2021-10-20 12:33:14
+ * @Date: 2021-10-20 16:55:10
  * @LastEditors: Mirst
- * @LastEditTime: 2021-10-20 16:43:41
+ * @LastEditTime: 2021-10-20 17:39:18
  */
+
 const ourCoords = {
   latitude: 47.624851,
   longitude: -122.52099,
 };
 
-var map;
+let map;
+let watchId = null;
 
 window.onload = getMyLocation;
 
 function getMyLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(displayLocation, displayError);
+    // const watchButton = document.getElementById("watch");
+    // watchButton.onclick = watchLocation;
+    // const clearWatchButton = document.getElementById("clearWatch");
+    // clearWatchButton.onclick = clearWatch;
   } else {
     alert("error");
+  }
+}
+
+function watchLocation() {
+  watchId = navigator.geolocation.watchPosition(displayLocation, displayError);
+}
+
+function clearWatch() {
+  if (watchId) {
+    navigator.geolocation.clearWatch(watchId);
+    watchId = null;
   }
 }
 
@@ -29,12 +46,15 @@ function displayLocation(position) {
 
   const div = document.getElementById("location");
   div.innerHTML = `You are at Latitude: ${latitude}, Longitude: ${longitude}`;
+  div.innerHTML += ` (with ${position.coords.accuracy} meters accuracy)`;
 
   const km = computeDistance(position.coords, ourCoords);
   const distance = document.getElementById("distance");
   distance.innerHTML = `You are ${km}km from the WickedlySmart HQ`;
 
-  showMap(position.coords);
+  if (map == null) {
+    showMap(position.coords);
+  }
 }
 
 function displayError(error) {
@@ -97,12 +117,21 @@ function showMap(coords) {
   map.enableScrollWheelZoom(true);
   map.addControl(new BMap.NavigationControl());
 
+  let ggPoint = new BMap.Point(coords.longitude, coords.latitude);
   const convertor = new BMap.Convertor();
   const pointArr = new Array();
-  pointArr.push(BMap.Point(coords.longitude, coords.latitude));
+  pointArr.push(ggPoint);
+  //百度地图api需要转换gps才能显示准确的地理位置
   convertor.translate(pointArr, 1, 5, setMarker);
 }
 
+/**
+ * @brief: 设置marker
+ * @param {*} data 转换后经纬度
+ * @return {*}
+ * @note:
+ * @see:
+ */
 function setMarker(data) {
   if (data.status === 0) {
     let marker = new BMap.Marker(data.points[0]);
