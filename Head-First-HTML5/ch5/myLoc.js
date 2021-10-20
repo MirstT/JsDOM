@@ -4,7 +4,7 @@
  * @Author: Mirst
  * @Date: 2021-10-20 16:55:10
  * @LastEditors: Mirst
- * @LastEditTime: 2021-10-20 17:39:18
+ * @LastEditTime: 2021-10-20 18:10:24
  */
 
 const ourCoords = {
@@ -14,18 +14,23 @@ const ourCoords = {
 
 let map;
 let watchId = null;
+let options = { enableHighAccuracy: true, timeout: 100, maximumAge: 0 };
 
 window.onload = getMyLocation;
 
 function getMyLocation() {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(displayLocation, displayError);
+    navigator.geolocation.getCurrentPosition(
+      displayLocation,
+      displayError,
+      options
+    );
     // const watchButton = document.getElementById("watch");
     // watchButton.onclick = watchLocation;
     // const clearWatchButton = document.getElementById("clearWatch");
     // clearWatchButton.onclick = clearWatch;
   } else {
-    alert("error");
+    alert("Oops, no geolocation support");
   }
 }
 
@@ -51,7 +56,7 @@ function displayLocation(position) {
   const km = computeDistance(position.coords, ourCoords);
   const distance = document.getElementById("distance");
   distance.innerHTML = `You are ${km}km from the WickedlySmart HQ`;
-
+  distance.innerHTML+=` (found in ${options.timeout} milliseconds`;
   if (map == null) {
     showMap(position.coords);
   }
@@ -71,6 +76,13 @@ function displayError(error) {
   }
   const div = document.getElementById("location");
   div.innerHTML = errorMessage;
+  options.timeout += 100;
+  navigator.geolocation.getCurrentPosition(
+    displayLocation,
+    displayError,
+    options
+  );
+  div.innerHTML += `...... checking again with timeout=${options.timeout}`;
 }
 
 // --------------------- Ready Bake ------------------
