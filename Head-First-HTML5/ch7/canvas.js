@@ -4,7 +4,7 @@
  * @Author: Mirst
  * @Date: 2021-10-21 11:05:10
  * @LastEditors: Mirst
- * @LastEditTime: 2021-10-21 20:27:38
+ * @LastEditTime: 2021-10-21 20:29:38
  */
 
 window.onload = function () {
@@ -153,6 +153,7 @@ function updateTweets(tweetsList) {
 function drawBird(canvas, context) {
   const twitterBird = new Image();
   twitterBird.src = "twitterBird.png";
+  //图像加载时，就执行这个函数
   twitterBird.onload = function () {
     context.drawImage(twitterBird, 20, canvas.height-100, 70, 70);
   };
