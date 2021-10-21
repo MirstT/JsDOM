@@ -4,7 +4,7 @@
  * @Author: Mirst
  * @Date: 2021-10-21 11:05:10
  * @LastEditors: Mirst
- * @LastEditTime: 2021-10-21 17:31:55
+ * @LastEditTime: 2021-10-21 18:05:23
  */
 
 window.onload = function () {
@@ -37,14 +37,14 @@ function drawShapes(canvas, context) {
 }
 
 function drawText(canvas, context) {
-  context.fillStyle = 'black';
+  context.fillStyle = "black";
   context.font = "bold 2em sans-serif";
   context.textAlign = "left";
   context.fillText("I saw this tweet", 20, 40);
 
   drawTweet(canvas, context);
 
-  context.fillStyle = 'black';
+  context.fillStyle = "black";
   context.font = "bold 1em sans-serif";
   context.textAlign = "right";
   context.fillText(
@@ -57,18 +57,34 @@ function drawTweet(canvas, context) {
   const selectObj = document.getElementById("foregroundColor");
   const index = selectObj.selectedIndex;
   const fgColor = selectObj[index].value;
-  context.foregroundColor = fgColor;
-  context.fillStyle = 'black';
-  context.font = "2em sans-serif";
+  context.fillStyle = fgColor;
+  context.font = "italic bold 3em serif";
   context.textAlign = "center";
 
   const tweetsSelection = document.getElementById("tweets");
-  const tweetsOptionList=tweetsSelection.getElementsByTagName('option');
-  const tweetsSelectedIndex=tweetsSelection.selectedIndex;
+  const tweetsOptionList = tweetsSelection.getElementsByTagName("option");
+  const tweetsSelectedIndex = tweetsSelection.selectedIndex;
+  //理论上，这里的value应与text一样，如此就可以 value值是为程序所用，text为人所阅读
+  //tweetsSelection[tweetsSelection.selectedIndex].value = tweetsOptionList[tweetsSelectedIndex].text
   context.fillText(
     tweetsOptionList[tweetsSelectedIndex].text,
     canvas.width / 2,
-    canvas.height / 2
+    canvas.height / 2,
+    canvas.width
+  );
+  context.strokeText(
+    tweetsOptionList[tweetsSelectedIndex].text,
+    canvas.width / 2,
+    canvas.height / 2+20,
+    canvas.width
+  );
+  context.shadowBlur=20;
+  context.shadowColor="black";//color默认好像·是透明的，无色的；
+  context.fillText(
+    tweetsOptionList[tweetsSelectedIndex].text,
+    canvas.width / 2,
+    canvas.height / 2+60,
+    canvas.width
   );
 }
 
