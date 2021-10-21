@@ -1,0 +1,68 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: Mirst
+ * @Date: 2021-10-21 10:24:28
+ * @LastEditors: Mirst
+ * @LastEditTime: 2021-10-21 11:05:18
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      canvas {
+        border: 1px solid black;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas id="canvasTest" width="1200" height="600"
+      ><p>Hey you, yes YOU, upgrade your browser!</p>
+    </canvas>
+
+    <form action="" method="post">
+      <p>
+        <label for="selectBGColor">Select background color:</label>
+        <select name="BGColor" id="selectBGColor">
+          <option value="black">Black</option>
+          <option value="white" selected="selected">White</option>
+        </select>
+      </p>
+      <p>
+        <label for="selectShape">Circles or Square?</label>
+        <select name="shapes" id="selectShape">
+          <option value="circles">Circles</option>
+          <option value="squares">Squares</option>
+        </select>
+      </p>
+      <p>
+        <label for="selectTextColor">Select text color:</label>
+        <select name="textColor" id="selectTextColor">
+          <option value="black" selected="selected">Black</option>
+          <option value="white">White</option>
+        </select>
+      </p>
+      <p>
+        <label for="tweet">Pick a tweet:</label>
+        <!-- <input type="text" name="tweet" id="pickTweet" /> -->
+        <select id="tweet"></select>
+      </p>
+      <p><input type="button" id="previewButton" value="Preview" /></p>
+      <!-- <p><input type="button" id="buyButton" value="Buy" /></p> -->
+    </form>
+
+    <script src="canvas.js"></script>
+    <!-- <script>
+        window.onload = function () {
+          const canvas = document.getElementById("canvasTest");
+          const context = canvas.getContext("2d");
+          context.fillRect(10, 10, 300, 100);
+          context.strokeRect(100, 200, 100, 200);
+        };
+      </script> -->
+  </body>
+</html>
