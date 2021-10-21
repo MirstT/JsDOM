@@ -4,7 +4,7 @@
  * @Author: Mirst
  * @Date: 2021-10-20 18:23:29
  * @LastEditors: Mirst
- * @LastEditTime: 2021-10-20 22:12:41
+ * @LastEditTime: 2021-10-21 10:16:02
  */
 
 /*
@@ -64,15 +64,45 @@ function updateSalesForXMLHttpRequest(responseText) {
   }
 }
 
+let lastReportTime = 0;
 function updateSalesForJSONP(sales) {
   const salesDiv = document.getElementById("sales");
-    for (const sale of sales) {
+  for (const sale of sales) {
     let div = document.createElement("div");
     div.setAttribute("class", "saleItem");
     div.innerHTML = `${sale.name} sold ${sale.sales} gumballs`;
-    salesDiv.appendChild(div);
+    // salesDiv.appendChild(div);
+    //头插总比尾插好看啊
+    salesDiv.insertBefore(div,salesDiv.firstChild);
+
+    //获取lastReportTime 避免获取重复数据
+    if (sales.length > 0) {
+      lastReportTime = sales[sales.length - 1].time;
+    }
   }
 }
 
 // XMLHttpRequest 测试
 // addLoadEvent(getDataByXMLHttpRequest);
+
+function handleRefresh() {
+  //避免缓存影响,停止获取数据，让浏览器认为是一个新url
+  //设置lastReportTime
+  const url = `http://gumball.wickedlysmart.com/?callback=updateSalesForJSONP&lastreporttime=${lastReportTime}&random=${new Date().getTime()}`;
+  const newScriptElement = document.createElement("script");
+  newScriptElement.setAttribute("src", url);
+  newScriptElement.setAttribute("id", "jsonp");
+  const oldScriptElement = document.getElementById("jsonp");
+  // 使用替换法而非添加，避免过度添加影响性能
+  if (oldScriptElement == null) {
+    document.body.appendChild(newScriptElement);
+  } else {
+    document.body.replaceChild(newScriptElement, oldScriptElement);
+  }
+}
+
+function getNewData() {
+  setInterval(handleRefresh, 3000);
+}
+
+addLoadEvent(getNewData);
