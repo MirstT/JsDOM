@@ -4,7 +4,7 @@
  * @Author: Mirst
  * @Date: 2021-10-21 10:24:28
  * @LastEditors: Mirst
- * @LastEditTime: 2021-10-21 15:22:36
+ * @LastEditTime: 2021-10-21 16:35:46
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -20,9 +20,9 @@
     <title>Document</title>
   </head>
   <body>
-    <canvas id="smiley" width="800" height="800"
+    <!-- <canvas id="smiley" width="800" height="800"
     ><p>Hey you, yes YOU, upgrade your browser!</p>
-  </canvas>
+  </canvas> -->
     <canvas id="canvasTest" width="1200" height="600"
       ><p>Hey you, yes YOU, upgrade your browser!</p>
     </canvas>
@@ -43,16 +43,16 @@
         </select>
       </p>
       <p>
-        <label for="selectTextColor">Select text color:</label>
-        <select name="textColor" id="selectTextColor">
+        <label for="foregroundColor">Select text color:</label>
+        <select id="foregroundColor">
           <option value="black" selected="selected">Black</option>
           <option value="white">White</option>
         </select>
       </p>
       <p>
-        <label for="tweet">Pick a tweet:</label>
+        <label for="tweets">Pick a tweet:</label>
         <!-- <input type="text" name="tweet" id="pickTweet" /> -->
-        <select id="tweet"></select>
+        <select id="tweets"></select>
       </p>
       <p><input type="button" id="previewButton" value="Preview" /></p>
       <!-- <p><input type="button" id="buyButton" value="Buy" /></p> -->
@@ -67,5 +67,7 @@
           context.strokeRect(100, 200, 100, 200);
         };
       </script> -->
+
+    <script src="http://gumball.wickedlysmart.com/?callback=updateTweets"></script>
   </body>
 </html>
