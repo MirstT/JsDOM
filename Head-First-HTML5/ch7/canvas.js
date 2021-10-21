@@ -4,7 +4,7 @@
  * @Author: Mirst
  * @Date: 2021-10-21 11:05:10
  * @LastEditors: Mirst
- * @LastEditTime: 2021-10-21 18:05:23
+ * @LastEditTime: 2021-10-21 20:27:38
  */
 
 window.onload = function () {
@@ -16,9 +16,12 @@ window.onload = function () {
 function previewHandler() {
   const canvas = document.getElementById("canvasTest");
   const context = canvas.getContext("2d");
+  context.shadowBlur = 0;
+
   fillBGColor(canvas, context);
   drawShapes(canvas, context);
   drawText(canvas, context);
+  drawBird(canvas, context);
 }
 
 function drawShapes(canvas, context) {
@@ -75,15 +78,15 @@ function drawTweet(canvas, context) {
   context.strokeText(
     tweetsOptionList[tweetsSelectedIndex].text,
     canvas.width / 2,
-    canvas.height / 2+20,
+    canvas.height / 2 + 20,
     canvas.width
   );
-  context.shadowBlur=20;
-  context.shadowColor="black";//color默认好像·是透明的，无色的；
+  context.shadowBlur = 20;
+  context.shadowColor = "black"; //color默认好像·是透明的，无色的；
   context.fillText(
     tweetsOptionList[tweetsSelectedIndex].text,
     canvas.width / 2,
-    canvas.height / 2+60,
+    canvas.height / 2 + 60,
     canvas.width
   );
 }
@@ -145,6 +148,14 @@ function updateTweets(tweetsList) {
   });
   // tweets.firstChild.setAttribute('selected','selected');
   tweets.selectedIndex = 0;
+}
+
+function drawBird(canvas, context) {
+  const twitterBird = new Image();
+  twitterBird.src = "twitterBird.png";
+  twitterBird.onload = function () {
+    context.drawImage(twitterBird, 20, canvas.height-100, 70, 70);
+  };
 }
 
 function drawSmileFace() {
