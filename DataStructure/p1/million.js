@@ -4,7 +4,7 @@
  * @Author: Mirst
  * @Date: 2021-10-22 23:24:04
  * @LastEditors: Mirst
- * @LastEditTime: 2021-10-23 06:26:31
+ * @LastEditTime: 2021-10-23 16:17:31
  */
 
 /**
@@ -228,16 +228,18 @@ const realShuffle = function realShuffle(arr) {
 
 ////////////////////////////////////////////////////////////////////////////////////
 /**
- * @brief: 冒泡排序，升序，时间复杂度n2
+ * @brief: 选择排序而非冒泡排序，升序，时间复杂度n2
  * @param {*} oldArray
  * @return {*}
  * @note: 代码风格指南 使用数组的拓展运算符 ... 来复制数组。
  *        这个是把小的降下来，，，emmm像是倒泡泡
+ *        但是没有交换，只是每次选出一个极值
+ * @note: 这果然不是冒泡而是选择排序，，，，，，改个错误，i<array.lenth-1;不然j就会越界
  * @see:
  */
-const bubbleSortA = function bubbleSortA(oldArray) {
+const selectionSort = function selectionSort(oldArray) {
   const array = [...oldArray];
-  for (let i = 0; i < array.length; i++) {
+  for (let i = 0; i < array.length - 1; i++) {
     for (let j = i + 1; j < array.length; j++) {
       if (array[i] > array[j]) {
         let temp = array[j];
@@ -249,13 +251,62 @@ const bubbleSortA = function bubbleSortA(oldArray) {
   return array;
 };
 
+/**
+ * @brief: 这才是正宗的冒泡排序
+ * @param {*} oldArray
+ * @return {*}
+ * @note: 可以在第一个循环里加一个标志位，如果在第二个循环体内，一整轮标志位都没有发生改变，说明，排序已提前完成，
+ *        就可以提前结束，可以减少渐进下线，虽然实际上大多数情况下并没有多大的用处
+ * @see:
+ */
 const bubbleSort = function bubbleSort(oldArray) {
   const array = [...oldArray];
   for (let i = 0; i < array.length; i++) {
+    let flag = false;
     for (let j = 0; j < array.length - i; j++) {
       if (array[j] > array[j + 1]) {
         [array[j], array[j + 1]] = [array[j + 1], array[j]];
+        flag = true;
       }
+    }
+    if (!flag) break;
+  }
+  return array;
+};
+
+/**
+ * @brief: 插入排序第一版
+ * @param {*} arr
+ * @return {*}
+ * @note:
+ * @see:
+ */
+const insertionSortA = function insertionSortA(arr) {
+  const array = [...arr];
+  for (let i = 0; i < array.length - 1; i++) {
+    for (let j = i + 1; j > 0; j--) {
+      if (array[j] < array[j - 1]) {
+        [array[j - 1], array[j]] = [array[j], array[j - 1]];
+      }
+    }
+  }
+  return array;
+};
+
+/**
+ * @brief: 插入排序第二版
+ * @param {*} arr
+ * @return {*}
+ * @note: 像冒泡排序最终版一样，这个是把已排序的数组利用起来，判断，位置，提前跳出内嵌循环计入到下一轮外循环
+ *        为了实现纯函数开辟多余的空间，并不会明显的导致时间复杂度变化，毕竟开辟空间是常量及的时间复杂度
+ * @see:
+ */
+const insertionSort = function insertionSort(arr) {
+  const array = [...arr];
+  for (let i = 0; i < array.length - 1; i++) {
+    for (let j = i + 1; j > 0; j--) {
+      if (array[j] > array[j - 1]) break;
+      [array[j - 1], array[j]] = [array[j], array[j - 1]];
     }
   }
   return array;
@@ -264,10 +315,18 @@ const bubbleSort = function bubbleSort(oldArray) {
 // const millionArray = gen(40);
 // console.log(verifyProbality(millionArray, shuffleSimple));
 // console.log(verifyProbality(millionArray, shuffle));
-let array = gen(10);
-console.log(...array);
+let array = gen(100000);
+// console.log(...array);
 array.shuffle();
-console.log(...array);
-const newArray=bubbleSort(array);
-console.log(...newArray);
+array.sort((a,b)=>{return a-b;})
+// console.log(...array);
+// const selectionArray = selectionSort(array);
+// console.log(`selection:${[...selectionArray]}`);
+// const bubbleArray = bubbleSort(array);
+// console.log(`bubble:${[...bubbleArray]}`);
+// const insertionArray = insertionSort(array);
+// console.log(`insertion:${[...insertionArray]}`);
+// console.log(...array);
+
+
 
