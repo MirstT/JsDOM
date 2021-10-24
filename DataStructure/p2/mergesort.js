@@ -4,7 +4,7 @@
  * @Author: Mirst
  * @Date: 2021-10-23 17:16:04
  * @LastEditors: Mirst
- * @LastEditTime: 2021-10-24 03:53:44
+ * @LastEditTime: 2021-10-24 22:49:37
  */
 
 // ES6新特性箭头函数语法、如何正确使用箭头函数
@@ -89,7 +89,7 @@ const mergeB = function mergeSortedArrayB(a, b) {
  *        如果.length都不让用的话，left和right的length做为参数传入确实是需要的》。。。也可自己遍历获取，但没必要
  * @see:
  */
-const merge = function mergeSortedArray(left=[], right=[]) {
+const merge = function mergeSortedArray(left = [], right = []) {
   const array = [];
   let lp = 0;
   let rp = 0;
@@ -133,14 +133,16 @@ const divide = function (array) {
       right[right.length] = array[i];
     }
   }
-  divide(left);
-  divide(right);
   console.log(left);
   console.log(right);
+  divide(left);
+  divide(right);
+
+
   let a=merge(left,right);
   console.log(...a);
 };
-divide([10, 2, -3,-4, 50, 6]);
+divide([100,2,4]);
 
 // const mergeSort = function (array) {
 //   const mid = ~~(array.length / 2);
