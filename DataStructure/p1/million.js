@@ -4,7 +4,7 @@
  * @Author: Mirst
  * @Date: 2021-10-22 23:24:04
  * @LastEditors: Mirst
- * @LastEditTime: 2021-10-23 16:17:31
+ * @LastEditTime: 2021-10-24 02:41:12
  */
 
 /**
@@ -116,6 +116,7 @@ Array.prototype.shuffle = function () {
  * @note: 等同于prototype https://github.com/HOUCe/shuffle-array
  *        影响了原array
  *        不考虑纯函数的情况，这个应该是最优解
+ *        看来我们对纯函数的理解出了问题........mmp
  * @see:
  */
 // const shuffle = function shuffle(array) {
