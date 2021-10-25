@@ -4,7 +4,7 @@
  * @Author: Mirst
  * @Date: 2021-10-22 14:56:09
  * @LastEditors: Mirst
- * @LastEditTime: 2021-10-22 15:05:14
+ * @LastEditTime: 2021-10-25 18:01:56
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -18,30 +18,29 @@
   <body>
     <div id="booth">
       <div id="console">
-          <!-- 主界面 -->
+        <!-- 主界面 -->
         <div id="videoDiv">
           <video id="video" width="720" height="480"></video>
         </div>
         <!-- 主界面控制台 -->
         <div id="dashboard">
-            <!-- 所有播放效果 -->
+          <!-- 所有播放效果 -->
           <div id="effects">
-            <a href="" class="effect" id="normal"></a
-            ><a href="" class="effect" id="western"></a
-            ><a href="" class="effect" id="noir"></a
-            ><a href="" class="effect" id="scifi"></a>
+            <!-- 一定要注意，如果 href 属性没有被指定链接，<a> 标签将不是一个链接。
+              就是因为你加了空的href值，导致每次点击页面重新加载，
+              才出的bug，，， -->
+            <a class="effect" id="normal"></a><a class="effect" id="western"></a
+            ><a class="effect" id="noir"></a><a class="effect" id="scifi"></a>
           </div>
           <!-- 播放器控件 -->
           <div id="controls">
-            <a href="" class="control" id="play"></a
-            ><a href="" class="control" id="pause"></a
-            ><a href="" class="control" id="loop"></a
-            ><a href="" class="control" id="mute"></a>
+            <a class="control" id="play"></a><a class="control" id="pause"></a
+            ><a class="control" id="loop"></a><a class="control" id="mute"></a>
           </div>
           <!-- 测试用例 -->
           <div id="videoSelection">
-            <a href="" class="videoSelection" id="video1"></a>
-            <a href="" class="videoSelection" id="video2"></a>
+            <a class="videoSelection" id="video1"></a>
+            <a class="videoSelection" id="video2"></a>
           </div>
         </div>
       </div>

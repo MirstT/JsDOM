@@ -4,8 +4,46 @@
  * @Author: Mirst
  * @Date: 2021-10-22 14:56:40
  * @LastEditors: Mirst
- * @LastEditTime: 2021-10-22 18:00:15
+ * @LastEditTime: 2021-10-25 17:32:10
  */
+
+/**
+ * @brief:
+ * @param {string} idToPush
+ * @param {string[]} idArrayToUnpush
+ * @return {*}
+ * @note:
+ * @see:
+ */
+const pushUnpushButtons = function pushUnpushButtons(
+  idToPush,
+  idArrayToUnpush
+) {
+  if (idToPush != "") {
+    const anchor = document.getElementById(idToPush);
+    const theClass = anchor.getAttribute("class");
+    if (!theClass.indexOf("selected") >= 0) {
+      anchor.setAttribute("class", `${theClass} selected`);
+      const newImage = `url(images/${idToPush}pressed.png)`;
+      anchor.style.background = newImage;
+    }
+  }
+  idArrayToUnpush.forEach((idToUnpush) => {
+    const anchorUnpush = document.getElementById(idToUnpush);
+    const theClassUnpush = anchorUnpush.getAttribute("class");
+    if (theClassUnpush.indexOf("selected") >= 0) {
+      theClassUnpush = theClassUnpush.replace("selected", "");
+      anchorUnpush.setAttribute("class", theClassUnpush);
+      anchorUnpush.style.backgroundImage = "";
+    }
+  });
+};
+
+const isButtonPushed = function isButtonPushed(id) {
+  const anchor = document.getElementById(id);
+  const theClass = anchor.getAttribute("class");
+  return theClass.indexOf("selected") >= 0;
+};
 
 /**
  * @brief:
@@ -36,33 +74,6 @@ const handleControl = function handleControlForVideoBooth(e) {
   }
 };
 
-/**
- * @brief: 初始化
- * @param {*}
- * @return {*}
- * @note:
- * @see:
- */
-window.onload = function () {
-  const controlLinks = document.querySelectorAll("a.control");
-  controlLinks.forEach((control) => {
-    control.onclick = handleControl;
-  });
-
-  const effectLinks = document.querySelectorAll("a.effect");
-  effectLinks.forEach((effect) => {
-    effect.onclick = setEffect;
-  });
-
-  const videoLinks = document.querySelectorAll("a.videoSelection");
-  videoLinks.forEach((video) => {
-    video.onclick = setVideo;
-  });
-
-  pushUnpushButtons("video1", []);
-  pushUnpushButtons("normal", []);
-};
-
 const setEffect = function setEffectForVideoBooth(e) {
   const id = e.target.getAttribute("id");
 
@@ -87,17 +98,6 @@ const setVideo = function setVideoForVideoBooth(e) {
   }
 };
 
-/**
- * @brief: 
- * @param {string} idToPush
- * @param {string[]} idArrayToUnpush
- * @return {*}
- * @note: 
- * @see: 
- */
-const pushUnpushButtons = function pushUnpushButtons(idToPush,idArrayToUnpush){
-
-}
 // forEach执行不可变--------------------------------------------------------------------
 // 更具功能性和声明性
 // 可以遍历整个数组而不会跳过或中断
@@ -112,3 +112,34 @@ const pushUnpushButtons = function pushUnpushButtons(idToPush,idArrayToUnpush){
 // });
 // console.log([...testArray]);
 //---------------------------------------------------------------------------------------
+
+/**
+ * @brief: 初始化
+ * @param {*}
+ * @return {*}
+ * @note:
+ * @see:
+ */
+window.onload = function () {
+  const controlLinks = document.querySelectorAll("a.control");
+  controlLinks.forEach((control) => {
+    control.onclick = handleControl;
+  });
+
+  const effectLinks = document.querySelectorAll("a.effect");
+  effectLinks.forEach((effect) => {
+    effect.onclick = setEffect;
+  });
+
+  const videoLinks = document.querySelectorAll("a.videoSelection");
+  videoLinks.forEach((video) => {
+    video.onclick = setVideo;
+  });
+  // for (let i = 0; i < videoLinks.length; i++) {
+  //   videoLinks[i].onclick = array[i];
+  // }
+
+  pushUnpushButtons("video1", []);
+  pushUnpushButtons("normal", []);
+
+};
