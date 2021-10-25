@@ -4,11 +4,11 @@
  * @Author: Mirst
  * @Date: 2021-10-22 14:56:40
  * @LastEditors: Mirst
- * @LastEditTime: 2021-10-25 18:36:29
+ * @LastEditTime: 2021-10-25 19:55:27
  */
 
 const videos = { video1: "video/demovideo1", video2: "video/demovideo2" };
-
+let effectFunction = null;
 /**
  * @brief: 获取浏览器能够播放的视频类型，并返回该视频类型后缀
  * @param {*}
@@ -86,23 +86,26 @@ const handleControl = function handleControlForVideoBooth(e) {
   if (id === "play") {
     pushUnpushButtons("play", ["pause"]);
     if (video.ended) {
-      video.load();//如果视频播放结束，需要重新加载视频才能重新开始播放
+      video.load(); //如果视频播放结束，需要重新加载视频才能重新开始播放
     }
     video.play();
   } else if (id === "pause") {
     pushUnpushButtons("pause", ["play"]);
+    video.pause();
   } else if (id === "loop") {
     if (isButtonPushed("loop")) {
       pushUnpushButtons("", ["loop"]);
     } else {
       pushUnpushButtons("loop", []);
     }
+    video.loop = !video.loop;
   } else if (id === "mute") {
     if (isButtonPushed("mute")) {
       pushUnpushButtons("", ["mute"]);
     } else {
       pushUnpushButtons("mute", []);
     }
+    video.muted = !video.muted;
   }
 };
 
@@ -111,23 +114,33 @@ const setEffect = function setEffectForVideoBooth(e) {
 
   if (id === "normal") {
     pushUnpushButtons("normal", ["western", "noir", "scifi"]);
+    effectFunction = null;
   } else if (id === "western") {
     pushUnpushButtons("western", ["normal", "noir", "scifi"]);
+    effectFunction = western;
   } else if (id === "noir") {
     pushUnpushButtons("noir", ["normal", "western", "scifi"]);
+    effectFunction = noir;
   } else if (id === "scifi") {
     pushUnpushButtons("scifi", ["normal", "western", "noir"]);
+    effectFunction = scifi;
   }
 };
 
 const setVideo = function setVideoForVideoBooth(e) {
   const id = e.target.getAttribute("id");
+  const video = document.getElementById("video");
 
   if (id === "video1") {
     pushUnpushButtons("video1", ["video2"]);
   } else if (id === "video2") {
     pushUnpushButtons("video2", ["video1"]);
   }
+  video.src = videos[id] + getFormatExtension(video);
+  video.load();
+  video.play();
+
+  pushUnpushButtons("play", ["pause"]);
 };
 
 // forEach执行不可变--------------------------------------------------------------------
@@ -145,6 +158,10 @@ const setVideo = function setVideoForVideoBooth(e) {
 // console.log([...testArray]);
 //---------------------------------------------------------------------------------------
 
+const endedHandler = function endedHandler() {
+  pushUnpushButtons("", ["play"]);
+};
+
 /**
  * @brief: 初始化
  * @param {*}
@@ -156,6 +173,7 @@ window.onload = function () {
   const video = document.getElementById("video");
   video.src = videos.video1 + getFormatExtension(video);
   video.load();
+  video.addEventListener("ended", endedHandler, false);
 
   const controlLinks = document.querySelectorAll("a.control");
   controlLinks.forEach((control) => {
