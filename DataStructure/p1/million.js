@@ -4,7 +4,7 @@
  * @Author: Mirst
  * @Date: 2021-10-22 23:24:04
  * @LastEditors: Mirst
- * @LastEditTime: 2021-10-24 02:41:12
+ * @LastEditTime: 2021-10-25 08:29:09
  */
 
 /**
@@ -313,13 +313,162 @@ const insertionSort = function insertionSort(arr) {
   return array;
 };
 
+
+//==========================================================================================
+/**
+ * @brief:纯函数 第一版合并有序数组
+ * @param {*} a
+ * @param {*} b
+ * @return {*}
+ * @note: 三元运算符通常应该是简单的单行表达式，而不是嵌套的。 eslint rules: no-nested-ternary.
+ *        避免不必要的三元运算符。 eslint rules: no-unneeded-ternary.
+ * @note: 有点费空间
+ * @see:
+ */
+ const mergeA = function mergeSortedArrayA(a, b) {
+  const left = [...a];
+  const right = [...b];
+  const array = [];
+  let lp = 0;
+  let rp = 0;
+  let min;
+
+  while (array.length != left.length + right.length) {
+    if (lp == left.length) {
+      while (rp != right.length) {
+        array[array.length] = right[rp++];
+      }
+      return array;
+    } else if (rp == right.length) {
+      while (lp != left.length) {
+        array[array.length] = left[lp++];
+      }
+      return array;
+    }
+    min = left[lp] <= right[rp] ? left[lp++] : right[rp++];
+    array[array.length] = min;
+  }
+  return array;
+};
+
+/**
+ * @brief:纯函数 第二版合并有序数组
+ * @param {*} a
+ * @param {*} b
+ * @return {*}
+ * @note: 这个简化了代码量，但实际上更复杂了,而且变相增加left right长度？改了left和right 属实不太好
+ * @see:
+ */
+const mergeB = function mergeSortedArrayB(a, b) {
+  const left = [...a];
+  const right = [...b];
+  const array = [];
+  let lp = 0;
+  let rp = 0;
+
+  while (array.length != a.length + b.length) {
+    if (lp == a.length) left[lp] = Number.POSITIVE_INFINITY;
+    if (rp == b.length) right[rp] = Number.POSITIVE_INFINITY;
+    array[array.length] = left[lp] <= right[rp] ? left[lp++] : right[rp++];
+  }
+  return array;
+};
+
+/**
+ * @brief:纯函数 第三版合并有序数组 优化代码观感
+ * @param {*}
+ * @param {*}
+ * @return {*}
+ * @note: 既然要求纯函数，我就把返回值当作参数传入就行了，
+ * @note: 此处是分治法中的治？还是 合 应该说合 更为合适， 然后就是循环调用直至全部合并
+ * @note: 也可用于合并单个数组 ，合并的过程就是排序了，，，，所以，第一轮合并是兼具排序，所以治也被包含在其中
+ *        所以整个函数就是治？
+ *        如果.length都不让用的话，left和right的length做为参数传入确实是需要的》。。。也可自己遍历获取，但没必要
+ * @see:
+ */
+const merge = function mergeSortedArray(left = [], right = []) {
+  const array = [];
+  let lp = 0;
+  let rp = 0;
+
+  while (array.length < left.length + right.length) {
+    if (lp == left.length) {
+      while (rp != right.length) array[array.length] = right[rp++];
+      break;
+    }
+    if (rp == right.length) {
+      while (lp != left.length) array[array.length] = left[lp++];
+      break;
+    }
+    array[array.length] = left[lp] < right[rp] ? left[lp++] : right[rp++];
+  }
+  return array;
+};
+
+// const array1 = merge([-100, 1, 1, 2, 3, 4], [-1, 3, 5, 100]);
+// const array2 = merge([-100], []);
+// console.log(...array2);
+// console.log(~~0.5);
+
+/**
+ * @brief:  怎么divide呢> ,其实没必要了，直接进行mergesort就行了，分完就直接合并了
+ * @param {*}
+ * @return {*}
+ * @note: 数字取整 https://www.jianshu.com/p/a3202bc3f7a4
+ * @note: mid=0时，stop
+ * @see:
+ */
+const divide = function (array) {
+  const mid = ~~(array.length / 2);
+  if (mid === 0) return array;//单个值
+  let a = [];
+  let left = [];
+  let right = [];
+  for (let i = 0; i < array.length; i++) {
+    if (i < mid) {
+      left[left.length] = array[i];
+    } else {
+      right[right.length] = array[i];
+    }
+  }
+  console.log(left);
+  console.log(right)
+  left=divide(left);
+  right=divide(right);
+  a = merge(left, right);
+  console.log(...a);
+  return a;//回传
+};
+
+
+const mergeSort = function (array) {
+  const mid = ~~(array.length / 2);
+  if (mid === 0) return array;//单个值
+  let arr = [];
+  let left = [];
+  let right = [];
+  for (let i = 0; i < array.length; i++) {
+    if (i < mid) {
+      left[left.length] = array[i];
+    } else {
+      right[right.length] = array[i];
+    }
+  }
+  left=mergeSort(left);
+  right=mergeSort(right);
+  arr = merge(left, right);
+  return arr;//回传
+};
+//=============================================================================================
+
+
 // const millionArray = gen(40);
 // console.log(verifyProbality(millionArray, shuffleSimple));
 // console.log(verifyProbality(millionArray, shuffle));
 let array = gen(100000);
 // console.log(...array);
 array.shuffle();
-array.sort((a,b)=>{return a-b;})
+// array.sort((a,b)=>{return a-b;})
 // console.log(...array);
 // const selectionArray = selectionSort(array);
 // console.log(`selection:${[...selectionArray]}`);
@@ -328,6 +477,14 @@ array.sort((a,b)=>{return a-b;})
 // const insertionArray = insertionSort(array);
 // console.log(`insertion:${[...insertionArray]}`);
 // console.log(...array);
+
+
+
+
+// const mergeSortArray = mergeSort(array);
+
+
+
 
 
 

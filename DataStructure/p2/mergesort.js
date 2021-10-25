@@ -4,7 +4,7 @@
  * @Author: Mirst
  * @Date: 2021-10-23 17:16:04
  * @LastEditors: Mirst
- * @LastEditTime: 2021-10-24 22:49:37
+ * @LastEditTime: 2021-10-25 08:28:53
  */
 
 // ES6新特性箭头函数语法、如何正确使用箭头函数
@@ -123,9 +123,10 @@ const merge = function mergeSortedArray(left = [], right = []) {
  */
 const divide = function (array) {
   const mid = ~~(array.length / 2);
-  if (mid === 0) return;
-  const left = [];
-  const right = [];
+  if (mid === 0) return array;//单个值
+  let a = [];
+  let left = [];
+  let right = [];
   for (let i = 0; i < array.length; i++) {
     if (i < mid) {
       left[left.length] = array[i];
@@ -134,32 +135,36 @@ const divide = function (array) {
     }
   }
   console.log(left);
-  console.log(right);
-  divide(left);
-  divide(right);
-
-
-  let a=merge(left,right);
+  console.log(right)
+  left=divide(left);
+  right=divide(right);
+  a = merge(left, right);
   console.log(...a);
+  return a;//回传
 };
-divide([100,2,4]);
 
-// const mergeSort = function (array) {
-//   const mid = ~~(array.length / 2);
-//   if ((mid = 0)) return;
-//   const array = [...a];
-//   const left = [];
-//   const right = [];
-//   if (mid > 0) {
-//     for (let i = 0; i < mid; i++) {
-//       left[i] = array[i];
-//     }
-//     for (let i = mid; i < array.length; i++) {
-//       right[i] = array[i];
-//     }
-//   }
-//   divide(left);
-//   divide(right);
 
-//   return array;
-// };
+
+
+const mergeSort = function (array) {
+  const mid = ~~(array.length / 2);
+  if (mid === 0) return array;//单个值
+  let arr = [];
+  let left = [];
+  let right = [];
+  for (let i = 0; i < array.length; i++) {
+    if (i < mid) {
+      left[left.length] = array[i];
+    } else {
+      right[right.length] = array[i];
+    }
+  }
+  left=mergeSort(left);
+  right=mergeSort(right);
+  arr = merge(left, right);
+  return arr;//回传
+};
+
+
+let a =mergeSort([-1, -100, 5, 4, 1,0,-200]);
+console.log(...a);
