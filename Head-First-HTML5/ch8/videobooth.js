@@ -4,8 +4,27 @@
  * @Author: Mirst
  * @Date: 2021-10-22 14:56:40
  * @LastEditors: Mirst
- * @LastEditTime: 2021-10-25 18:13:01
+ * @LastEditTime: 2021-10-25 18:36:29
  */
+
+const videos = { video1: "video/demovideo1", video2: "video/demovideo2" };
+
+/**
+ * @brief: 获取浏览器能够播放的视频类型，并返回该视频类型后缀
+ * @param {*}
+ * @return {*}
+ * @note: 改了以下，让它符合纯函数
+ * @see:
+ */
+function getFormatExtension(vidoe) {
+  if (video.canPlayType("video/mp4") !== "") {
+    return ".mp4";
+  } else if (video.canPlayType("videp/webm") !== "") {
+    return ".webm";
+  } else if (video.canPlayType("video/ogg") !== "") {
+    return ".ogv";
+  }
+}
 
 /**
  * @brief:
@@ -40,6 +59,13 @@ const pushUnpushButtons = function pushUnpushButtons(
   });
 };
 
+/**
+ * @brief:
+ * @param {*} id
+ * @return {*}
+ * @note:
+ * @see:
+ */
 const isButtonPushed = function isButtonPushed(id) {
   const anchor = document.getElementById(id);
   const theClass = anchor.getAttribute("class");
@@ -50,14 +76,19 @@ const isButtonPushed = function isButtonPushed(id) {
  * @brief:
  * @param {*} e target 事件属性返回触发事件的元素
  * @return {*}
- * @note:
+ * @note: 纯函数确实有利于编程的清晰性
  * @see:
  */
 const handleControl = function handleControlForVideoBooth(e) {
   const id = e.target.getAttribute("id");
+  const video = document.getElementById("video");
 
   if (id === "play") {
     pushUnpushButtons("play", ["pause"]);
+    if (video.ended) {
+      video.load();//如果视频播放结束，需要重新加载视频才能重新开始播放
+    }
+    video.play();
   } else if (id === "pause") {
     pushUnpushButtons("pause", ["play"]);
   } else if (id === "loop") {
@@ -122,6 +153,10 @@ const setVideo = function setVideoForVideoBooth(e) {
  * @see:
  */
 window.onload = function () {
+  const video = document.getElementById("video");
+  video.src = videos.video1 + getFormatExtension(video);
+  video.load();
+
   const controlLinks = document.querySelectorAll("a.control");
   controlLinks.forEach((control) => {
     control.onclick = handleControl;
@@ -136,8 +171,7 @@ window.onload = function () {
   videoLinks.forEach((video) => {
     video.onclick = setVideo;
   });
-  
+
   pushUnpushButtons("video1", []);
   pushUnpushButtons("normal", []);
-
 };

@@ -4,7 +4,7 @@
  * @Author: Mirst
  * @Date: 2021-10-21 20:36:55
  * @LastEditors: Mirst
- * @LastEditTime: 2021-10-22 14:53:39
+ * @LastEditTime: 2021-10-25 18:28:29
  */
 
 let position = 0;
@@ -25,6 +25,14 @@ window.onload = function () {
   video.play();
 };
 
+/**
+ * @brief: 
+ * @param {*}
+ * @return {*}
+ * @note: load() 方法重新加载音频/视频元素。
+ *        load() 方法用于在更改来源或其他设置后对音频/视频元素进行更新。
+ * @see: 
+ */
 function nextVideo() {
   position++;
   if (position >= playlist.length) {
