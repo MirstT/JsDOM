@@ -4,7 +4,7 @@
  * @Author: Mirst
  * @Date: 2021-10-23 17:16:04
  * @LastEditors: Mirst
- * @LastEditTime: 2021-10-25 08:28:53
+ * @LastEditTime: 2021-10-25 09:04:27
  */
 
 // ES6新特性箭头函数语法、如何正确使用箭头函数
@@ -87,9 +87,10 @@ const mergeB = function mergeSortedArrayB(a, b) {
  * @note: 也可用于合并单个数组 ，合并的过程就是排序了，，，，所以，第一轮合并是兼具排序，所以治也被包含在其中
  *        所以整个函数就是治？
  *        如果.length都不让用的话，left和right的length做为参数传入确实是需要的》。。。也可自己遍历获取，但没必要
+ * @note: 这是分治法中的治
  * @see:
  */
-const merge = function mergeSortedArray(left = [], right = []) {
+const mergeC = function mergeSortedArrayC(left = [], right = []) {
   const array = [];
   let lp = 0;
   let rp = 0;
@@ -104,6 +105,31 @@ const merge = function mergeSortedArray(left = [], right = []) {
       break;
     }
     array[array.length] = left[lp] < right[rp] ? left[lp++] : right[rp++];
+  }
+  return array;
+};
+
+/**
+ * @brief:纯函数 第四版合并有序数组 可以使用库函数
+ * @param {*}
+ * @param {*}
+ * @return {*}
+ * @note: Number.MAX_SAFE_INTEGER 当作极限值，
+ *        这样整体流程，看情况，有快有慢，当然这样写更优雅；
+ * @see:
+ */
+const merge = function mergeSortedArray(a, b) {
+  const left = [...a];
+  const right = [...b];
+  left.push(Number.MAX_SAFE_INTEGER);
+  right.push(Number.MAX_SAFE_INTEGER);
+  const array = [];
+  const totalLength = a.length + b.length;
+  let lp = 0;
+  let rp = 0;
+
+  while (array.length != totalLength) {
+    array[array.length] = left[lp] <= right[rp] ? left[lp++] : right[rp++];
   }
   return array;
 };
@@ -123,8 +149,7 @@ const merge = function mergeSortedArray(left = [], right = []) {
  */
 const divide = function (array) {
   const mid = ~~(array.length / 2);
-  if (mid === 0) return array;//单个值
-  let a = [];
+  if (mid === 0) return array; //单个值
   let left = [];
   let right = [];
   for (let i = 0; i < array.length; i++) {
@@ -135,36 +160,36 @@ const divide = function (array) {
     }
   }
   console.log(left);
-  console.log(right)
-  left=divide(left);
-  right=divide(right);
-  a = merge(left, right);
-  console.log(...a);
-  return a;//回传
+  console.log(right);
+  divide(left);
+  divide(right);
 };
 
-
-
-
-const mergeSort = function (array) {
-  const mid = ~~(array.length / 2);
-  if (mid === 0) return array;//单个值
-  let arr = [];
+/**
+ * @brief: 合并排序第一版 纯函数
+ * @param {*} array
+ * @return {*}
+ * @note:
+ * @see:
+ */
+const mergeSort = function (a) {
+  const mid = ~~(a.length / 2);
+  if (mid === 0) return a; //单个值
+  let array = [];
   let left = [];
   let right = [];
-  for (let i = 0; i < array.length; i++) {
+  for (let i = 0; i < a.length; i++) {
     if (i < mid) {
-      left[left.length] = array[i];
+      left[left.length] = a[i];
     } else {
-      right[right.length] = array[i];
+      right[right.length] = a[i];
     }
   }
-  left=mergeSort(left);
-  right=mergeSort(right);
-  arr = merge(left, right);
-  return arr;//回传
+  left = mergeSort(left);
+  right = mergeSort(right);
+  array = merge(left, right); //conquer
+  return array; //回传
 };
 
-
-let a =mergeSort([-1, -100, 5, 4, 1,0,-200]);
+let a = mergeSort([-1, -100]);
 console.log(...a);
