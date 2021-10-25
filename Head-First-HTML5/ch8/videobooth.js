@@ -4,7 +4,7 @@
  * @Author: Mirst
  * @Date: 2021-10-22 14:56:40
  * @LastEditors: Mirst
- * @LastEditTime: 2021-10-25 17:32:10
+ * @LastEditTime: 2021-10-25 18:13:01
  */
 
 /**
@@ -30,8 +30,9 @@ const pushUnpushButtons = function pushUnpushButtons(
   }
   idArrayToUnpush.forEach((idToUnpush) => {
     const anchorUnpush = document.getElementById(idToUnpush);
-    const theClassUnpush = anchorUnpush.getAttribute("class");
+    let theClassUnpush = anchorUnpush.getAttribute("class");
     if (theClassUnpush.indexOf("selected") >= 0) {
+      //replace会对theClassUnpush重新赋值，所以不能用const
       theClassUnpush = theClassUnpush.replace("selected", "");
       anchorUnpush.setAttribute("class", theClassUnpush);
       anchorUnpush.style.backgroundImage = "";
@@ -135,10 +136,7 @@ window.onload = function () {
   videoLinks.forEach((video) => {
     video.onclick = setVideo;
   });
-  // for (let i = 0; i < videoLinks.length; i++) {
-  //   videoLinks[i].onclick = array[i];
-  // }
-
+  
   pushUnpushButtons("video1", []);
   pushUnpushButtons("normal", []);
 
