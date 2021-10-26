@@ -1,0 +1,115 @@
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: Shijie;
+}
+
+@font-face {
+  font-family: "Shijie";
+  src: url("../intro3S/汉仪正圆-45S.ttf");
+}
+
+h1 {
+  position: relative;
+  font-size: 100px;
+  color: #544e58;
+  /* 默认不显示 */
+  opacity: 0;
+  /* 增加动画，显示名字 show_name 延迟2s 线性开始结束放慢 执行1次 结束时停在最后一帧 */
+  animation: show_name 2s ease-in-out 0.5s 1 forwards;
+}
+
+@keyframes show_name{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+h1::before {
+  position: absolute;
+  /* 这里必须是Unicode编码
+    注意:转换完毕后去掉后面的u */
+  content: "\9047\89c1\53e6\4e00\4e2a\89c6\754c";
+  color: transparent;
+  /* 使用liner-gradient生成一个渐变图片做背景 */
+  background-image: linear-gradient(
+    to right,
+    #bed742,
+    #f8aba6,
+    #585eaa,
+    #ed1941,
+    #7fb80e,
+    #f26522,
+    #ffc20e,
+    #7c8577,
+    #009ad6,
+    #65c294,
+    #f47920,
+    #f15b6c,
+    #2e3a1f
+  );
+  /* chrome不适配 */
+  background-clip: text;
+  /* chrome适配 */
+  -webkit-background-clip: text;
+
+  /* 制作一个斜距行遮罩 */
+  /* 使用polygon方法 */
+  /* 矩形需要定义四个角的坐标,顺时针方向定义 */
+  /* 分别为左上,右上,右下,左下 */
+  /* 位置以百分比为单位 */
+  clip-path: polygon(-20% 0%, 0% 0%, -10% 100%, -30% 100%);
+  /* 增加动画 */
+  /* 动画名称light */
+  /* 持续时间2s */
+  /* 延迟0s执行 */
+  /* 直接方式循环 */
+  animation: light 2s 2s infinite;
+}
+
+/* 初始与结束保持一致，中间为最右侧 */
+
+@keyframes light {
+  0% {
+    clip-path: polygon(-20% 0%, 0% 0%, -10% 100%, -30% 100%);
+  }
+  50% {
+    clip-path: polygon(100% 0%, 120% 0%, 110% 100%, 90% 100%);
+  }
+  100% {
+    clip-path: polygon(-20% 0%, 0% 0%, -10% 100%, -30% 100%);
+  }
+}
+
+.logo {
+  margin-top: -100px;
+  text-align: center;
+
+  /* 增加就一个渐显动画 */
+  /* 动画名称为show_logo 持续2 动画线性结束放慢 延迟时间0s 循环执行1次 结束停止在最终帧 */
+  animation: show_logo 2s ease-out 0s 1 forwards;
+}
+
+/* 定义动画 从开始到结束透明度从0到1 */
+@keyframes show_logo{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 100;
+  }
+}

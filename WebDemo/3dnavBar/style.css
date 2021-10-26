@@ -1,0 +1,81 @@
+:root {
+  --background-color: #2c3e50;
+  --color1: #354c61;
+  --color2: #a53acf;
+  --color3: #d34c4c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 14px;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Shijie;
+}
+
+@font-face {
+  font-family: "Shijie";
+  src: url("../intro3S/汉仪正圆-45S.ttf");
+}
+
+nav {
+  width: 680px;
+  background-color: var(--color1);
+}
+
+.item {
+  width: 200px;
+  height: 100px;
+  margin: 10px;
+  float: left;
+}
+
+.item a {
+  display: block;
+  height: 100px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.5em;
+  /* 开启3d */
+  transform-style: preserve-3d;
+  /* transform:rotateX(10deg) rotateY(10deg); */
+  /* 增加z轴上的位移主要是为了让hover旋转是沿着夹角形成的
+  虚拟立方体中心轴旋转而不是当前cn元素的这一面的中心 */
+  transform:translateZ(50px);
+  transition:0.5s;
+}
+
+.item a p{
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+}
+
+.item a p.cn{
+    background-color: var(--color2);
+}
+.item a p.en{
+    background-color: var(--color3);
+    /* en元素沿着顶端x轴逆向旋转90度
+    形成于cn元素垂直的夹角，类似于形成一个缺两面的正方体 */
+    transform: rotateX(-90deg);
+    transform-origin: top;
+}
+
+.item a:hover{
+    /* 当鼠标移动到a元素时旋转，沿x轴旋转顺时针90度
+    因为当前旋转基点在夹角形成的虚拟正方体的中心，所以看起来就像旋转立方体的两个面一样
+    出现偏移问题是因为顺序原因，变换动作的顺序会影响最终呈现的效果 */
+    transform:rotateX(90deg) translateZ(50px) ;
+}

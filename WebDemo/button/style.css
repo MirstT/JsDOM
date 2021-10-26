@@ -1,0 +1,132 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: Shijie;
+}
+
+@font-face {
+  font-family: "Shijie";
+  src: url("../intro3S/汉仪正圆-45S.ttf");
+}
+
+.normal {
+  position: relative;
+  padding: 12px 30px;
+  margin: 30px;
+  background-color: #4d385d;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 2px;
+  border: 1px solid #130f36;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.normal:nth-child(1):hover {
+  background-color: #ff6659;
+}
+
+.normal:nth-child(3):hover {
+  background-color: #762376;
+}
+
+.normal::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: -50%;
+  width: 50%;
+  height: 100%;
+  opacity: 0.9;
+  background-image: linear-gradient(
+    60deg,
+    transparent,
+    transparent,
+    #fff,
+    transparent,
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.normal:hover::before {
+  left: 100%;
+}
+
+.special {
+  position: relative;
+  padding: 12px 40px;
+  margin: 30px 0;
+  border-radius: 30px;
+  font-size: 30px;
+  color: #fff;
+  letter-spacing: 1px;
+  text-decoration: none;
+  /* 使用linear-gradient生成一个线性渐变的“背景图” */
+  background-image: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+  /* 放大背景图 */
+  background-size: 400%;
+  /* 这里是为了让a标签的背景显示在a::before的下面 */
+  z-index: 1;
+}
+
+.special:hover {
+  /* 创建动画
+      动画名称show
+      执行时间8秒
+      线性
+      循环执行
+  */
+  animation: show 8s linear infinite;
+}
+
+/* 动画主体从初始到结束，移动背景图的位置*/
+@keyframes show {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 400%;
+  }
+}
+
+/* 创建背景炫光效果 */
+.special::before {
+  position: absolute;
+  content: "";
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  /* 使用linear-gradient生成一个线性渐变的“背景图” */
+  background-image: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+  /* 放大背景图 */
+  background-size: 400%;
+  border-radius: 40px;
+  z-index: -1;
+  filter: blur(15px);
+  /* 默认不显示 */
+  opacity: 0;
+}
+.special:hover::before {
+  opacity: 1;
+  /* 背景炫光增加动画 */
+  /* 与按钮的动画保持一致 */
+  /* 创建动画
+      动画名称show
+      执行时间8秒
+      线性
+      循环执行
+  */
+  animation: show 8s linear infinite;
+}

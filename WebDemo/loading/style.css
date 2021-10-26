@@ -1,0 +1,198 @@
+:root {
+  --background-color: #2d3436;
+  --border-color: #7591ad;
+  --nav-background-color: #34495e;
+  --text-color: #34495e;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: Shijie;
+}
+
+@font-face {
+  font-family: "Shijie";
+  src: url("../intro3S/汉仪正圆-45S.ttf");
+}
+
+.loader {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  position: relative;
+  background-color: red;
+  box-shadow: -24px 0 #fff, 24px 0 #fff;
+  animation: rotation 1.5s ease-in-out infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader2 {
+  margin-top: 60px;
+  width: 48px;
+  height: 48px;
+  position: relative;
+  animation: rotation 1s linear infinite;
+}
+
+.loader2::after,
+.loader2::before {
+  content: "";
+  position: absolute;
+  background-color: #fff;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  transform: translate(0, -50%);
+  border-radius: 50%;
+}
+
+.loader2::after {
+  left: 0;
+  background-color: orangered;
+}
+
+.loader2::before {
+  right: 0;
+  background-color: greenyellow;
+}
+
+.loader3 {
+  margin-top: 60px;
+  width: 48px;
+  height: 48px;
+  position: relative;
+  animation: rotation2 1s linear infinite alternate;
+}
+
+.loader3::after,
+.loader3::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: seashell;
+  top: 50%;
+  transform: translate(0, -50%);
+  border-radius: 50%;
+}
+.loader3::after {
+  right: 0;
+  background-color: greenyellow;
+}
+
+.loader3::before {
+  left: 0;
+  background-color: orange;
+}
+
+@keyframes rotation2 {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  100% {
+    transform: scale(0) rotate(360deg);
+  }
+}
+
+.loader4 {
+  width: 48px;
+  height: 48px;
+  position: relative;
+  margin-top: 60px;
+  animation: rotation3 0.5s linear infinite ;
+}
+
+.loader4::after,
+.loader4::before {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.loader4::before {
+  top: 0;
+  background-color: greenyellow;
+  animation: scale 1s infinite ease-in-out alternate;
+}
+
+.loader4::after {
+  bottom: 0;
+  background-color: orangered;
+  animation: scale 1s infinite ease-in-out alternate;
+}
+
+@keyframes rotation3{
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+@keyframes scale{
+  0%{
+    transform: scale(1);
+  }
+  100%{
+    transform: scale(0);
+  }
+}
+
+
+.loader5 {
+  width: 48px;
+  height: 48px;
+  position: relative;
+  margin-top: 60px;
+  animation: rotation 0.5s linear infinite ;
+}
+
+.loader5::after,
+.loader5::before {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  animation: animloader 1s ease-in-out infinite;
+}
+
+.loader5::before {
+  background-color: greenyellow;
+  transform:  scale(0.5) translate(0,0);
+}
+
+.loader5::after {
+  background-color: orangered;
+  transform:  scale(0.5) translate(-200%,-200%);
+}
+
+@keyframes animloader{
+  50%{
+    transform: scale(1) translate(-50%,-50%);
+  }
+}
+

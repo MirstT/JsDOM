@@ -1,0 +1,86 @@
+:root {
+  --background-color: #2c3e50;
+  --border-color: #7591ad;
+  --nav-background-color: #34495e;
+  --text-color: #34495e;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Shijie;
+}
+
+@font-face {
+  font-family: "Shijie";
+  src: url("../intro3S/汉仪正圆-45S.ttf");
+}
+
+ul {
+  width: 70vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  position: relative;
+  color: #fff;
+  text-decoration: none;
+  padding: 6px 18px;
+  transition: background-color 0.8s;
+}
+
+a:hover {
+  background-color: orangered;
+}
+
+a::before {
+  position: absolute;
+  content: "";
+  width: 20px;
+  height: 20px;
+  border: 2px solid orangered;
+  border-width: 0 0 2px 2px;
+  left: 0;
+  bottom: 0;
+  opacity: 0;
+  transition:0.3s;
+}
+
+a::after {
+  position: absolute;
+  content: "";
+  width: 20px;
+  height: 20px;
+  border: 2px solid orangered;
+  border-width: 2px 2px 0 0;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  transition:0.3s;
+}
+
+a:hover::before{
+    left: -12px;
+    bottom: -12px;
+    opacity: 1;
+}
+a:hover::after{
+    top: -12px;
+    right: -12px;
+    opacity: 1;
+}

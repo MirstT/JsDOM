@@ -1,0 +1,56 @@
+:root {
+  --background-color: #2a3d50;
+  --show-color1:#03a9f4;
+  --show-color2:#f441a5;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Shijie;
+}
+
+@font-face {
+  font-family: "Shijie";
+  src: url("../intro3S/汉仪正圆-45S.ttf");
+}
+
+.bt{
+  font-size: 30px;
+  color: #ffffff;
+  background: linear-gradient(90deg,var(--show-color1),var(--show-color2));
+  padding: 24px 48px;
+  border-radius: 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.bt span{
+  position: absolute;
+  background-color: #ffffff;
+  border-radius: 50%;
+  transform:translate(-50%,-50%);
+  animation: show 1s;
+}
+
+@keyframes show{
+  0%{
+    opacity: 0.5;
+    width: 0;
+    height: 0;
+  }
+  100%{
+    opacity: 0;
+    width: 300px;
+    height: 300px;
+  }
+}
