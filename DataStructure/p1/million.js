@@ -1,10 +1,10 @@
 /*
- * @Descripttion:
- * @version:
+ * @Descripttion: 
+ * @version: 
  * @Author: Mirst
  * @Date: 2021-10-22 23:24:04
  * @LastEditors: Mirst
- * @LastEditTime: 2021-10-25 08:29:09
+ * @LastEditTime: 2021-10-26 17:55:58
  */
 
 /**
@@ -313,7 +313,6 @@ const insertionSort = function insertionSort(arr) {
   return array;
 };
 
-
 //==========================================================================================
 /**
  * @brief:纯函数 第一版合并有序数组
@@ -325,7 +324,7 @@ const insertionSort = function insertionSort(arr) {
  * @note: 有点费空间
  * @see:
  */
- const mergeA = function mergeSortedArrayA(a, b) {
+const mergeA = function mergeSortedArrayA(a, b) {
   const left = [...a];
   const right = [...b];
   const array = [];
@@ -420,7 +419,7 @@ const merge = function mergeSortedArray(left = [], right = []) {
  */
 const divide = function (array) {
   const mid = ~~(array.length / 2);
-  if (mid === 0) return array;//单个值
+  if (mid === 0) return array; //单个值
   let a = [];
   let left = [];
   let right = [];
@@ -432,18 +431,17 @@ const divide = function (array) {
     }
   }
   console.log(left);
-  console.log(right)
-  left=divide(left);
-  right=divide(right);
+  console.log(right);
+  left = divide(left);
+  right = divide(right);
   a = merge(left, right);
   console.log(...a);
-  return a;//回传
+  return a; //回传
 };
-
 
 const mergeSort = function (array) {
   const mid = ~~(array.length / 2);
-  if (mid === 0) return array;//单个值
+  if (mid === 0) return array; //单个值
   let arr = [];
   let left = [];
   let right = [];
@@ -454,13 +452,12 @@ const mergeSort = function (array) {
       right[right.length] = array[i];
     }
   }
-  left=mergeSort(left);
-  right=mergeSort(right);
+  left = mergeSort(left);
+  right = mergeSort(right);
   arr = merge(left, right);
-  return arr;//回传
+  return arr; //回传
 };
 //=============================================================================================
-
 
 // const millionArray = gen(40);
 // console.log(verifyProbality(millionArray, shuffleSimple));
@@ -478,13 +475,4 @@ array.shuffle();
 // console.log(`insertion:${[...insertionArray]}`);
 // console.log(...array);
 
-
-
-
 // const mergeSortArray = mergeSort(array);
-
-
-
-
-
-

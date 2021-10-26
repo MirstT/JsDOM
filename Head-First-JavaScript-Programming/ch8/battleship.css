@@ -1,4 +1,159 @@
+@charset "UTF-8";
+/*
+ * @Descripttion : 
+ * @version      : 
+ * @Author       : Mirst
+ * @Date         : 2021-10-26 17:10:09
+ * @LastEditors  : Mirst
+ * @LastEditTime : 2021-10-26 23:07:34
+ */
+html,
+body,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+input,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+textarea,
+article,
+aside,
+audio,
+canvas,
+figure,
+footer,
+header,
+mark,
+menu,
+nav,
+section,
+time,
+video {
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+article,
+aside,
+dialog,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section,
+blockquote {
+  display: block;
+}
+ul,
+ol {
+  list-style: none;
+}
+img {
+  border: 0 none;
+  vertical-align: top;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+strong,
+em,
+i {
+  font-style: normal;
+  font-weight: normal;
+}
+ins {
+  text-decoration: underline;
+}
+del {
+  text-decoration: line-through;
+}
+mark {
+  background: none;
+}
+input::-ms-clear {
+  display: none !important;
+}
 body {
+  font: 12px/1.5 \5fae\8f6f\96c5\9ed1, \5b8b\4f53, "Hiragino Sans GB", STHeiti,
+    "WenQuanYi Micro Hei", "Droid Sans Fallback", SimSun, sans-serif;
+  background: #fff;
+}
+a {
+  text-decoration: none;
+  color: #333;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* 布局定位属性：display / position / float / clear / visibility / overflow
+自身属性：width / height / margin / padding / border / background
+文本属性：color / font / text-decoration / text-align / vertical-align / white- space / break-word
+其他属性（CSS3）：content / cursor / border-radius / box-shadow / text-shadow / background:linear-gradient …
+.jdc {
+  display: block;
+  position: relative;
+  float: left;
+  width: 100px;
+  height: 100px;
+  margin: 0 10px;
+  padding: 20px 0;
+  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  color: #333;
+  background: rgba(0,0,0,.5);
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
+} */
+
+body {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
   background-color: #010101;
 }
 
@@ -6,6 +161,20 @@ div#board {
   position: relative;
   width: 1024px;
   height: 863px;
-  margin: auto;
   background: url(images/board.jpg) no-repeat;
+}
+
+div#messageArea{
+  color: green;
+  font-size: xx-large;
+}
+
+form{
+  position: relative;
+  bottom: -100px;
+}
+form input{
+  background-color: greenyellow;
+  border-color: greenyellow;
+  font-size: x-large;
 }
