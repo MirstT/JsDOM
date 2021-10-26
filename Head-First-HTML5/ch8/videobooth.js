@@ -4,7 +4,7 @@
  * @Author: Mirst
  * @Date: 2021-10-22 14:56:40
  * @LastEditors: Mirst
- * @LastEditTime: 2021-10-25 19:55:27
+ * @LastEditTime: 2021-10-25 22:53:02
  */
 
 const videos = { video1: "video/demovideo1", video2: "video/demovideo2" };
@@ -162,6 +162,33 @@ const endedHandler = function endedHandler() {
   pushUnpushButtons("", ["play"]);
 };
 
+const processFrame = function processFrame() {
+  const video = document.getElementById("video");
+  if (video.paused || video.ended) {
+    return;
+  }
+  const bufferCanvas = document.getElementById("buffer");
+  const displayCanvas = document.getElementById("display");
+  const buffer = bufferCanvas.getContext("2d");
+  const display = displayCanvas.getContext("2d");
+
+  buffer.drawImage(video,0,0,bufferCanvas.width,bufferCanvas.height);
+  let frame = buffer.getImageData(0,0,bufferCanvas.width,bufferCanvas.height);
+
+  let length = frame.data.length/4;
+  for (let i =0; i < length; i++){
+    let r = frame.data[i*4+0];
+    let g = frame.data[i*4+1];
+    let b = frame.data[i*4+2];
+    if (effectFunction) {
+      effectFunction(i,r,g,b,frame.data);
+    }
+  }
+
+  display.putImageData(frame,0,0);
+  setTimeout(processFrame, 0);
+};
+
 /**
  * @brief: 初始化
  * @param {*}
@@ -173,7 +200,6 @@ window.onload = function () {
   const video = document.getElementById("video");
   video.src = videos.video1 + getFormatExtension(video);
   video.load();
-  video.addEventListener("ended", endedHandler, false);
 
   const controlLinks = document.querySelectorAll("a.control");
   controlLinks.forEach((control) => {
@@ -192,4 +218,7 @@ window.onload = function () {
 
   pushUnpushButtons("video1", []);
   pushUnpushButtons("normal", []);
+
+  video.addEventListener("ended", endedHandler, false);
+  video.addEventListener("play", processFrame, false);
 };
