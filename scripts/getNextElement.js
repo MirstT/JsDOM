@@ -3,8 +3,8 @@
  * @version: 
  * @Author: Mirst
  * @Date: 2021-10-14 18:43:27
- * @LastEditors: Mirst
- * @LastEditTime: 2021-10-16 08:08:51
+ * @LastEditors  : Mirst
+ * @LastEditTime : 2021-10-27 23:57:07
  */
 function addLoadEvent(func) {
     var oldonload = window.onload;
