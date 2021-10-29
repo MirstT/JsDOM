@@ -1,0 +1,91 @@
+@charset "gb2312";
+/************************************************
+*	default style								*
+************************************************/
+*{ margin:0; padding:0;}
+body{ margin:0 auto; background:#000; color:#C5C5C5; font:12px Arial,Verdana,Tahoma;}
+div, form, img, ul, ol, li, dl, dt, dd{ margin:0; padding:0;}
+ul{ list-style:none;}
+ol{ margin-left:20px;}
+table{ border-collapse:collapse;}
+h1, h2, h3, h4, h5, h6{ margin:0; padding:0; font:12px Verdana, Arial, Helvetica, sans-serif;}
+a img, img{ border:0;}
+select, input, textarea{ color:#575757; background:inherit; font:12px Arial,Verdana,Tahoma;}
+
+
+/************************************************
+*	form style									*
+************************************************/
+input, textarea, select{ padding:1px;}
+.submit,
+.submit input{ cursor:pointer;}
+#login{}
+#search{}
+
+
+/************************************************
+*	links   									*
+************************************************/
+a{ color:#000; text-decoration:none;}
+a:hover{ color:#0896d4; text-decoration:underline;}
+
+
+/************************************************
+*		clearfix style							*
+************************************************/
+
+.clear{ clear:both;}
+
+
+/************************************************
+*	class style									*
+************************************************/
+.bg_bottom{ background:url(http://ossweb-img.qq.com/images/dnf/act/a20080710anhei/page_bg_bottom.jpg) no-repeat 0 350px;}
+
+
+/************************************************
+*	layout style								*
+************************************************/
+#wrapper{ margin-left:auto; margin-right:auto; width:961px; background:url(http://ossweb-img.qq.com/images/dnf/act/a20080710anhei/bg_index.jpg) no-repeat;}
+.nav{ display:inline; float:left; margin-left:157px; padding-top:383px; width:75px;}
+.nav a{ display:block; height:20px; text-indent:-999px; overflow:hidden;}
+.nav a.down{ margin-top:8px;}
+
+.main{ float:left; margin-left:37px; padding-top:160px; width:493px;}
+.menu{ float:left; margin-left:16px; padding-top:75px; width:98px;}
+.menu a{ display:block; background-repeat:no-repeat; text-indent:-999px; overflow:hidden;}
+.menu a.update{ width:89px; height:25px; background-image:url(http://ossweb-img.qq.com/images/dnf/act/a20080710anhei/menu_01.jpg);}
+.menu a.update_o,
+.menu a.update:hover{ width:89px; height:25px; background-image:url(http://ossweb-img.qq.com/images/dnf/act/a20080710anhei/menu_01o.jpg);}
+.menu a.city{ margin:42px 0 0 16px; width:58px; height:15px; background-image:url(http://ossweb-img.qq.com/images/dnf/act/a20080710anhei/menu_02.jpg);}
+.menu a.city_o,
+.menu a.city:hover{ margin:42px 0 0 16px; width:58px; height:15px; background-image:url(http://ossweb-img.qq.com/images/dnf/act/a20080710anhei/menu_02o.jpg);}
+.menu a.monster{ margin:43px 0 0 28px; width:62px; height:21px; background-image:url(http://ossweb-img.qq.com/images/dnf/act/a20080710anhei/menu_03.jpg);}
+.menu a.monster_o,
+.menu a.monster:hover{ margin:43px 0 0 28px; width:62px; height:21px; background-image:url(http://ossweb-img.qq.com/images/dnf/act/a20080710anhei/menu_03o.jpg);}
+.menu a.task{ margin:48px 0 0 39px; width:59px; height:17px; background-image:url(http://ossweb-img.qq.com/images/dnf/act/a20080710anhei/menu_04.jpg);}
+.menu a.task_o,
+.menu a.task:hover{ margin:48px 0 0 39px; width:59px; height:17px; background-image:url(http://ossweb-img.qq.com/images/dnf/act/a20080710anhei/menu_04o.jpg);}
+.menu a.award{ margin:57px 0 0 0; width:91px; height:24px; background-image:url(http://ossweb-img.qq.com/images/dnf/act/a20080710anhei/menu_05.jpg);}
+.menu a.award_o,
+.menu a.award:hover{ margin:57px 0 0 0; width:91px; height:24px; background-image:url(http://ossweb-img.qq.com/images/dnf/act/a20080710anhei/menu_05o.jpg);}
+
+.box_bg{}
+.box_bg .txt_tbg{ height:8px; background:url(http://ossweb-img.qq.com/images/dnf/act/a20080710anhei/txt_tbg.gif) no-repeat; overflow:hidden; filter:alpha(opacity=70); -moz-opacity:0.7; opacity: 0.7;}
+.box_bg .txt_bbg{ height:8px; background:url(http://ossweb-img.qq.com/images/dnf/act/a20080710anhei/txt_bbg.gif) no-repeat; overflow:hidden; filter:alpha(opacity=70); -moz-opacity:0.7; opacity: 0.7;}
+.box_bg .txt_bg{ width:493px; background:url(http://ossweb-img.qq.com/images/dnf/act/a20080710anhei/txt_bg.gif) repeat-y; filter:alpha(opacity=70); -moz-opacity:0.7; opacity: 0.7;}
+.box_txt{ position:absolute; top:170px; padding:7px 15px; width:463px; line-height:18px;}
+.box_txt .hr{ margin:10px 0; height:1px; background:url(http://ossweb-img.qq.com/images/dnf/act/a20080710anhei/icon_arrow.gif) repeat-x;}
+.box_txt h2{ margin-bottom:10px;}
+.box_txt h3{ margin-bottom:5px; color:#FFA200; font-weight:bold;}
+.box_txt h4{ margin:5px 0; color:#fff; font-weight:bold;}
+.box_txt p{ text-indent:24px;}
+.box_txt img{ border:1px solid #464646;}
+.box_txt h2 img{ border:0;}
+
+#footer{ margin-left:auto; margin-right:auto; padding-top:10px; width:842px; height:60px; background:url(http://ossweb-img.qq.com/images/dnf/act/a20080710anhei/foot_bg.gif) no-repeat; color:#EEB180;}
+	#footer .info{ margin-left:330px; width:453px; color:#EEB180;}
+	#footer .info a{ color:#EEB180;}
+	#footer .info span{ margin:0 5px;}
+	#footer .info p{ line-height:16px;font-family:Tahoma;font-size:11px;}
+	#footer .info p.c{ float:right; margin-top:-17px;}
