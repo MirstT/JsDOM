@@ -5,7 +5,7 @@
  * @Author       : Mirst
  * @Date         : 2021-10-30 05:11:36
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-10-30 07:01:53
+ * @LastEditTime : 2021-10-30 08:17:51
  */
 /* @import url(reset.css); */
 /* 老页面需要放大适应现在的1080屏幕，缩放1.5倍，不知道这种缩放合不合适？*/
@@ -17,9 +17,18 @@
   --footer-color: #eeb180;
 }
 
-* {
+html,
+body,
+div,
+ul,
+li,
+p {
   margin: 0;
   padding: 0;
+}
+
+ul {
+  list-style: none;
 }
 
 /* 背景不继承 */
@@ -34,11 +43,54 @@ div.main {
   background: url(../images/bg_index.jpg);
 }
 
+.main-list {
+  position: relative;
+  left: 772px;
+  top: 52px;
+  font-size: 18px;
+  line-height: 4;
+}
+
+.main-list a {
+  position: relative;
+}
+
+.main-list a.city {
+  left: 16px;
+  top: -10px;
+}
+.main-list a.monster {
+  left: 34px;
+  top: -16px;
+}
+.main-list a.task {
+  left: 36px;
+  top: -24px;
+}
+.main-list a.award {
+  left: 7px;
+  top: -20px;
+}
+.main-list a {
+  color: white;
+}
+
+.sub-list {
+  position: relative;
+  left: 155px;
+  top: 274px;
+  line-height: 1.6;
+  font-size: 19px;
+}
+
+.sub-list a {
+  /* color: transparent; */
+}
+
 footer {
   width: 789px;
   height: 48px;
   margin: auto;
-
   background: url(../images/foot_bg.gif);
 }
 
