@@ -5,7 +5,7 @@
  * @Author       : Mirst
  * @Date         : 2021-10-30 05:11:36
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-10-30 08:17:51
+ * @LastEditTime : 2021-10-30 22:17:24
  */
 /* @import url(reset.css); */
 /* 老页面需要放大适应现在的1080屏幕，缩放1.5倍，不知道这种缩放合不合适？*/
@@ -43,49 +43,95 @@ div.main {
   background: url(../images/bg_index.jpg);
 }
 
+div.main div.main-container {
+  position: absolute;
+}
+
 .main-list {
   position: relative;
-  left: 772px;
-  top: 52px;
-  font-size: 18px;
-  line-height: 4;
+  left: 778.8px;
+  top: 73.7px;
 }
 
 .main-list a {
   position: relative;
+}
+
+.main-list a.update {
+  left: 0;
+  top: 0;
+}
+.main-list a.update::before {
+  content: url(../images/menu_01.jpg);
+}
+.main-list a.update:hover::before {
+  content: url(../images/menu_01o.jpg);
 }
 
 .main-list a.city {
   left: 16px;
-  top: -10px;
+  top: 38px;
 }
+.main-list a.city::before {
+  content: url(../images/menu_02.jpg);
+}
+.main-list a.city:hover::before {
+  content: url(../images/menu_02o.jpg);
+}
+
 .main-list a.monster {
-  left: 34px;
-  top: -16px;
+  left: 27px;
+  top: 76px;
 }
+.main-list a.monster::before {
+  content: url(../images/menu_03.jpg);
+}
+.main-list a.monster:hover::before {
+  content: url(../images/menu_03o.jpg);
+}
+
 .main-list a.task {
   left: 36px;
-  top: -24px;
+  top: 121px;
 }
+.main-list a.task::before {
+  content: url(../images/menu_04.jpg);
+}
+.main-list a.task:hover::before {
+  content: url(../images/menu_04o.jpg);
+}
+
 .main-list a.award {
-  left: 7px;
-  top: -20px;
+  left: -1px;
+  top: 174.6px;
 }
+.main-list a.award::before {
+  content: url(../images/menu_05.jpg);
+}
+.main-list a.award:hover::before {
+  content: url(../images/menu_05o.jpg);
+}
+
 .main-list a {
-  color: white;
+  color: transparent;
+}
+
+div.main div.sub-container {
+  position: absolute;
 }
 
 .sub-list {
   position: relative;
   left: 155px;
-  top: 274px;
+  top: 377px;
   line-height: 1.6;
   font-size: 19px;
 }
 
 .sub-list a {
-  /* color: transparent; */
+  color: transparent;
 }
+
 
 footer {
   width: 789px;
