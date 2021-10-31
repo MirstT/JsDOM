@@ -5,7 +5,7 @@
  * @Author       : Mirst
  * @Date         : 2021-10-30 05:11:36
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-10-31 13:36:28
+ * @LastEditTime : 2021-10-31 14:35:14
  */
 /* @import url(reset.css); */
 /* 老页面需要放大适应现在的1080屏幕，缩放1.5倍，不知道这种缩放合不合适？*/
@@ -47,9 +47,8 @@ html {
 
 div.main {
   width: 961px;
-  height: 556px;
   margin: auto;
-  background: url(../images/bg_index.jpg);
+  background: url(../images/bg_index.jpg) no-repeat;
 }
 
 div.bottom-bg-container {
@@ -57,7 +56,7 @@ div.bottom-bg-container {
   top: 350px;
   width: 961px;
   height: 244px;
-  background: url(../images/page_bg_bottom.jpg);
+  background: url(../images/page_bg_bottom.jpg) no-repeat;
 }
 
 div.main-list-container {
@@ -172,18 +171,19 @@ footer section p {
 
 /* update页面
 ---------------------------------------------------------------------------- */
+div.update-wrapper{
+  padding: 160px  0 125px 268px;
+}
+
 div.update-container {
   position: relative;
-  left: 268px;
-  top: 160px;
   padding: 15px 12px;
   width: 462px;
   border: rgba(255, 255, 255, 0.7) 3px solid;
   border-radius: 7px;
   background-color: rgba(0, 0, 0, 0.7);
+  z-index: 100;
 }
-
-
 
 div.update-info {
   color: var(--font-color);
@@ -212,7 +212,3 @@ div.update-info ol {
   padding-left: 20px;
 }
 
-div.update-container-hide{
-  width: 1000px;
-  height: 38px;
-}
