@@ -5,7 +5,7 @@
  * @Author       : Mirst
  * @Date         : 2021-10-30 05:11:36
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-10-31 14:35:14
+ * @LastEditTime : 2021-10-31 18:05:36
  */
 /* @import url(reset.css); */
 /* 老页面需要放大适应现在的1080屏幕，缩放1.5倍，不知道这种缩放合不合适？*/
@@ -18,17 +18,23 @@
 :root {
   --font-color: #c5c5c5;
   --title-color: #ffa200;
+  --sub-title-color:#fff;
   --footer-color: #eeb180;
+  --info-img-border-color:#464646;
 }
 
 html,
 body,
 div,
+h1,
+h2,
 h3,
+h4,
 ul,
 ol,
 li,
-p {
+p,
+img {
   margin: 0;
   padding: 0;
 }
@@ -98,6 +104,9 @@ div.main-list-container {
 .main-list a.city:hover::before {
   content: url(../images/menu_02o.jpg);
 }
+.main-list a.city.selected::before {
+  content: url(../images/menu_02o.jpg);
+}
 
 .main-list a.monster {
   left: 27px;
@@ -155,7 +164,7 @@ footer {
   width: 789px;
   height: 48px;
   margin: auto;
-  background: url(../images/foot_bg.gif);
+  background: url(../images/foot_bg.gif) no-repeat;
 }
 
 footer section {
@@ -171,44 +180,69 @@ footer section p {
 
 /* update页面
 ---------------------------------------------------------------------------- */
-div.update-wrapper{
-  padding: 160px  0 125px 268px;
+div.info-wrapper{
+  padding: 170px  0 15px 268px;
 }
 
-div.update-container {
+div.info-container {
   position: relative;
-  padding: 15px 12px;
+  padding: 20px 12px 15px;
   width: 462px;
   border: rgba(255, 255, 255, 0.7) 3px solid;
   border-radius: 7px;
   background-color: rgba(0, 0, 0, 0.7);
-  z-index: 100;
 }
 
-div.update-info {
+div.info {
   color: var(--font-color);
   font-size: 12px;
-  /* transform: scale(.575); */
   line-height: 1.5;
 }
-
-div.update-info img{
-  padding-bottom: 8px;
-}
-
-div.update-info p {
+div.info p {
+  padding-top: 5px;
   text-indent: 20px;
 }
-
-div.update-info h3 {
-  margin: 15px 0 8px;
-  padding-top: 12px;
+div.info ol {
+  padding-left: 20px;
+}
+div.info h3 {
+  padding-bottom: 5px;
   font-size: 13px;
   color: var(--title-color);
-  border-top: var(--font-color) 1.4px dotted;
 }
 
-div.update-info ol {
-  padding-left: 20px;
+div.info-head{
+  border-bottom: var(--font-color) 1.4px dotted;
+  padding-bottom: 15px;
+}
+
+div.info-section{
+  padding-top:15px;
+}
+
+div.info-extend{
+  height: 98px;
+}
+
+/* city页面
+---------------------------------------------------------------------------------- */
+
+div.info h4{
+  padding: 5px 0;
+  color: var(--sub-title-color);
+}
+
+div.info-section img{
+  border:1px solid var(--info-img-border-color);
+}
+
+div.img-gallery{
+  overflow: hidden;
+}
+
+div.img-gallery img{
+  float: left;
+  width: 144px;
+  margin-right: 8px;
 }
 
