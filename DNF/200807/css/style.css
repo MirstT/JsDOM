@@ -5,7 +5,7 @@
  * @Author       : Mirst
  * @Date         : 2021-10-30 05:11:36
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-01 14:18:14
+ * @LastEditTime : 2021-11-01 14:48:16
  */
 /* @import url(reset.css); */
 /* 老页面需要放大适应现在的1080屏幕，缩放1.5倍，不知道这种缩放合不合适？*/
@@ -59,6 +59,10 @@ div.main {
   width: 961px;
   margin: auto;
   background: url(../images/bg_index.jpg) no-repeat;
+}
+
+div.main-height{
+  height: 556px;
 }
 
 div.bottom-bg-container {
@@ -269,26 +273,37 @@ div.info-section img.img-full {
 /* task页面
 ------------------------------------------------------------------------------------------- */
 
-table{
+table.task{
   border: var(--font-color) 1.5px solid;
   border-collapse: collapse;
 }
-table th{
+table.task th{
   border: var(--font-color) 1px solid;
 }
-table th:nth-child(1){
+table.task th:nth-child(1){
   width: 23%;
 }
-table th:nth-child(2){
+table.task th:nth-child(2){
   width: 19%;
 }
-table th:nth-child(3){
+table.task th:nth-child(3){
   width: 13%;
 }
-table th:nth-child(4){
+table.task th:nth-child(4){
   width: 26%;
 }
-table td{
+table.task td{
   border: var(--font-color) 1px solid;
   padding: 3px;
+}
+
+/* award 页面
+-------------------------------------------------------------------------------------- */
+table.award{
+  border-collapse: separate;
+  border-spacing: 5px 10px;
+}
+
+table.award td{
+  vertical-align: bottom;
 }
