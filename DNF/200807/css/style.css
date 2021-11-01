@@ -5,7 +5,7 @@
  * @Author       : Mirst
  * @Date         : 2021-10-30 05:11:36
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-10-31 18:05:36
+ * @LastEditTime : 2021-11-01 14:18:14
  */
 /* @import url(reset.css); */
 /* 老页面需要放大适应现在的1080屏幕，缩放1.5倍，不知道这种缩放合不合适？*/
@@ -18,9 +18,9 @@
 :root {
   --font-color: #c5c5c5;
   --title-color: #ffa200;
-  --sub-title-color:#fff;
+  --sub-title-color: #fff;
   --footer-color: #eeb180;
-  --info-img-border-color:#464646;
+  --info-img-border-color: #464646;
 }
 
 html,
@@ -34,7 +34,11 @@ ul,
 ol,
 li,
 p,
-img {
+img,
+table,
+tr,
+th,
+td {
   margin: 0;
   padding: 0;
 }
@@ -118,6 +122,9 @@ div.main-list-container {
 .main-list a.monster:hover::before {
   content: url(../images/menu_03o.jpg);
 }
+.main-list a.monster.selected::before {
+  content: url(../images/menu_03o.jpg);
+}
 
 .main-list a.task {
   left: 36px;
@@ -129,6 +136,9 @@ div.main-list-container {
 .main-list a.task:hover::before {
   content: url(../images/menu_04o.jpg);
 }
+.main-list a.task.selected::before {
+  content: url(../images/menu_04o.jpg);
+}
 
 .main-list a.award {
   left: -1px;
@@ -138,6 +148,9 @@ div.main-list-container {
   content: url(../images/menu_05.jpg);
 }
 .main-list a.award:hover::before {
+  content: url(../images/menu_05o.jpg);
+}
+.main-list a.award.selected::before {
   content: url(../images/menu_05o.jpg);
 }
 
@@ -180,8 +193,8 @@ footer section p {
 
 /* update页面
 ---------------------------------------------------------------------------- */
-div.info-wrapper{
-  padding: 170px  0 15px 268px;
+div.info-wrapper {
+  padding: 170px 0 15px 268px;
 }
 
 div.info-container {
@@ -211,38 +224,71 @@ div.info h3 {
   color: var(--title-color);
 }
 
-div.info-head{
+div.info-head {
   border-bottom: var(--font-color) 1.4px dotted;
   padding-bottom: 15px;
 }
 
-div.info-section{
-  padding-top:15px;
+div.info-section {
+  padding-top: 15px;
 }
 
-div.info-extend{
+div.info-extend {
   height: 98px;
 }
 
 /* city页面
 ---------------------------------------------------------------------------------- */
 
-div.info h4{
+div.info h4 {
   padding: 5px 0;
   color: var(--sub-title-color);
 }
 
-div.info-section img{
-  border:1px solid var(--info-img-border-color);
+div.info-section img {
+  border: 1px solid var(--info-img-border-color);
 }
 
-div.img-gallery{
+
+div.img-gallery {
   overflow: hidden;
 }
 
-div.img-gallery img{
+div.img-gallery img {
   float: left;
   width: 144px;
   margin-right: 8px;
 }
 
+/* monster 页面
+----------------------------------------------------------------------------------------- */
+div.info-section img.img-full {
+  width: 100%;
+}
+
+/* task页面
+------------------------------------------------------------------------------------------- */
+
+table{
+  border: var(--font-color) 1.5px solid;
+  border-collapse: collapse;
+}
+table th{
+  border: var(--font-color) 1px solid;
+}
+table th:nth-child(1){
+  width: 23%;
+}
+table th:nth-child(2){
+  width: 19%;
+}
+table th:nth-child(3){
+  width: 13%;
+}
+table th:nth-child(4){
+  width: 26%;
+}
+table td{
+  border: var(--font-color) 1px solid;
+  padding: 3px;
+}
