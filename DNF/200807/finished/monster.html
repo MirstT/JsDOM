@@ -2,96 +2,95 @@
  * @Descripttion : 
  * @version      : 
  * @Author       : Mirst
- * @Date         : 2021-10-30 05:34:52
+ * @Date         : 2021-11-01 15:29:24
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-10-31 18:19:07
+ * @LastEditTime : 2021-11-02 12:03:43
 -->
 <!DOCTYPE html>
 <html lang="zh">
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="initial-scale=1.5" />
+    <meta name="robots" content="all" />
+    <meta name="Copyright" content="Copyright (c) 2006-2008 TENCNET" />
+    <meta name="Description" content="" />
+    <meta name="Keywords" content="" />
     <link rel="icon" href="images/menu_01.jpg">
     <link rel="stylesheet" href="css/style.css" />
     <title>进军，战斗在暗黑城 - 《地下城与勇士》暗黑城登场</title>
+    <style>
+        /* #wrapper {
+            height: 594px;
+        } */
+
+        .bg_bottom {
+            min-height: 594px;
+            _height: 594px;
+        }
+
+        #footer {
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        function getHeightOfTxt() {
+            const txtElement = document.getElementById("box_txt");
+            const bgElement = document.getElementById("box_bg");
+            bgElement.style.height = `${txtElement.offsetHeight + 2}px`;
+        }
+        window.addEventListener("load", getHeightOfTxt);
+    </script>
 </head>
 
 <body>
-    <div class="main">
-        <div class="bottom-bg-container">
-        </div>
+    <div id="wrapper">
+        <div class="bg_bottom">
 
-        <div class="main-list-container">
-            <ul class="main-list">
-                <li>
-                    <a href="update.html" class="update" alt="版本升级内容"></a>
-                </li>
-                <li>
-                    <a href="city.html" class="city" alt="新地下城"></a>
-                </li>
-                <li>
-                    <a href="monster.html" class="monster selected" alt="新的怪物"></a>
-                </li>
-                <li>
-                    <a href="task.html" class="task" alt="新的任务"></a>
-                </li>
-                <li>
-                    <a href="award.html" class="award" alt="新奖励装备"></a>
-                </li>
-            </ul>
-        </div>
+            <div class="nav">
+                <a href="../index.html" target="_blank" title="官网首页">官网首页</a>
+                <a href="../download.html" target="_blank" title="游戏下载" class="down">游戏下载</a>
+            </div>
 
-        <div class="sub-list-container">
-            <ul class="sub-list">
-                <li><a href="../index.html" rel="官网首页">官网首页</a></li>
-                <li><a href="../download.html" alt="游戏下载">游戏下载</a></li>
-            </ul>
-        </div>
-
-        <div class="info-wrapper">
-            <div class="info-container">
-                <div class="info">
-
-                    <div class="info-head">
-                        <h2><img class="title-h2" src="images/h2_monster.gif" alt=""></h2>
-                    </div>
-
-                    <div class="info-section">
-                        <h3>
-                            浅栖之地
-                        </h3>
-                        <img class="img-full" src="images/monster1.jpg" alt="浅栖之地">
-                    </div>
-
-                    <div class="info-section">
-                        <h3>
-                            蜘蛛洞穴
-                        </h3>
-                        <img class="img-full" src="images/monster2.jpg" alt="">
-                    </div>
-
-                    <div class="info-section">
-                        <h3>
-                            熔岩穴
-                        </h3>
-                        <img class="img-full" src="images/monster3.jpg" alt="">
-                    </div>
-
+            <div class="main">
+                <div class="box_bg">
+                    <div class="txt_tbg"></div>
+                    <div class="txt_bg" id="box_bg"></div>
+                    <div class="txt_bbg"></div>
+                </div>
+                <div class="box_txt" id="box_txt">
+                    <h2><img src="http://ossweb-img.qq.com/images/dnf/act/a20080710anhei/h2_monster.gif" /></h2>
+                    <div class="hr"></div>
+        
+                    <h3>浅栖之地</h3>
+                    <img src="http://ossweb-img.qq.com/images/dnf/act/a20080710anhei/city-monster/monster1.jpg" width="460" /><br /><br />
+        
+                    <h3>蜘蛛洞穴</h3>
+                    <img src="http://ossweb-img.qq.com/images/dnf/act/a20080710anhei/city-monster/monster2.jpg" width="460" /><br /><br />
+        
+                    <h3>熔岩穴</h3>
+                    <img src="http://ossweb-img.qq.com/images/dnf/act/a20080710anhei/city-monster/monster3.jpg" width="460" />
                 </div>
             </div>
+
+            <div class="menu">
+                <a href="update.html" class="update" title="版本升级内容"></a>
+                <a href="city.html" class="city" title="新地下城"></a>
+                <a href="monster.html" class="monster_o" title="新的怪物"></a>
+                <a href="task.html" class="task" title="新的任务"></a>
+                <a href="award.html" class="award" title="新奖励装备"></a>
+            </div>
+            <div class="clear"></div>
         </div>
 
+
+        <div id="footer">
+            <div class="info">
+                <p class="copyright">Copyright &copy; 1998 - 2010 Tencent. All Rights Reserved <br>
+                    Copyright &copy; 2010 NEXON Corporation. All rights reserved <br>
+                    Copyright &copy; 2010 Neople Inc.</p>
+            </div>
+        </div>
     </div>
-
-    <footer>
-        <section>
-            <p>Copyright &copy; 1998 - 2010 Tencent. All Rights Reserved</p>
-            <p>Copyright &copy; 2010 NEXON Corporation. All rights reserved</p>
-            <p>Copyright &copy; 2010 Neople Inc.</p>
-        </section>
-    </footer>
-
 </body>
 
 </html>

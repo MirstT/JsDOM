@@ -2,240 +2,394 @@
  * @Descripttion : 
  * @version      : 
  * @Author       : Mirst
- * @Date         : 2021-10-30 05:35:01
+ * @Date         : 2021-11-01 15:29:24
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-01 14:19:25
+ * @LastEditTime : 2021-11-02 12:06:44
+-->
+<!--
+ * @Descripttion : 
+ * @version      : 
+ * @Author       : Mirst
+ * @Date         : 2021-11-01 15:29:24
+ * @LastEditors  : Mirst
+ * @LastEditTime : 2021-11-02 12:05:10
 -->
 <!DOCTYPE html>
 <html lang="zh">
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="initial-scale=1.5" />
+    <meta name="robots" content="all" />
+    <meta name="Copyright" content="Copyright (c) 2006-2008 TENCNET" />
+    <meta name="Description" content="" />
+    <meta name="Keywords" content="" />
     <link rel="icon" href="images/menu_01.jpg">
     <link rel="stylesheet" href="css/style.css" />
     <title>进军，战斗在暗黑城 - 《地下城与勇士》暗黑城登场</title>
+    <style>
+        /* #wrapper {
+            height: 594px;
+        } */
+
+        .bg_bottom {
+            min-height: 594px;
+            _height: 594px;
+        }
+
+        #footer {
+            margin-top: 20px;
+        }
+
+        table.tab,
+        table.tab th {
+            border: 1px solid #C5C5C5;
+        }
+
+        table.tab td {
+            border: 1px solid #C5C5C5;
+        }
+
+        table.tab {
+            width: 100%;
+        }
+
+        table.tab th {
+            padding: 4px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        table.tab td {
+            padding: 2px 4px;
+        }
+    </style>
+    <script>
+        function getHeightOfTxt() {
+            const txtElement = document.getElementById("box_txt");
+            const bgElement = document.getElementById("box_bg");
+            bgElement.style.height = `${txtElement.offsetHeight + 2}px`;
+        }
+        window.addEventListener("load", getHeightOfTxt);
+    </script>
 </head>
 
 <body>
-    <div class="main">
-        <div class="bottom-bg-container">
-        </div>
+    <div id="wrapper">
+        <div class="bg_bottom">
 
-        <div class="main-list-container">
-            <ul class="main-list">
-                <li>
-                    <a href="update.html" class="update" alt="版本升级内容"></a>
-                </li>
-                <li>
-                    <a href="city.html" class="city" alt="新地下城"></a>
-                </li>
-                <li>
-                    <a href="monster.html" class="monster" alt="新的怪物"></a>
-                </li>
-                <li>
-                    <a href="task.html" class="task selected" alt="新的任务"></a>
-                </li>
-                <li>
-                    <a href="award.html" class="award" alt="新奖励装备"></a>
-                </li>
-            </ul>
-        </div>
+            <div class="nav">
+                <a href="../index.html" target="_blank" title="官网首页">官网首页</a>
+                <a href="../download.html" target="_blank" title="游戏下载" class="down">游戏下载</a>
+            </div>
 
-        <div class="sub-list-container">
-            <ul class="sub-list">
-                <li><a href="../index.html" rel="官网首页">官网首页</a></li>
-                <li><a href="../download.html" alt="游戏下载">游戏下载</a></li>
-            </ul>
-        </div>
-
-        <div class="info-wrapper">
-            <div class="info-container">
-                <div class="info">
-
-                    <div class="info-head">
-                        <h2><img class="title-h2" src="images/h2_task.gif" alt=""></h2>
-                    </div>
-
-                    <div class="info-section">
-                        <table class="task">
-                            <thead>
-                                <tr>
-                                    <th>任务名称</th>
-                                    <th>起始NPC </th>
-                                    <th>等级</th>
-                                    <th>任务要求</th>
-                                    <th>任务奖励</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>前往阿法利亚营地</td>
-                                    <td>莎兰</td>
-                                    <td>36级以上</td>
-                                    <td>向阿法利亚营地的博肯打听消息。</td>
-                                    <td>金币：500</td>
-                                </tr>
-                                <tr>
-                                    <td>战争危机</td>
-                                    <td>博肯(阿法利亚)</td>
-                                    <td>36级以上</td>
-                                    <td>找阿法利亚营地的加尔谈谈。(可以按&#60;N&#62;键打开城镇地图查找NPC)</td>
-                                    <td>金币：500、暗黑城特产干酪x5、黑色龙舌兰酒x5</td>
-                                </tr>
-                                <tr>
-                                    <td>加尔的测试</td>
-                                    <td>加尔</td>
-                                    <td>36级以上</td>
-                                    <td>通关暗黑城的『浅栖之地』，要求地下城难度为王者级。</td>
-                                    <td>经验书：增加100000经验值的书x4</td>
-                                </tr>
-
-
-                                <tr>
-                                    <td>前往阿法利亚营地</td>
-                                    <td>莎兰</td>
-                                    <td>36级以上</td>
-                                    <td>向阿法利亚营地的博肯打听消息。</td>
-                                    <td>金币：500</td>
-                                </tr>
-                                <tr>
-                                    <td>战争危机</td>
-                                    <td>博肯(阿法利亚)</td>
-                                    <td>36级以上</td>
-                                    <td>找阿法利亚营地的加尔谈谈。(可以按&#60;N&#62;键打开城镇地图查找NPC)</td>
-                                    <td>金币：500、暗黑城特产干酪x5、黑色龙舌兰酒x5</td>
-                                </tr>
-                                <tr>
-                                    <td>加尔的测试</td>
-                                    <td>加尔</td>
-                                    <td>36级以上</td>
-                                    <td>通关暗黑城的『浅栖之地』，要求地下城难度为王者级。</td>
-                                    <td>经验书：增加100000经验值的书x4</td>
-                                </tr>
-                                <tr>
-                                    <td>前往阿法利亚营地</td>
-                                    <td>莎兰</td>
-                                    <td>36级以上</td>
-                                    <td>向阿法利亚营地的博肯打听消息。</td>
-                                    <td>金币：500</td>
-                                </tr>
-                                <tr>
-                                    <td>战争危机</td>
-                                    <td>博肯(阿法利亚)</td>
-                                    <td>36级以上</td>
-                                    <td>找阿法利亚营地的加尔谈谈。(可以按&#60;N&#62;键打开城镇地图查找NPC)</td>
-                                    <td>金币：500、暗黑城特产干酪x5、黑色龙舌兰酒x5</td>
-                                </tr>
-                                <tr>
-                                    <td>加尔的测试</td>
-                                    <td>加尔</td>
-                                    <td>36级以上</td>
-                                    <td>通关暗黑城的『浅栖之地』，要求地下城难度为王者级。</td>
-                                    <td>经验书：增加100000经验值的书x4</td>
-                                </tr>
-                                <tr>
-                                    <td>前往阿法利亚营地</td>
-                                    <td>莎兰</td>
-                                    <td>36级以上</td>
-                                    <td>向阿法利亚营地的博肯打听消息。</td>
-                                    <td>金币：500</td>
-                                </tr>
-                                <tr>
-                                    <td>战争危机</td>
-                                    <td>博肯(阿法利亚)</td>
-                                    <td>36级以上</td>
-                                    <td>找阿法利亚营地的加尔谈谈。(可以按&#60;N&#62;键打开城镇地图查找NPC)</td>
-                                    <td>金币：500、暗黑城特产干酪x5、黑色龙舌兰酒x5</td>
-                                </tr>
-                                <tr>
-                                    <td>加尔的测试</td>
-                                    <td>加尔</td>
-                                    <td>36级以上</td>
-                                    <td>通关暗黑城的『浅栖之地』，要求地下城难度为王者级。</td>
-                                    <td>经验书：增加100000经验值的书x4</td>
-                                </tr>
-                                <tr>
-                                    <td>前往阿法利亚营地</td>
-                                    <td>莎兰</td>
-                                    <td>36级以上</td>
-                                    <td>向阿法利亚营地的博肯打听消息。</td>
-                                    <td>金币：500</td>
-                                </tr>
-                                <tr>
-                                    <td>战争危机</td>
-                                    <td>博肯(阿法利亚)</td>
-                                    <td>36级以上</td>
-                                    <td>找阿法利亚营地的加尔谈谈。(可以按&#60;N&#62;键打开城镇地图查找NPC)</td>
-                                    <td>金币：500、暗黑城特产干酪x5、黑色龙舌兰酒x5</td>
-                                </tr>
-                                <tr>
-                                    <td>加尔的测试</td>
-                                    <td>加尔</td>
-                                    <td>36级以上</td>
-                                    <td>通关暗黑城的『浅栖之地』，要求地下城难度为王者级。</td>
-                                    <td>经验书：增加100000经验值的书x4</td>
-                                </tr>
-                                <tr>
-                                    <td>前往阿法利亚营地</td>
-                                    <td>莎兰</td>
-                                    <td>36级以上</td>
-                                    <td>向阿法利亚营地的博肯打听消息。</td>
-                                    <td>金币：500</td>
-                                </tr>
-                                <tr>
-                                    <td>战争危机</td>
-                                    <td>博肯(阿法利亚)</td>
-                                    <td>36级以上</td>
-                                    <td>找阿法利亚营地的加尔谈谈。(可以按&#60;N&#62;键打开城镇地图查找NPC)</td>
-                                    <td>金币：500、暗黑城特产干酪x5、黑色龙舌兰酒x5</td>
-                                </tr>
-                                <tr>
-                                    <td>加尔的测试</td>
-                                    <td>加尔</td>
-                                    <td>36级以上</td>
-                                    <td>通关暗黑城的『浅栖之地』，要求地下城难度为王者级。</td>
-                                    <td>经验书：增加100000经验值的书x4</td>
-                                </tr>
-                                <tr>
-                                    <td>前往阿法利亚营地</td>
-                                    <td>莎兰</td>
-                                    <td>36级以上</td>
-                                    <td>向阿法利亚营地的博肯打听消息。</td>
-                                    <td>金币：500</td>
-                                </tr>
-                                <tr>
-                                    <td>战争危机</td>
-                                    <td>博肯(阿法利亚)</td>
-                                    <td>36级以上</td>
-                                    <td>找阿法利亚营地的加尔谈谈。(可以按&#60;N&#62;键打开城镇地图查找NPC)</td>
-                                    <td>金币：500、暗黑城特产干酪x5、黑色龙舌兰酒x5</td>
-                                </tr>
-                                <tr>
-                                    <td>加尔的测试</td>
-                                    <td>加尔</td>
-                                    <td>36级以上</td>
-                                    <td>通关暗黑城的『浅栖之地』，要求地下城难度为王者级。</td>
-                                    <td>经验书：增加100000经验值的书x4</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
+            <div class="main">
+                <div class="box_bg">
+                    <div class="txt_tbg"></div>
+                    <div class="txt_bg" id="box_bg"></div>
+                    <div class="txt_bbg"></div>
+                </div>
+                <div class="box_txt" id="box_txt">
+                    <h2><img src="http://ossweb-img.qq.com/images/dnf/act/a20080710anhei/h2_task.gif" /></h2>
+                    <div class="hr"></div>
+        
+                    <table class="tab">
+                      <tr>
+                        <th nowrap="nowrap">任务名称</th>
+                        <th nowrap="nowrap">起始NPC</th>
+                        <th nowrap="nowrap">等级</th>
+                        <th>任务要求</th>
+                        <th>任务奖励</th>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">前往阿法利亚营地</td>
+                        <td nowrap="nowrap">莎兰</td>
+                        <td nowrap="nowrap">36级以上</td>
+                        <td>向阿法利亚营地的博肯打听消息。</td>
+                        <td>金币：500</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">战争危机</td>
+                        <td nowrap="nowrap">博肯(阿法利亚)</td>
+                        <td nowrap="nowrap">36级以上</td>
+                        <td>找阿法利亚营地的加尔谈谈。(可以按&lt;N&gt;键打开城镇地图查找NPC)</td>
+                        <td>金币：500、暗黑城特产干酪x5、黑色龙舌兰酒x5</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">加尔的测试</td>
+                        <td nowrap="nowrap">加尔</td>
+                        <td nowrap="nowrap">36级以上</td>
+                        <td>通关暗黑城的『浅栖之地』，要求地下城难度为王者级。</td>
+                        <td>经验书：增加100000经验值的书x4</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">布莱斯的托付</td>
+                        <td nowrap="nowrap">加尔</td>
+                        <td nowrap="nowrap">36级以上</td>
+                        <td>前往暗黑城的地下城，收集30个[暗精灵的遗骨]交给阿法利亚营地的布莱斯。</td>
+                        <td>sp+5技能书x2</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">寻找线索</td>
+                        <td nowrap="nowrap">布莱斯</td>
+                        <td nowrap="nowrap">36级以上</td>
+                        <td>拿着[暗精灵的遗骨]前往赫顿玛尔找诺顿帮忙。</td>
+                        <td>金币：1000</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">研究传染病</td>
+                        <td nowrap="nowrap">诺顿</td>
+                        <td nowrap="nowrap">37级以上</td>
+                        <td>前往暗黑城的『蜘蛛洞穴』，收集30个[被污染的蜘蛛腿]交给赫顿玛尔的诺顿。</td>
+                        <td>诺顿的解毒药、暗黑城特产干酪x10、黑色龙舌兰酒x10</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">传递解药</td>
+                        <td nowrap="nowrap">诺顿</td>
+                        <td nowrap="nowrap">37级以上</td>
+                        <td>把[诺顿的解药]交给西海岸的莎兰。</td>
+                        <td>金币：500</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">新的希望</td>
+                        <td nowrap="nowrap">莎兰</td>
+                        <td nowrap="nowrap">37级以上</td>
+                        <td>把[诺顿的解药]交给克伦特。</td>
+                        <td>金币：700</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">阻止战争</td>
+                        <td nowrap="nowrap">克伦特</td>
+                        <td nowrap="nowrap">41级以上</td>
+                        <td>请再找克伦特谈谈。</td>
+                        <td>金币：500</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">通向暗黑城之路</td>
+                        <td nowrap="nowrap">克伦特</td>
+                        <td nowrap="nowrap">41级以上</td>
+                        <td>通关暗黑城的『熔岩穴』，然后向克伦特回复。</td>
+                        <td>经验书：增加100000经验值的书</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">强悍的证明</td>
+                        <td nowrap="nowrap">克伦特</td>
+                        <td nowrap="nowrap">41级以上</td>
+                        <td>前往暗黑城的『熔岩穴』，从阿特拉斯、泰坦、歌利亚身上收集100个[巨人的碎布线]交给克伦特。</td>
+                        <td>金币：30000、体力之石x2、增加100000经验值的书x2</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">没有送出的信</td>
+                        <td nowrap="nowrap">克伦特</td>
+                        <td nowrap="nowrap">36级以上</td>
+                        <td>前往暗黑城的『浅栖之地』，从领主怨恨之摩根身上找来[无法读取的摩根信函]交给克伦特。(任务物品的掉落率较低)</td>
+                        <td>抗性之石、天空之海符咒x5</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">解读信函的方法</td>
+                        <td nowrap="nowrap">克伦特</td>
+                        <td nowrap="nowrap">36级以上</td>
+                        <td>将[无法读取的摩根信函]交给赫顿玛尔后巷的夏洛克。</td>
+                        <td>金币500、冰冻恢复剂x5</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">夏洛克的条件</td>
+                        <td nowrap="nowrap">夏洛克</td>
+                        <td nowrap="nowrap">36级以上</td>
+                        <td>前往暗黑城的『浅栖之地』或『蜘蛛洞穴』，从冰奈斯身上收集20个[冰奈斯的结晶]交给夏洛克。(任务物品的掉落率较低)</td>
+                        <td>首饰：霜之悲鸣戒指</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">转交解读后的信</td>
+                        <td nowrap="nowrap">夏洛克</td>
+                        <td nowrap="nowrap">36级以上</td>
+                        <td>把夏洛克[解读后的摩根信函]交给阿法利亚营地的克伦特。</td>
+                        <td>中毒恢复剂x5、出血恢复剂x5</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">调查蜘蛛洞穴</td>
+                        <td nowrap="nowrap">克伦特</td>
+                        <td nowrap="nowrap">36级以上</td>
+                        <td>通关暗黑城的『蜘蛛洞穴』，然后向克伦特回复。</td>
+                        <td>金币10000</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">重要的线索</td>
+                        <td nowrap="nowrap">克伦特</td>
+                        <td nowrap="nowrap">36级以上</td>
+                        <td>前往暗黑城的『蜘蛛洞穴』，从毒蜘蛛身上收集60个[被污染的蜘蛛腿]交给莎兰。</td>
+                        <td>增加100000经验值的书</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">谁的魔法</td>
+                        <td nowrap="nowrap">莎兰</td>
+                        <td nowrap="nowrap">36级以上</td>
+                        <td>把莎兰调查后的结果转告给克伦特。</td>
+                        <td>金币1000</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">战争的修炼</td>
+                        <td nowrap="nowrap">布莱斯</td>
+                        <td nowrap="nowrap">39级以上</td>
+                        <td>通关暗黑城的『蜘蛛洞穴』，要求地下城难度为王者级。</td>
+                        <td>金币10000、增加10000经验书</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">熔岩穴的修炼</td>
+                        <td nowrap="nowrap">布莱斯</td>
+                        <td nowrap="nowrap">41级以上</td>
+                        <td>通关暗黑城的『熔岩穴』，要求地下城难度为勇士级以上。</td>
+                        <td>金币15000、增加10000经验书x6</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">布莱斯的遗憾</td>
+                        <td nowrap="nowrap">布莱斯</td>
+                        <td nowrap="nowrap">41级以上</td>
+                        <td>不使用复活币通关暗黑城的『熔岩穴』，要求地下城难度为王者级。</td>
+                        <td>精神之石、增加100000经验书x3</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">林纳斯的帮助</td>
+                        <td nowrap="nowrap">布莱斯</td>
+                        <td nowrap="nowrap">41级以上</td>
+                        <td>前往地下城，收集50个[燃烧的心脏]、3个[红色大晶体]、3个[钢铁片]交给林纳斯。(钢铁片可以通过西海岸的罗杰生产获得)</td>
+                        <td>首饰：离火焰影项坠</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">夏洛克的托付</td>
+                        <td nowrap="nowrap">加尔</td>
+                        <td nowrap="nowrap">42级以上</td>
+                        <td>去赫顿玛尔找夏洛克。</td>
+                        <td>金币700</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">原谅和报仇</td>
+                        <td nowrap="nowrap">夏洛克</td>
+                        <td nowrap="nowrap">42级以上</td>
+                        <td>前往暗黑城的『熔岩穴』，击败油桶欧力克40次，然后向夏洛克回复。</td>
+                        <td>金币40000、灼伤恢复剂</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">燃烧之赫拉</td>
+                        <td nowrap="nowrap">卡坤</td>
+                        <td nowrap="nowrap">42级以上</td>
+                        <td>前往暗黑城的『熔岩穴』，杀死35只燃烧之赫拉，然后向卡坤回复。</td>
+                        <td>金币8860、增加10000经验书、生命之石</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">觉醒 - 枪神 2</td>
+                        <td nowrap="nowrap">凯丽</td>
+                        <td nowrap="nowrap">48级以上</td>
+                        <td>通关暗黑城的『熔岩穴』，要求地下城难度为王者级。</td>
+                        <td>金币2000、突变草莓x20、突变麻花叶x20</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">觉醒 - 大将军 4</td>
+                        <td nowrap="nowrap">凯丽</td>
+                        <td nowrap="nowrap">48级以上</td>
+                        <td>通关暗黑城的『熔岩穴』，要求地下城难度为王者级。</td>
+                        <td>无</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">准备去熔岩穴</td>
+                        <td nowrap="nowrap">布莱斯</td>
+                        <td nowrap="nowrap">41级以上</td>
+                        <td>前往暗黑城的『蜘蛛洞穴』，收集10个[被污染的蜘蛛腿]交给布莱斯。</td>
+                        <td>灼伤恢复剂x4</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">火焰的锻炼</td>
+                        <td nowrap="nowrap">布莱斯</td>
+                        <td nowrap="nowrap">43级以上</td>
+                        <td>前往暗黑城的『熔岩穴』，收集15个[燃烧的心脏]交给布莱斯。</td>
+                        <td>灼伤恢复剂x6</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">觉醒 - 枪神 1</td>
+                        <td nowrap="nowrap">凯丽</td>
+                        <td nowrap="nowrap">48级以上</td>
+                        <td>将决斗胜点1000点交给凯丽。</td>
+                        <td>sp+20技能书</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">觉醒 - 枪神 3</td>
+                        <td nowrap="nowrap">凯丽</td>
+                        <td nowrap="nowrap">48级以上</td>
+                        <td>收集10个[黑色大晶体]和[蓝色大晶体]、100个[钢铁片]和[特级砥石]、50个[泰拉石]交给凯丽。</td>
+                        <td>增加100000经验值的书x5</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">觉醒 - 枪神 4</td>
+                        <td nowrap="nowrap">凯丽</td>
+                        <td nowrap="nowrap">48级以上</td>
+                        <td>通关暗黑城的『王的遗迹』5次。</td>
+                        <td>锐眼药水x10、出血恢复剂x10、抗性之石x2、魔力之石x4</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">觉醒 - 枪神 5</td>
+                        <td nowrap="nowrap">凯丽</td>
+                        <td nowrap="nowrap">48级以上</td>
+                        <td>通关洛兰的『比尔马克帝国试验场』5次。</td>
+                        <td>枪神觉醒</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">觉醒 - 大将军 1</td>
+                        <td nowrap="nowrap">凯丽</td>
+                        <td nowrap="nowrap">48级以上</td>
+                        <td>将决斗胜点1000点交给凯丽。</td>
+                        <td>sp+20技能书</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">觉醒 - 大将军 2</td>
+                        <td nowrap="nowrap">凯丽</td>
+                        <td nowrap="nowrap">48级以上</td>
+                        <td>答应凯丽提供的挑战测试。</td>
+                        <td>金币2000</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">觉醒 - 大将军 3</td>
+                        <td nowrap="nowrap">凯丽</td>
+                        <td nowrap="nowrap">48级以上</td>
+                        <td>收集10个[蓝色大晶体]和[黑色大晶体]、100个高级布片]和[特级砥石]、50个[泰拉石]交给凯丽。</td>
+                        <td>增加100000经验值的书x5</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">觉醒 - 大将军 5</td>
+                        <td nowrap="nowrap">凯丽</td>
+                        <td nowrap="nowrap">48级以上</td>
+                        <td>前往暗黑城的『王的遗迹』，处置锤王波罗丁5次，然后向凯丽回复。</td>
+                        <td>锐眼药水x10、出血恢复剂x10、抗性之石x2、魔力之石x4</td>
+                      </tr>
+                      <tr>
+                        <td nowrap="nowrap">觉醒 - 大将军 6</td>
+                        <td nowrap="nowrap">凯丽</td>
+                        <td nowrap="nowrap">48级以上</td>
+                        <td>前往洛兰的『比尔马克帝国试验场』，处置牛头械王5次，然后向凯丽回复。</td>
+                        <td>大将军觉醒</td>
+                      </tr>
+                    </table>
+                    
                 </div>
             </div>
+
+            <div class="menu">
+                <a href="update.html" class="update" title="版本升级内容"></a>
+                <a href="city.html" class="city" title="新地下城"></a>
+                <a href="monster.html" class="monster" title="新的怪物"></a>
+                <a href="task.html" class="task_o" title="新的任务"></a>
+                <a href="award.html" class="award" title="新奖励装备"></a>
+            </div>
+            <div class="clear"></div>
         </div>
 
+
+        <div id="footer">
+            <div class="info">
+                <p class="copyright">Copyright &copy; 1998 - 2010 Tencent. All Rights Reserved <br>
+                    Copyright &copy; 2010 NEXON Corporation. All rights reserved <br>
+                    Copyright &copy; 2010 Neople Inc.</p>
+            </div>
+        </div>
     </div>
-
-    <footer>
-        <section>
-            <p>Copyright &copy; 1998 - 2010 Tencent. All Rights Reserved</p>
-            <p>Copyright &copy; 2010 NEXON Corporation. All rights reserved</p>
-            <p>Copyright &copy; 2010 Neople Inc.</p>
-        </section>
-    </footer>
-
 </body>
 
 </html>
