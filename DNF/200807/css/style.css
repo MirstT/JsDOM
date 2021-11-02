@@ -5,40 +5,33 @@
  * @Author       : Mirst
  * @Date         : 2021-10-30 05:11:36
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-01 14:48:16
+ * @LastEditTime : 2021-11-02 23:04:54
  */
-/* @import url(reset.css); */
+
 /* 老页面需要放大适应现在的1080屏幕，缩放1.5倍，不知道这种缩放合不合适？*/
+
 /* html {
   zoom: 1.5;
 } */
 
 /* 初始化
 ------------------------------------------------------------------------- */
+
 :root {
   --font-color: #c5c5c5;
   --title-color: #ffa200;
   --sub-title-color: #fff;
-  --footer-color: #eeb180;
+  --footer-copyright-font-color: #eeb180;
   --info-img-border-color: #464646;
 }
 
-html,
-body,
-div,
-h1,
-h2,
-h3,
-h4,
-ul,
-ol,
-li,
-p,
-img,
-table,
-tr,
-th,
-td {
+body {
+  background: black;
+  color: var(--font-color);
+  font: 12px Arial, Verdana, Tahoma;
+}
+
+html, body, div, h1, h2, h3, h4, ul, ol, li, p, img, table, tr, th, td {
   margin: 0;
   padding: 0;
 }
@@ -50,255 +43,264 @@ ul {
 /* 200807
 ----------------------------------------------------------------------------- */
 
-/* 背景不继承 */
-html {
-  background-color: black;
-}
-
-div.main {
+.wrapper {
+  margin: 0 auto;
   width: 961px;
-  margin: auto;
+  min-height: 556px;
   background: url(../images/bg_index.jpg) no-repeat;
 }
 
-div.main-height{
-  height: 556px;
+.wrapper-with-bgbottom {
+  min-height: 594px;
+  background: url(../images/page_bg_bottom.jpg) no-repeat 0 350px;
 }
 
-div.bottom-bg-container {
-  position: absolute;
-  top: 350px;
-  width: 961px;
-  height: 244px;
-  background: url(../images/page_bg_bottom.jpg) no-repeat;
+.nav {
+  float: left;
+  margin-left: 157px;
+  margin-top: 383px;
 }
 
-div.main-list-container {
-  position: absolute;
-}
-
-.main-list {
-  position: absolute;
-  left: 778.8px;
-  top: 73.7px;
-}
-
-.main-list a {
-  position: relative;
-  /* color: transparent; */
-}
-
-.main-list a.update {
-  left: 0;
-  top: 0;
-}
-.main-list a.update::before {
-  content: url(../images/menu_01.jpg);
-}
-.main-list a.update:hover::before {
-  content: url(../images/menu_01o.jpg);
-}
-.main-list a.update.selected::before {
-  content: url(../images/menu_01o.jpg);
-}
-
-.main-list a.city {
-  left: 16px;
-  top: 38px;
-}
-.main-list a.city::before {
-  content: url(../images/menu_02.jpg);
-}
-.main-list a.city:hover::before {
-  content: url(../images/menu_02o.jpg);
-}
-.main-list a.city.selected::before {
-  content: url(../images/menu_02o.jpg);
-}
-
-.main-list a.monster {
-  left: 27px;
-  top: 76px;
-}
-.main-list a.monster::before {
-  content: url(../images/menu_03.jpg);
-}
-.main-list a.monster:hover::before {
-  content: url(../images/menu_03o.jpg);
-}
-.main-list a.monster.selected::before {
-  content: url(../images/menu_03o.jpg);
-}
-
-.main-list a.task {
-  left: 36px;
-  top: 121px;
-}
-.main-list a.task::before {
-  content: url(../images/menu_04.jpg);
-}
-.main-list a.task:hover::before {
-  content: url(../images/menu_04o.jpg);
-}
-.main-list a.task.selected::before {
-  content: url(../images/menu_04o.jpg);
-}
-
-.main-list a.award {
-  left: -1px;
-  top: 174.6px;
-}
-.main-list a.award::before {
-  content: url(../images/menu_05.jpg);
-}
-.main-list a.award:hover::before {
-  content: url(../images/menu_05o.jpg);
-}
-.main-list a.award.selected::before {
-  content: url(../images/menu_05o.jpg);
-}
-
-div.sub-list-container {
-  position: absolute;
-}
-
-.sub-list {
-  position: relative;
-  left: 155px;
-  top: 377px;
-  line-height: 1.6;
-  font-size: 19px;
-}
-
-.sub-list a {
+.nav-ul a {
+  display: block;
+  margin-bottom: 8px;
+  width: 75px;
+  height: 20px;
   color: transparent;
+}
+
+.menu {
+  float: left;
+  margin-left: 16px;
+  margin-top: 75px;
+  width: 98px;
+}
+
+.menu-ul a {
+  display: block;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.menu-ul a.update {
+  width: 89px;
+  height: 25px;
+  background-image: url(../images/menu_01.jpg);
+}
+
+.menu-ul a.update.selected, .menu-ul a.update:hover {
+  background-image: url(../images/menu_01o.jpg);
+}
+
+.menu a.city {
+  margin: 42px 0 0 16px;
+  width: 58px;
+  height: 15px;
+  background-image: url(../images/menu_02.jpg);
+}
+
+.menu a.city.selected, .menu a.city:hover {
+  margin: 42px 0 0 16px;
+  width: 58px;
+  height: 15px;
+  background-image: url(../images/menu_02o.jpg);
+}
+
+.menu a.monster {
+  margin: 43px 0 0 28px;
+  width: 62px;
+  height: 21px;
+  background-image: url(../images/menu_03.jpg);
+}
+
+.menu a.monster.selected, .menu a.monster:hover {
+  margin: 43px 0 0 28px;
+  width: 62px;
+  height: 21px;
+  background-image: url(../images/menu_03o.jpg);
+}
+
+.menu a.task {
+  margin: 48px 0 0 39px;
+  width: 59px;
+  height: 17px;
+  background-image: url(../images/menu_04.jpg);
+}
+
+.menu a.task.selected, .menu a.task:hover {
+  margin: 48px 0 0 39px;
+  width: 59px;
+  height: 17px;
+  background-image: url(../images/menu_04o.jpg);
+}
+
+.menu a.award {
+  margin: 57px 0 0 0;
+  width: 91px;
+  height: 24px;
+  background-image: url(../images/menu_05.jpg);
+}
+
+.menu a.award.selected, .menu a.award:hover {
+  margin: 57px 0 0 0;
+  width: 91px;
+  height: 24px;
+  background-image: url(../images/menu_05o.jpg);
 }
 
 /* 页脚
 ---------------------------------------------------------------------------- */
 
-footer {
+.footer {
   width: 789px;
   height: 48px;
-  margin: auto;
+  margin: 15px auto 0;
   background: url(../images/foot_bg.gif) no-repeat;
 }
 
-footer section {
-  position: relative;
-  left: 330px;
+.footer .info {
+  margin-left: 330px;
   font-size: 12px;
   line-height: 1.3;
 }
 
-footer section p {
-  color: var(--footer-color);
+.footer .info p.copyright {
+  color: var(--footer-copyright-font-color);
+}
+
+/* 主内容
+--------------------------------------------------------------------------------- */
+
+.main {
+  float: left;
+  margin-left: 37px;
+  margin-top: 165px;
+  width: 493px;
+}
+
+.box-bg .txt-topbg {
+  height: 8px;
+  background: url(../images/txt_tbg.gif) no-repeat;
+  overflow: hidden;
+  opacity: .7;
+}
+
+.box-bg .txt-bottombg {
+  height: 8px;
+  background: url(../images/txt_bbg.gif) no-repeat;
+  overflow: hidden;
+  opacity: .7;
+}
+
+.box-bg .txt-bg {
+  width: 493px;
+  background: url(../images/txt_bg.gif) repeat-y;
+  opacity: .7;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
 }
 
 /* update页面
 ---------------------------------------------------------------------------- */
-div.info-wrapper {
-  padding: 170px 0 15px 268px;
-}
 
-div.info-container {
-  position: relative;
-  padding: 20px 12px 15px;
-  width: 462px;
-  border: rgba(255, 255, 255, 0.7) 3px solid;
-  border-radius: 7px;
-  background-color: rgba(0, 0, 0, 0.7);
-}
-
-div.info {
-  color: var(--font-color);
-  font-size: 12px;
+.box-txt {
+  position: absolute;
+  top: 175px;
+  padding: 15px 15px;
+  width: 463px;
   line-height: 1.5;
 }
-div.info p {
-  padding-top: 5px;
-  text-indent: 20px;
+
+.box-txt .hr {
+  margin: 10px 0;
+  width: 463px;
+  height: 1px;
+  background: url(../images/icon_arrow.gif) repeat-x;
 }
-div.info ol {
-  padding-left: 20px;
-}
-div.info h3 {
-  padding-bottom: 5px;
-  font-size: 13px;
+
+.box-txt h3 {
+  margin: 10px 0 5px;
+  font-size: 14px;
   color: var(--title-color);
 }
 
-div.info-head {
-  border-bottom: var(--font-color) 1.4px dotted;
-  padding-bottom: 15px;
-}
-
-div.info-section {
-  padding-top: 15px;
-}
-
-div.info-extend {
-  height: 98px;
-}
-
-/* city页面
----------------------------------------------------------------------------------- */
-
-div.info h4 {
-  padding: 5px 0;
+.box-txt h4 {
+  margin: 5px 0;
+  font-size: 12px;
   color: var(--sub-title-color);
 }
 
-div.info-section img {
-  border: 1px solid var(--info-img-border-color);
+.box-txt ol {
+  margin-left: 20px;
 }
 
-
-div.img-gallery {
-  overflow: hidden;
+.box-txt p {
+  text-indent: 15px;
 }
 
-div.img-gallery img {
+.box-txt img {
+  border: 1px var(--info-img-border-color) solid;
+}
+
+.box-txt h2 img {
+  border: 0;
+}
+
+/* 新地下城页面
+------------------------------------------------------------------------- */
+
+.box-txt .img-gallery img {
   float: left;
   width: 144px;
   margin-right: 8px;
 }
 
-/* monster 页面
------------------------------------------------------------------------------------------ */
-div.info-section img.img-full {
+/* 怪物页面
+-------------------------------------------------------------------------- */
+
+.box-txt .img-full {
   width: 100%;
 }
 
-/* task页面
-------------------------------------------------------------------------------------------- */
+/* 任务界面
+-------------------------------------------------------------------------------- */
 
-table.task{
+table.task {
   border: var(--font-color) 1.5px solid;
   border-collapse: collapse;
 }
-table.task th{
+
+table.task th {
   border: var(--font-color) 1px solid;
 }
-table.task th:nth-child(1){
+
+table.task th:nth-child(1) {
   width: 23%;
 }
-table.task th:nth-child(2){
+
+table.task th:nth-child(2) {
   width: 19%;
 }
-table.task th:nth-child(3){
+
+table.task th:nth-child(3) {
   width: 13%;
 }
-table.task th:nth-child(4){
+
+table.task th:nth-child(4) {
   width: 26%;
 }
-table.task td{
+
+table.task td {
   border: var(--font-color) 1px solid;
   padding: 3px;
 }
 
-/* award 页面
--------------------------------------------------------------------------------------- */
+/* 新奖励页面
+----------------------------------------------------------------------- */
 table.award{
   border-collapse: separate;
   border-spacing: 5px 10px;
