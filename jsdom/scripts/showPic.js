@@ -3,8 +3,8 @@
  * @version: 1.0
  * @Author: Mirst
  * @Date: 2021-10-12 10:05:58
- * @LastEditors: Mirst
- * @LastEditTime: 2021-10-12 12:44:11
+ * @LastEditors  : Mirst
+ * @LastEditTime : 2021-10-27 23:55:10
  */
 
 /**
@@ -21,6 +21,10 @@ function addLoadEvent(func) {
         func();
     }
 }
+
+
+
+
 
 /**
  * @brief: 在节点之后插入另一个节点

@@ -3,8 +3,8 @@
  * @version:
  * @Author: Mirst
  * @Date: 2021-10-23 17:16:04
- * @LastEditors: Mirst
- * @LastEditTime: 2021-10-25 09:04:27
+ * @LastEditors  : Mirst
+ * @LastEditTime : 2021-10-28 13:05:49
  */
 
 // ES6新特性箭头函数语法、如何正确使用箭头函数
@@ -53,6 +53,7 @@ const mergeA = function mergeSortedArrayA(a, b) {
   }
   return array;
 };
+
 
 /**
  * @brief:纯函数 第二版合并有序数组
