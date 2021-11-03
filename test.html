@@ -1,0 +1,39 @@
+<!--
+ * @Descripttion : 
+ * @version      : 
+ * @Author       : Mirst
+ * @Date         : 2021-11-03 16:56:23
+ * @LastEditors  : Mirst
+ * @LastEditTime : 2021-11-03 16:56:32
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="pop plogin" style="display: none;">
+        <!-- 登录弹窗 -->
+        <div class="pop-login">
+            <div class="login-cout">
+                <p class="login-txt">亲爱的用户，请登录</p>
+                <a href="javascript:;" class="btn-login-qq" onclick="PTTSendClick('btn','login-qq','QQ登录');"
+                    @click="login('qq')"></a>
+                <a href="javascript:;" class="btn-login-wx" onclick="PTTSendClick('btn','login-weixin','微信登录')"
+                    @click="login('wxpc')"></a>
+            </div>
+            <a href="javascript:;" class="login-close anclose ld" @click="hideLoginPop"></a>
+            <div class="thread">
+                <div class="thread-left"></div>
+                <div class="thread-right"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

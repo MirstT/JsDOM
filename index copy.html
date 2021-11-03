@@ -1,0 +1,269 @@
+<!--
+ * @Descripttion : 
+ * @version      : 
+ * @Author       : Mirst
+ * @Date         : 2021-11-03 15:41:32
+ * @LastEditors  : Mirst
+ * @LastEditTime : 2021-11-03 16:51:16
+-->
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="Mirst,Blog,个人博客">
+    <meta name="description" content="Mirst的个人博客测试">
+    <meta name="author" content="Mirst" />
+    <meta name="robots" content="all">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="ie-stand">
+    <title>Mirst Blog</title>
+    <!-- <link rel="stylesheet" href="https://unpkg.com/swiper@6.8.4/swiper-bundle.css"> -->
+    <link rel="stylesheet" href="css/index.css" media="screen and (min-device-width: 1025px)">
+</head>
+
+<body>
+    <!-- SEO优化 -->
+    <h1 style="display: none;">Mirst·Blog</h1>
+    <h2 style="display: none;">Mirst·个人博客官方站</h2>
+    <!-- 页面主体代码 -->
+    <div class="wrap">
+        <!-- <div class="wap-video">
+            <video src="./ossweb-img/loadx264.mp4" autoplay='autoplay' muted id="video"></video>
+        </div> -->
+
+
+
+
+        <div class="pop plogin" style="display: none;">
+            <!-- 登录弹窗 -->
+            <div class="pop-login">
+                <div class="login-cout">
+                    <p class="login-txt">亲爱的用户，请登录</p>
+                    <a href="javascript:;" class="btn-login-qq" onclick="PTTSendClick('btn','login-qq','QQ登录');"
+                        @click="login('qq')"></a>
+                    <a href="javascript:;" class="btn-login-wx" onclick="PTTSendClick('btn','login-weixin','微信登录')"
+                        @click="login('wxpc')"></a>
+                </div>
+                <a href="javascript:;" class="login-close anclose ld" @click="hideLoginPop"></a>
+                <div class="thread">
+                    <div class="thread-left"></div>
+                    <div class="thread-right"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- <div class="pop pcommunity " style="display: none;">
+            <div class="pop-community">
+                <div class="community-cout">
+                    <p class="community-txt">扫码加入官方社群</p>
+                    <div class="join-qq">
+                        <div class="join-k ">
+                            <div class="join-k2">
+                                <img src="ossweb-img/ewm-qq.png" alt="" width="103" height="103">
+                            </div>
+                        </div>
+                        <p class="join-txt">加入QQ群</p>
+                    </div>
+                    <div class="join-wx">
+                        <div class="join-k">
+                            <div class="join-k2">
+                                <img src="ossweb-img/ewm-wx.png" alt="" width="103" height="103">
+                            </div>
+                        </div>
+                        <p class="join-txt">加入微信群</p>
+                    </div>
+                </div>
+                <a href="javascript:;" class="community-close anclose ld"></a>
+                <div class="thread">
+                    <div class="thread-left"></div>
+                    <div class="thread-right"></div>
+                </div>
+            </div>
+        </div> -->
+
+
+        <!-- <div class="pop pestablish">
+            <div class="pop-establish-tc2">
+                <a href="javascript:;" class="establish-close anclose ld"></a>
+                <p class="tc2-title">《王者荣耀·世界》开发者创想日志</p>
+                <div class="tc2-cout">
+                    <p class="tc2-time">日期：2021.10.30</p>
+                    <p class="tc2-txt">不知道大家是否对恢弘的大世界感到惊艳呢？一草一木都蕴含了开发者的丰富巧思，等待我们去探讨和发现，我们搜集了一些开发者的创造灵感，来看看他们是怎么说的吧~~</p>
+                    <ul>
+                        <li>
+                            <p class="tc2-list-title">1.【美术设计师】</p>
+                            <p class="tc2-list-txt">
+                                <span>我们的整体思路是在东方传统文化的基础上，运用不同的美术主义形式，将东方古典美学进行现代化艺术演绎。中华文化博大精深，我们可以从中获得足够的养料。我们要抓住的不仅是形，更是“意”。</span>
+                            </p>
+                            <p class="tc2-img"><img src="./ossweb-img/tc2-1.jpg" alt=""></p>
+                            <p class="tc2-list-txt">
+                                <span>当然会有非常多的挑战，举例来说，其中一个是在游戏中呈现出东方气质。</span>
+                            </p>
+                            <p class="tc2-img"><img src="./ossweb-img/tc2-2.jpg" alt=""></p>
+                            <p class="tc2-list-txt">
+                                <span>为了更好地寻找东方美学元素，我们会利用业余时间去博物馆学习观摩，选择出适合稷下的元素。商周的青铜器、汉代的漆器、唐三彩、宋代的瓷器，花纹、形制，蕴藏其中的中国思想、在每一件器物背后的故事，都是我们的设计植根于此的土壤。经过提炼和总结，希望能给大家呈现一个充满东方幻想的王者世界。感谢大家。</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="tc2-list-title">2.【植被设计师】</p>
+                            <p class="tc2-list-txt">
+                                <span>大家有没有发现最近峡谷里的花花草草变多了？三只小熊的家旁边装饰着不知名的小花，走过河道两边的时候有花朵在脚下绽开，小兵的手里也悄悄拿着一个花束。</span>
+                                <span>那么到了王者大陆里，荒凉的云中漠地，春草蔓生的稷下，遥远的海都，精灵般的云梦泽.....</span>
+                                <span>王者大陆的植被构成应该是什么样呢？</span>
+                                <span>带着这个问题，我们思考了很多，也找寻了很多。</span>
+                            </p>
+                            <p class="tc2-img"><img src="./ossweb-img/tc2-3.jpg" alt=""></p>
+                            <p class="tc2-list-txt">
+                                <span>去年我们的团队去过黄山采风，看到云雾中的松针、溪流里的落叶，被美景震撼的同时，忍不住想，把这些放在游戏里呢？
+                                    <br>“灵芝适合放在百草园！”<br>“这是木兰吗？”<br>“不太像，是天女花吧。”<br>“对对，是天女花！把这个设计成采集物吧！”</span>
+                                <span>有位平时喜欢看博物杂志和各种科普号的同事，这个时候可发挥大作用了！香果树、红楠、花榈木、连香权，领春木......一株株一样样，都被记录和“安排”了下来，带着很多张速写和照片，我们心满意足地回程。</span>
+                            </p>
+                            <p class="tc2-img"><img src="./ossweb-img/tc2-4.jpg" alt=""></p>
+                            <p class="tc2-list-txt">
+                                <span>比起高山大河、雄伟的建筑，一花一树也许并不那么吸引眼球。可正是这些不起眼的草木，构建出了美丽的大自然，雪月风花、四季轮转。我们也希望把这项不算起眼的工作，为大家呈现出更完美的效果。
+                                </span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="tc2-list-title">3.【生物设计师】</p>
+                            <p class="tc2-list-txt">
+                                <span>在王者世界里描绘那些熟悉的野怪们各自的故事，这便是我作为生物设计师的部分工作。“也许每一只王者刺熊从出生起，就踏上了寻找另外两只伙伴的旅程。而外表凶狠的暗影主宰有可能像囚牛一样喜好音律么？风暴龙王没准和老夫子是几千年的老友，想想就很刺激吧。每一只步履不停的河道之灵身上或许都藏着一段故事……”</span>
+                                <span>我希望在王者世界里玩家可以从多个角度去感受这些生物的真实，因此除了故事之外，也要从生态位、形态结构、生活习性、进化原理、人类关系等多个角度是进行设计。除了这些熟悉的身影，王者世界里还有很多可爱、酷炫、富有幻想的生物等待玩家去发现。
+                                </span>
+                            </p>
+                            <p class="tc2-img"><img src="./ossweb-img/tc2-5.jpg" alt=""></p>
+                            <p class="tc2-img"><img src="./ossweb-img/tc2-6.jpg" alt=""></p>
+                            <p class="tc2-img"><img src="./ossweb-img/tc2-7.jpg" alt=""></p>
+                            <p class="tc2-list-txt">
+                                <span>我从小就很喜欢动物，最爱看赵忠祥爷爷的《动物世界》、《人与自然》。长大后，我办理了所在城市动物园的年卡，最频繁的时候一个月去了七八次。作为一个生物设计师，我希望把我想象中王者大陆上的各种神奇生物，呈现给大家。让大家在这里留下一段奇妙美好的体验记忆。
+                                </span>
+                            </p>
+                            <p class="tc2-img"><img src="./ossweb-img/tc2-8.jpg" alt=""></p>
+                        </li>
+                        <li>
+                            <p class="tc2-list-title">4.【区域策划】</p>
+                            <p class="tc2-list-txt">
+                                <span>曾经看到有玩家发帖讨论<br>
+                                    “假如你可以到王者大陆的稷下学院读书，你会选择加入哪个学院？”<br>
+                                    很多玩家跟帖回复了自己心中的稷下学院，想象在学院里学习生活的场景。<br>
+                                    “一楼！那必然是魔道学院，和西施一起上课！”<br>
+                                    在王者世界，说不定你还可以跟西施一起去听宫羽家的音乐会，品尝肴馔家的美食。<br>
+                                    “谢邀，材料学大一小白一枚，我觉得机关学院不错，研究一下鲁大机关臂和元歌的傀儡都用得是什么材料。”说不定机关学院里就有专门的傀儡教室。<br>
+                                    “泻药，金牌蒙犽，机关学院应该也有专门研究炸弹和火器的实验室吧，可以去那儿改造蒙犽的机关炮！”或许可以在火器家活动区域内规划可以让你尽情实验各种大威力火器的装置。“这好难选啊，能不能去别的学院蹭课啊……”<br>
+                                    “成年人当然是全都要啊，上午找老夫子一对一指导，下午听墨子机关大师课，晚上做梦有庄周魔道启发，想想就美滋滋……”</span>
+                            </p>
+                            <p class="tc2-img"><img src="./ossweb-img/tc2-9.jpg" alt=""></p>
+                            <p class="tc2-list-txt">
+                                <span>作为一个王者六年老玩家，我也有过这样的幻想；幸运的是，作为一名区域策划我加入了这个项目，能够亲手为这个世界添砖加瓦，和大家一起建造曾经的梦想。</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="tc2-list-title">5.【服饰设计师故事】</p>
+                            <p class="tc2-list-txt">
+                                <span>没有人能拒绝好看的衣服，没有吧？我从小喜欢逛街看衣服，现在也算是得偿所愿：学习过古今中外的服装史，也在时装秀欣赏过新潮时尚，终于创作出一幅幅自己的设计图。但给游戏角色设计服装，可不仅要漂亮、可爱或者帅气。服装设计是一种语言，是让玩家在和角色产生交互前就能了解角色、甚至了解世界的视觉语言。</span>
+                                <span>第一层是王者感，简单来说就是以东方文化为基础，又要有年轻化的酷。目前设计的大多是稷下的学生和老师，就会强调青春活力，学术自由的氛围。落实在设计上，我们的服装整体上有现代的简洁干练，细节处却是东方元素；主色调是稷下白，三大学院又有各自的代表色。对不同角色也有差异化的设计：柔美水袖或是硬朗剪裁，蝴蝶纹饰或是流云线条，希望能在细微处融入对角色的思考。</span>
+                            </p>
+                            <p class="tc2-img"><img src="./ossweb-img/tc2-10.jpg" alt=""></p>
+                            <p class="tc2-list-txt">
+                                <span>身为服饰设计者，如果大家对我们为游戏角色设计的服装产生兴趣，甚至想实际穿上试试看，那就是对我们工作最大的肯定啦。</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="tc2-list-title">6.【天气设计师】</p>
+                            <p class="tc2-list-txt">
+                                <span>王者世界中的天气设计，不是一个人的功劳。涉及到程序、美术、战斗的团队配合。我们想在游戏中追求天气的写实效果，于是在程序小伙伴们作出专门的天气系统后，我们会再进行具体参数的调试。比如说一个区域内的天气如何变化、人物的活动会不会对自然环境产生影响、特殊天气事件、极端天气等等，这些元素会共同构成王者世界中丰富多变的天气系统。</span>
+                            </p>
+                            <p class="tc2-img"><img src="./ossweb-img/tc2-11.jpg" alt=""></p>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div> -->
+
+
+        <!-- <div class="pop pteam">
+            <div class="pop-team">
+                <a href="javascript:;" class="pop-team-close anclose ld"></a>
+                <p class="pop-team-title">{{ currentJobDetail.name }}</p>
+                <div class="pop-team-job">
+                    <div class="pop-job-duties">
+                        <p class="job-title">工作职责</p>
+                        <ul>
+                            <li v-for="(item, index) in currentJobDetail.duties" :key="index">{{ item }}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pop-job-require">
+                        <p class="job-title">工作要求</p>
+                        <ul>
+                            <li v-for="(item, index) in currentJobDetail.requires" :key="index">{{ item }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p class="deliver">请将简历投递至:{{ currentJobDetail.email }}</p>
+            </div>
+        </div> -->
+
+
+        <!-- <div class="pop pestablish2">
+            <div class="pop-establish">
+                <div class="pop-estab-cout">
+                    <p class="pop-estab-txt">写下你对王者世界的想法,<br>帮助我们做出更好的游戏！</p>
+                    <div class="pop-estab-sex sele">
+                        <span>性&nbsp;&nbsp;&nbsp;别</span>
+                        <select class="sex" v-model="surveyComment.sex">
+                            <option v-for="(item, index) in sexList" :key="index">{{ item }}</option>
+                        </select>
+                    </div>
+                    <div class="pop-estab-age sele">
+                        <span>年&nbsp;&nbsp;&nbsp; 龄</span>
+                        <select class="age" v-model="surveyComment.age">
+                            <option v-for="(item, index) in ageList" :key="index">{{ item }}</option>
+                        </select>
+                    </div>
+                    <div class="pop-estab-tall-dan sele">
+                        <span>最高段位</span>
+                        <select class="dan" v-model="surveyComment.grade">
+                            <option v-for="(item, index) in gradeList" :key="index">{{ item }}</option>
+                        </select>
+                    </div>
+                    <div class="pop-estab-idea">
+                        <p class="idea-title">你对王者世界的想法</p>
+                        <textarea class="comm-info" maxlength="140" placeholder="请输入想法（限140字内）"
+                            v-model="surveyComment.content"></textarea>
+                    </div>
+                    <a href="javascript:;" class="btn-commit" onclick="PTTSendClick('btn','survey-comment','调研评论');"
+                        @click="handleSurveyComment">提交</a>
+                    <a href="javascript:;" class="btn-estab-close anclose ld" @click="hideSurveyCommentDia"></a>
+                </div>
+            </div>
+        </div> -->
+
+        
+        <!-- <audio id="bgm" loop autoplay="autoplay" src="./ossweb-img/bgm.mp3"></audio> -->
+    </div>
+
+    <!-- S 脚本 -->
+    <script src="https://ossweb-img.qq.com/images/js/jquery/jquery-1.11.3.min.js"></script>
+    <script src="https://tiem-cdn.qq.com/slugteam/libraries/vue/vue@2.6.min.js"></script>
+    <script src="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.js"> </script>
+    <script src='https://vm.gtimg.cn/tencentvideo/txp/js/txplayer.js'></script>
+    <script src='https://gzhcos.qq.com/components/slug-login/v1.0/index.js'></script>
+    <script src="https://ossweb-img.qq.com/images/js/PTT/ping_tcss_tgideas_https_min.js"></script>
+    <!-- 模块化页脚？ -->
+    <!-- <script src="//game.gtimg.cn/images/js/2018foot/foot.js"></script> -->
+    <!-- 获取原工作信息 -->
+    <!-- <script src="./js/lib/jobList.js" charset="UTF-8"></script> -->
+    <!-- 主页面js -->
+    <script src="./js/index.js"></script>
+    <!-- E 脚本 -->
+
+</body>
+
+</html>
