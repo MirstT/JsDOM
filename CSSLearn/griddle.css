@@ -1,0 +1,181 @@
+@charset "UTF-8";
+/*
+ * @Descripttion : 
+ * @version      : 
+ * @Author       : Mirst
+ * @Date         : 2021-11-03 20:42:42
+ * @LastEditors  : Mirst
+ * @LastEditTime : 2021-11-04 13:52:39
+ */
+
+html, body, div, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ol, ul, li, fieldset, form, label, input, legend, table, caption, tbody, tfoot, thead, tr, th, td, textarea, article, aside, audio, canvas, figure, footer, header, mark, menu, nav, section, time, video {
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: normal
+}
+
+article, aside, dialog, figure, footer, header, hgroup, nav, section, blockquote {
+    display: block;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+img {
+    border: 0 none;
+    vertical-align: top;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+strong, em, i {
+    font-style: normal;
+    font-weight: normal;
+}
+
+ins {
+    text-decoration: underline;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+mark {
+    background: none;
+}
+
+input::-ms-clear {
+    display: none !important;
+}
+
+body {
+    font: 12px/1.5 \5FAE\8F6F\96C5\9ED1, \5B8B\4F53, "Hiragino Sans GB", STHeiti, "WenQuanYi Micro Hei", "Droid Sans Fallback", SimSun, sans-serif;
+    background: #fff;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+body {
+    background: #252525;
+}
+
+.wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vh;
+    height: 100vh;
+    margin: auto;
+}
+
+.wrap_box {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+}
+
+.wrap_box_griddle {
+    display: flex;
+    flex-wrap: wrap;
+    width: 10vh;
+    height: 10vh;
+    overflow: hidden;
+    margin: 2vh;
+    padding: 0.5vh;
+    border-radius: 10%;
+    border: 0.5vh outset #bbbbbb;
+    background: #e7e7e7;
+}
+
+.wrap_box_griddle:nth-child(1) {
+    align-content: space-between;
+}
+.wrap_box_griddle:nth-child(1) .wbg_column {
+    display: flex;
+    flex-basis: 100%;
+    justify-content: space-between;
+}
+
+.wrap_box_griddle:nth-child(2) {
+    justify-content: space-between;
+    align-content: space-between;
+}
+
+.wrap_box_griddle:nth-child(3) {
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.wrap_box_griddle:nth-child(4){
+    justify-content: end;
+}
+
+.wrap_box_griddle:nth-child(4) .wbg_item:nth-child(2) {
+    align-self:center;
+}
+
+.wrap_box_griddle:nth-child(5) .wbg_column{
+    display: flex;
+    flex-basis: 100%;
+    justify-content: end;
+}
+
+.wrap_box_griddle:nth-child(6) .wbg_column{
+    display: flex;
+    flex-basis: 100%;
+    justify-content: space-between;
+}
+
+.wrap_box_griddle:nth-child(7){
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
+}
+
+.wrap_box_griddle:nth-child(8){
+    align-content: space-between;
+}
+.wrap_box_griddle:nth-child(8) .wbg_row{
+    display: flex;
+    flex-basis: 100%;
+    justify-content: space-between;
+}
+.wrap_box_griddle:nth-child(8) .wbg_row:nth-child(2){
+    justify-content: center;
+}
+
+.wrap_box_griddle:nth-child(9){
+    justify-content: space-around;
+    align-content: space-around;
+}
+
+.wbg_item {
+    width: 2.6vh;
+    height: 2.6vh;
+    border-radius: 50%;
+    background: #333333;
+    border: .1vh inset #111111;
+}
