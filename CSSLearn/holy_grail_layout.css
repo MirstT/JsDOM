@@ -1,0 +1,153 @@
+@charset "UTF-8";
+/*
+ * @Descripttion : 
+ * @version      : 
+ * @Author       : Mirst
+ * @Date         : 2021-11-04 16:51:07
+ * @LastEditors  : Mirst
+ * @LastEditTime : 2021-11-04 23:22:34
+ */
+
+@import url(reset.css);
+/* float实现
+---------------------------------------------------------------------------------------------- */
+
+.wrapfloat {
+    width: 100vw;
+    height: 100vh;
+    font-size: 34px;
+    text-align: center;
+}
+
+.wrapfloat_header {
+    height: 15vh;
+    background: lightcoral;
+}
+
+.wrapfloat_left {
+    float: left;
+    width: 20vw;
+    height: 70vh;
+    background: lightblue;
+}
+
+.wrapfloat_right {
+    float: right;
+    width: 20vw;
+    height: 70vh;
+    background: lightgreen;
+}
+
+.wrapfloat_center {
+    height: 70vh;
+    background: lightslategray;
+}
+
+.wrapfloat_footer {
+    height: 15vh;
+    background: lightseagreen;
+}
+
+/* flex实现
+------------------------------------------------------------------------------------------ */
+
+.wrapflex {
+    width: 100vw;
+    height: 100vh;
+    font-size: 34px;
+    text-align: center;
+}
+
+.wrapflex_header {
+    height: 15vh;
+    background: lightcoral;
+}
+
+.wrapflex_content {
+    display: flex;
+    height: 70vh;
+}
+
+.wrapflex_content_left {
+    flex: 1;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    background: lightblue;
+}
+
+.wrapflex_content_center {
+    flex: 2;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    background: lightslategray;
+}
+
+.wrapflex_content_right {
+    flex: 1;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    background: lightgreen;
+}
+
+@media (max-width:768px) {
+    .wrapflex_content {
+        flex-direction: column;
+    }
+}
+
+.wrapflex_footer {
+    height: 15vh;
+    background: lightseagreen;
+}
+
+/* flex官方实现
+------------------------------------------------------------------------------------------------ */
+
+.holygrail {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-size: 34px;
+    text-align: center;
+}
+
+.holygrail_header {
+    flex: 1;
+    background: lightcoral;
+}
+
+.holygrail_body {
+    display: flex;
+    flex: 8;
+}
+
+.holygrail_body_left {
+    flex: 1;
+    background: lightblue;
+    order: 1;
+}
+
+.holygrail_body_center {
+    flex: 5;
+    background: lightslategray;
+}
+
+.holygrail_body_right {
+    flex: 1;
+    background: lightgreen;
+    order: -1;
+}
+
+@media (max-width:768px) {
+    .holygrail_body {
+        flex-direction: column;
+    }
+}
+
+.holygrail_footer {
+    flex: 1;
+    background: lightseagreen;
+}
