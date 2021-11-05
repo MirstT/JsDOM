@@ -1,0 +1,72 @@
+@charset "UTF-8";
+/*
+ * @Descripttion : 
+ * @version      : 
+ * @Author       : Mirst
+ * @Date         : 2021-11-04 23:29:38
+ * @LastEditors  : Mirst
+ * @LastEditTime : 2021-11-05 00:37:53
+ */
+
+@import url(reset.css);
+h1 {
+    font-size: 2em;
+    font-weight: 600;
+}
+
+label {
+    display:inline-flex;
+    height: 40px;
+    font-size: 15px;
+    padding:0 15px;
+    color: #666666;
+    border: 1px solid #dcd7d0;
+    background: #f4f3f0;
+}
+
+input[type="text"] {
+    height: 40px;
+    width: 360px;
+    border: 1px solid #dcd7d0;
+}
+
+input[type="button"] {
+    height: 40px;
+    padding:0 15px;
+    font-size: 14px;
+    border: 1px solid #dcd7d0;
+    color: #666666;
+    background: #f4f3f0;
+}
+
+
+
+
+.wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrap_addon {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 20vh;
+}
+
+.prepend_addon {
+}
+
+.input_amount {
+
+}
+
+.input_amount label {
+}
+
+.input_amount input {}
+
+.append_addon {
+}
+
+.append_prepend_addon {}

@@ -1,0 +1,117 @@
+<!--
+ * @Descripttion : 
+ * @version      : 
+ * @Author       : Mirst
+ * @Date         : 2021-11-05 15:40:36
+ * @LastEditors  : Mirst
+ * @LastEditTime : 2021-11-05 16:26:05
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>negative margin</title>
+    <style>
+        body,
+        ul,
+        li {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        .container {
+            width: 460px;
+            height: 210px;
+            border: lightcoral 5px solid;
+        }
+
+
+        ul {
+            height: 210px;
+            margin-right: -20px;
+            overflow: hidden;
+        }
+
+        li {
+            float: left;
+            margin-right: 20px;
+            margin-bottom: 10px;
+            height: 100px;
+            width: 100px;
+            background-color: aquamarine;
+        }
+
+        .test1 {
+            float: left;
+            height: 400px;
+            width: 400px;
+            margin-right: -100px;
+            background-color: lightcoral;
+        }
+
+        .test2 {
+            float: left;
+            height: 400px;
+            width: 400px;
+            margin-right: -100px;
+
+            background-color: lightseagreen;
+        }
+
+        .test3 {
+            float: left;
+            height: 400px;
+            width: 400px;
+margin-left: -800px;
+            background-color: lightpink;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="background-color: lightblue; height: 7rem; margin: -2rem;">Lorem ipsum dolor sit amet consectetur
+        adipisicing elit.
+        Totam hic amet blanditiis cumque, natus odit
+        doloremque odio neque nihil ipsam sapiente sit eos quasi, consequuntur, ab fugit beatae quo asperiores.</div>
+    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima porro laboriosam labore explicabo maxime
+        pariatur aliquam, iusto quo molestias dolorum reprehenderit voluptas cum. Minima voluptatum laudantium itaque
+        amet minus fugit?Lorem, ipsum dolor sit et minus fugit?Lorem, ipsum dolor amet consectetur adipisicing elit.
+        Molestias <span>行内元素行内元素行内元素行内元素行内元素行内元素</span> error errorerrorerror consequatur
+        Molestias <span style="background-color: lightcoral;">行内元素行内元素行内元素行内元素行内元素行内元素</span> error errorerrorerror
+        consequatur
+        laboriosam?laboriosam? laboriosam? laboriosam? <span
+            style="background-color: aquamarine; display: inline-block; width: 15rem; margin: -2rem;">Lorem ipsum
+            dolor sit amet consectetur adipisicing elit. Debitis dolor porro sint laboriosam, temporibus quidem? Dolor
+            earum perferendis amet, tempore ullam, perspiciatis optio provident, in rem nobis tenetur natus
+            architecto????????</span> Debitis distinctio provident eligendi rem eaque blanditiis, voluptatibus soluta
+        deleniti
+        laborum
+        quasi, dolor illo qui, suscipit enim sapiente.</div>
+    <div class="container">
+        <ul>
+            <li>111</li>
+            <li>222</li>
+            <li>222</li>
+            <li>333</li>
+            <li>444</li>
+            <li>555</li>
+            <li>666</li>
+            <li>777</li>
+            <li>888</li>
+        </ul>
+    </div>
+    <hr>
+    <div class="test">
+        <div class="test1">111</div>
+        <div class="test2">222</div>
+        <div class="test3">333</div>
+    </div>
+</body>
+
+</html>
