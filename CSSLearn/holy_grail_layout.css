@@ -5,31 +5,31 @@
  * @Author       : Mirst
  * @Date         : 2021-11-04 16:51:07
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-05 15:32:01
+ * @LastEditTime : 2021-11-06 18:53:17
  */
 
 @import url(reset.css);
-/* 标准实现
+/* 标准float实现
 --------------------------------------------------------------------------------------------- */
 
 .wrapper {
     width: 100vw;
-    min-width: 35rem;
-    height: 100vh;
+    /* min-width: 35rem; */
     font-size: 3rem;
     text-align: center;
 }
 
 .wrapper .header, .wrapper .footer {
-    height: 15vh;
+    height: 10vh;
     background: darkgray;
 }
-.wrapper .footer{
+
+.wrapper .footer {
     clear: both;
 }
 
 .container {
-    padding: 0 15rem 0 10rem;
+    padding: 0 150px 0 100px;
 }
 
 .container_column {
@@ -43,161 +43,126 @@
 
 .container_left {
     position: relative;
-    right: 10rem;
-    width: 10rem;
+    right: 100px;
+    width: 100px;
     margin-left: -100%;
     background: lightpink;
 }
 
 .container_right {
-    width: 15rem;
-    margin-right: -15rem;
+    width: 150px;
+    margin-right: -150px;
     background: lightseagreen;
 }
 
-/* float实现
----------------------------------------------------------------------------------------------- */
+/* 双飞翼布局
+-------------------------------------------------------------------------------------------------- */
 
-.wrapfloat {
+.wrapperfly {
     width: 100vw;
-    min-width: 40rem;
-    height: 100vh;
-    font-size: 34px;
+    font-size: 3rem;
     text-align: center;
 }
 
-.wrapfloat_header {
-    height: 15vh;
-    background: lightcoral;
+.wrapperfly .header, .wrapperfly .footer {
+    height: 10vh;
+    background: darkgray;
 }
 
-.wrapfloat_center {
+.wrapperfly .footer {
+    clear: both;
+}
+
+.containerfly {
     float: left;
-    margin: 0 20rem;
     width: 100%;
-    height: 70vh;
-    background: lightslategray;
 }
 
-.wrapfloat_left {
+.wrapperfly .column {
     float: left;
-    width: 20rem;
-    height: 70vh;
-    background: lightblue;
 }
 
-.wrapfloat_right {
-    float: left;
-    width: 20rem;
-    height: 70vh;
+.containerfly_center {
+    margin-left: 10rem;
+    margin-right: 15rem;
+    background: lightsalmon;
+}
+
+.wrapperfly .left {
+    width: 10rem;
+    margin-left: -100%;
+    background: lightpink;
+}
+
+.wrapperfly .right {
+    margin-left: -15rem;
+    width: 15rem;
     background: lightgreen;
 }
 
-.wrapfloat_footer {
-    height: 15vh;
-    background: lightseagreen;
+/* calc
+--------------------------------------------------------------------------------------------- */
+
+.calc_center {
+    float: left;
+    margin-left: 10rem;
+    margin-right: 15rem;
+    width: calc(100% - 25rem);
+    background: lightsalmon;
+}
+
+/* border
+--------------------------------------------------------------------------------------------- */
+
+.border_center {
+    float: left;
+    box-sizing: border-box;
+    padding-left: 10rem;
+    padding-right: 15rem;
+    width: 100%;
+    background: lightsalmon;
 }
 
 /* flex实现
 ------------------------------------------------------------------------------------------ */
 
-.wrapflex {
-    width: 100vw;
-    height: 100vh;
-    font-size: 34px;
-    text-align: center;
-}
-
-.wrapflex_header {
-    height: 15vh;
-    background: lightcoral;
-}
-
-.wrapflex_content {
-    display: flex;
-    height: 70vh;
-}
-
-.wrapflex_content_left {
-    width: 20rem;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-    background: lightblue;
-}
-
-.wrapflex_content_center {
-    flex: 2;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-    background: lightslategray;
-}
-
-.wrapflex_content_right {
-    width: 20rem;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-    background: lightgreen;
-}
-
-@media (max-width:768px) {
-    .wrapflex_content {
-        flex-direction: column;
-    }
-}
-
-.wrapflex_footer {
-    height: 15vh;
-    background: lightseagreen;
-}
-
-/* flex官方实现
------------------------------------------------------------------------------------------------- */
-
-.holygrail {
+.wrapperflex {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    font-size: 34px;
+    width: 100vw;
+    font-size: 3rem;
     text-align: center;
 }
 
-.holygrail_header {
-    flex: 1;
-    background: lightcoral;
+.wrapperflex .header, .wrapperflex .footer {
+    background: darkgray;
 }
 
-.holygrail_body {
+.wrapperflex .containerflex {
     display: flex;
-    flex: 8;
 }
 
-.holygrail_body_left {
+.wrapperflex .center {
     flex: 1;
-    background: lightblue;
-    order: 1;
+    background-color: lightsalmon;
 }
 
-.holygrail_body_center {
-    flex: 5;
-    background: lightslategray;
-}
-
-.holygrail_body_right {
-    flex: 1;
-    background: lightgreen;
+.wrapperflex .left {
     order: -1;
+    flex:0 0 15rem;
+    background-color: lightskyblue;
+}
+
+.wrapperflex .right {
+    width: 0 0 10rem;
+    background-color: lightseagreen;
 }
 
 @media (max-width:768px) {
-    .holygrail_body {
+    .wrapperflex .containerflex {
         flex-direction: column;
     }
-}
-
-.holygrail_footer {
-    flex: 1;
-    background: lightseagreen;
+    .wrapperflex .left, .wrapperflex .center, .wrapperflex .right {
+        flex:auto;
+    }
 }
