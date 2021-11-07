@@ -1,0 +1,164 @@
+<!--
+ * @Descripttion : 
+ * @version      : 
+ * @Author       : Mirst
+ * @Date         : 2021-11-07 15:39:49
+ * @LastEditors  : Mirst
+ * @LastEditTime : 2021-11-07 17:21:06
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>悬挂式布局</title>
+</head>
+<style>
+    @import url(reset.css);
+
+    .wrapper {
+        font-size: 16px;
+        margin: 60px;
+    }
+
+    h1 {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    h2 {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .card {
+        display: flex;
+        margin: 1rem;
+        padding: 1rem;
+        border-radius: 1rem;
+        background-color: #f4f3f0;
+    }
+
+    .card .col span {
+        display: block;
+        width: 60px;
+        height: 60px;
+        border-radius: 0.4rem;
+        margin: 0.4rem 0.8rem 0 0.4rem;
+        background: url(img/img_sample.png) center/contain no-repeat;
+    }
+
+    .card.reverse .col:nth-child(2) {
+        order: -1;
+    }
+
+    .card.icon span {
+        width: 30px;
+        height: 30px;
+        background: url(img/icon_sample.png) center/contain no-repeat;
+    }
+
+    .card.icon.vertical .col:nth-child(1) {
+        align-self: center;
+    }
+
+
+    .container {
+        display: flex;
+        align-items: flex-start;
+    }
+</style>
+
+<body>
+    <div class="wrapper">
+        <h1>Basic Examples</h1>
+        <div class="container">
+            <div>
+                <div class="card">
+                    <div class="col">
+                        <span></span>
+                    </div>
+                    <div class="col">
+                        <h2>h2 title test</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus molestias a id magnam ad
+                            dicta
+                            modi
+                            autem, quam minima ipsa atque consectetur perferendis! Nulla sint adipisci obcaecati ab,
+                            suscipit
+                            provident!</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="col">
+                        <span></span>
+                    </div>
+                    <div class="col">
+                        <h2>h2 title test</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus molestias a id magnam ad
+                            dicta
+                            modi
+                            autem, quam minima ipsa atque consectetur perferendis! Nulla sint adipisci obcaecati ab,
+                            suscipit
+                            provident!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card reverse">
+                <div class="col">
+                    <span></span>
+                </div>
+                <div class="col">
+                    <h2>h2 title test</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus molestias a id magnam ad dicta
+                        modi
+                        autem, quam minima ipsa atque consectetur perferendis! Nulla sint adipisci obcaecati ab,
+                        suscipit
+                        provident!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus molestias a id magnam ad dicta
+                        modi
+                        autem, quam minima ipsa atque consectetur perferendis! Nulla sint adipisci obcaecati ab,
+                        suscipit
+                        provident!</p>
+                </div>
+            </div>
+        </div>
+
+
+
+        <h1>Non-images</h1>
+        <div class="container">
+            <div class="card icon">
+                <div class="col">
+                    <span></span>
+                </div>
+                <div class="col">
+                    <h2>h2 title test</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus molestias a id magnam ad dicta
+                        modi
+                        autem, quam minima ipsa atque consectetur perferendis! Nulla sint adipisci obcaecati ab,
+                        suscipit
+                        provident!</p>
+                </div>
+            </div>
+            <div class="card icon vertical">
+                <div class="col">
+                    <span></span>
+                </div>
+                <div class="col">
+                    <h2>h2 title test</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus molestias a id magnam ad dicta
+                        modi
+                        autem, quam minima ipsa atque consectetur perferendis! Nulla sint adipisci obcaecati ab,
+                        suscipit
+                        provident!</p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>
