@@ -5,7 +5,7 @@
  * @Author       : Mirst
  * @Date         : 2021-11-04 23:29:38
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-05 00:37:53
+ * @LastEditTime : 2021-11-07 15:28:08
  */
 
 @import url(reset.css);
@@ -15,58 +15,104 @@ h1 {
 }
 
 label {
-    display:inline-flex;
-    height: 40px;
-    font-size: 15px;
-    padding:0 15px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    padding: 0 15px;
     color: #666666;
-    border: 1px solid #dcd7d0;
+    border-width: 1px 0 1px 1px;
+    border-style: solid;
+    border-color: #dcd7d0;
     background: #f4f3f0;
 }
 
 input[type="text"] {
+    padding-left: 5px;
     height: 40px;
-    width: 360px;
+    /* width: 360px; */
+    font-size: 14px;
     border: 1px solid #dcd7d0;
 }
 
 input[type="button"] {
-    height: 40px;
-    padding:0 15px;
+    height: 42px;
+    padding: 0 15px;
     font-size: 14px;
-    border: 1px solid #dcd7d0;
+    border-width: 1px 1px 1px 0;
+    border-style: solid;
+    border-color: #dcd7d0;
     color: #666666;
     background: #f4f3f0;
 }
 
+input[type="text"]::placeholder {
+    color: #aeaeae;
+}
 
+.input_star #input_star_button {
+    background: url(img/star.png) no-repeat center/50%, #f4f3f0;
+}
 
+.input_search label {
+    background: url(img/star.png) no-repeat center/50%, #f4f3f0;
+}
+
+.send_txt label {
+    background: url(img/star.png) no-repeat center/50%, #f4f3f0;
+}
+
+.encrypt_txt label {
+    background: url(img/star.png) no-repeat center/50%, #f4f3f0;
+}
 
 .wrap {
     display: flex;
     flex-direction: column;
+    white-space: nowrap;
+    min-width: 756px;
 }
 
-.wrap_addon {
+.row {
     display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    height: 20vh;
+    margin: 5px 0;
 }
 
-.prepend_addon {
+.elem {
+    display: flex;
+    flex: 1;
+    margin: 0 5%;
+
 }
 
-.input_amount {
-
+input[type="text"] {
+    flex: 1;
 }
 
-.input_amount label {
+/* .input_amount {
+    display: flex;
 }
 
-.input_amount input {}
-
-.append_addon {
+.input_search{
+    display: flex;
 }
 
-.append_prepend_addon {}
+.input_go{
+    display: flex;
+}
+.input_star{
+    display: flex;
+}
+
+
+.append_prepend_addon_box{
+    display: flex;
+    justify-content: space-around;
+}
+
+.send_txt{
+    display: flex;
+}
+.encrypt_txt{
+    display: flex;
+} */
