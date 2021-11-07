@@ -5,7 +5,7 @@
  * @Author       : Mirst
  * @Date         : 2021-11-04 23:29:38
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-07 15:28:08
+ * @LastEditTime : 2021-11-07 15:33:19
  */
 
 @import url(reset.css);
@@ -30,7 +30,6 @@ label {
 input[type="text"] {
     padding-left: 5px;
     height: 40px;
-    /* width: 360px; */
     font-size: 14px;
     border: 1px solid #dcd7d0;
 }
