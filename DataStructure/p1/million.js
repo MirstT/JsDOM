@@ -4,10 +4,10 @@
  * @Author: Mirst
  * @Date: 2021-10-22 23:24:04
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-09 18:02:32
+ * @LastEditTime : 2021-11-09 21:18:04
  * @version
  */
-////////////////////////////////////////////////////////////////////////////////////////////
+//===============================================================================================
 // /**
 //  * @brief: 有序数组产生器
 //  * @param {number} length
@@ -27,7 +27,7 @@ const gen = (length = 10) => [...new Array(length).keys()];
 // const gen = (length = 10) =>
 //   Array.from({ length: length }, (_, index) => index);
 // const gen = (length = 10) => Array.from({length:length}).map((_,index)=>index);
-/////////////////////////////////////////////////////////////////////////////////////////////
+//=============================================================================================
 /**
  * 验证shuffleFuc的有效性
  * @param {Number} n 验证次数
@@ -54,7 +54,7 @@ const verifyProbality = (
   }
   return (count * array.length) / n;
 };
-/////////////////////////////////////////////////////////////////////////////////////////////
+//===========================================================================================
 /**
  * @summary: 不是真正意义上的完全乱序
  * @tutorial 如何将一个JavaScript数组打乱顺序 https://www.zhihu.com/question/68330851
@@ -72,7 +72,7 @@ const shuffleFalse = (array) => {
 
 // targetArray.sort(() => Math.random() - 0.5);
 
-///////////////////////////////////////////////////////////////////////////////////
+//===========================================================================================
 
 const shuffle = (array) => {
   const arr = [...array];
@@ -91,7 +91,7 @@ Array.prototype.shuffle = function () {
     [this[index], this[randomIndex]] = [this[randomIndex], this[index]];
   });
 };
-///////////////////////////////////////////////////////////////////////////////////////
+//================================================================================================
 Array.prototype.shuffle1 = function () {
   const array = this;
   let temp, randomIndex;
@@ -163,57 +163,13 @@ const shuffle4 = function shuffleFinal(array) {
   return copy;
 };
 
-////////////////////////////////////////////////////////////////////////////////////
-
-/**
- * 插入排序
- * @param {*}
- * @return {*}
- * @see:
- */
-const selectionSort = (arr) => {
-  const array = [...arr];
-  for (let i = 0; i < array.length; i++) {
-    for (let j = 0; j < i; j++) {
-      if (array[i] < array[j]) {
-        [array[j], array[i]] = [array[i], array[j]];
-      }
-    }
-  }
-  return array;
-};
-
-/**
- * @brief: 选择排序而非冒泡排序，升序，时间复杂度n2
- * @param {*} oldArray
- * @return {*}
- * @note: 代码风格指南 使用数组的拓展运算符 ... 来复制数组。
- *        这个是把小的降下来，，，emmm像是倒泡泡
- *        但是没有交换，只是每次选出一个极值
- * @note: 这果然不是冒泡而是选择排序，，，，，，改个错误，i<array.lenth-1;不然j就会越界
- * @see:
- */
-const selectionSortP = function selectionSortP(oldArray) {
-  const array = [...oldArray];
-  for (let i = 0; i < array.length - 1; i++) {
-    for (let j = i + 1; j < array.length; j++) {
-      if (array[i] > array[j]) {
-        let temp = array[j];
-        array[j] = array[i];
-        array[i] = temp;
-      }
-    }
-  }
-  return array;
-};
+//=====================================================================================================
 
 /**
  * 冒泡排序
  * 1.比较相邻的两个元素，如果前一个比后一个大，则交换位置。
  * 2.第一轮的时候最后一个元素应该是最大的一个。
  * 3.按照步骤一的方法进行相邻两个元素的比较，这个时候由于最后一个元素已经是最大的了，所以最后一个元素不用比较。
- * @param {*} oldArray
- * @return {*}
  * @see {可以在第一个循环里加一个标志位，如果在第二个循环体内，一整轮标志位都没有发生改变，说明，排序已提前完成，就可以提前结束，可以减少渐进下线，虽然实际上大多数情况下并没有多大的用处
  */
 const bubbleSort1 = (arr) => {
@@ -228,6 +184,11 @@ const bubbleSort1 = (arr) => {
   return array;
 };
 
+/**
+ * 36.92 seconds
+ * 38.485 seconds
+ * 34.791 seconds
+ */
 const bubbleSort = (arr) => {
   const array = [...arr];
   for (let i = 0; i < array.length - 1; i++) {
@@ -243,33 +204,84 @@ const bubbleSort = (arr) => {
   return array;
 };
 
+/**
+ * 双向冒泡
+ * 29.912 seconds
+ * 25.088 seconds
+ * 26.827 seconds
+ */
+const bidBubbleSort = (arr) => {
+  const array = [...arr];
+  for (let i = 0; i < Math.ceil(array.length / 2) - 1; i++) {
+    let flag = false;
+    for (let j = array.length - i - 1; j > i; j--) {
+      if (array[j] < array[j - 1]) {
+        [array[j], array[j - 1]] = [array[j - 1], array[j]];
+        flag = true;
+      }
+    }
+    for (let k = i + 1; k < array.length - i - 1; k++) {
+      if (array[k] > array[k + 1]) {
+        [array[k], array[k + 1]] = [array[k + 1], array[k]];
+        flag = true;
+      }
+    }
+    if (!flag) break;
+  }
+  return array;
+};
+
+//======================================================================================================
 
 /**
- * @brief: 插入排序第一版
- * @param {*} arr
- * @return {*}
- * @note:
- * @see:
+ * 选择排序
+ * 6.676 seconds
+ * 6.674 seconds
+ * 6.496 seconds
+ * @see: 像是冒泡,但是没有交换，只是每次选出一个极值
  */
-const insertionSortA = function insertionSortA(arr) {
+
+const selectionSort = (arr) => {
   const array = [...arr];
   for (let i = 0; i < array.length - 1; i++) {
-    for (let j = i + 1; j > 0; j--) {
-      if (array[j] < array[j - 1]) {
-        [array[j - 1], array[j]] = [array[j], array[j - 1]];
+    let minIndex = i;
+    for (let j = i + 1; j < array.length; j++) {
+      if (array[j] < array[minIndex]) {
+        minIndex = j;
       }
+    }
+    if (minIndex !== i) {
+      [array[i], array[minIndex]] = [array[minIndex], array[i]];
     }
   }
   return array;
 };
 
+//======================================================================================================
+
 /**
- * @brief: 插入排序第二版
- * @param {*} arr
- * @return {*}
- * @note: 像冒泡排序最终版一样，这个是把已排序的数组利用起来，判断，位置，提前跳出内嵌循环计入到下一轮外循环
- *        为了实现纯函数开辟多余的空间，并不会明显的导致时间复杂度变化，毕竟开辟空间是常量及的时间复杂度
- * @see:
+ * 插入排序
+ * 18.783 seconds
+ * 19.361 seconds
+ * 20.633 seconds
+ * @see 像冒泡排序最终版一样，这个是把已排序的数组利用起来，判断，位置，提前跳出内嵌循环计入到下一轮外循环
+ */
+// const insertionSort = (arr) => {
+//   const array = [...arr];
+//   for (let i = 1; i < array.length; i++) {
+//     for (let j = 0; j < i; j++) {
+//       if (array[j] > array[i]) {
+//         [array[i], array[j]] = [array[j], array[i]];
+//       }
+//     }
+//   }
+//   return array;
+// };
+
+/**
+ * 12.657 seconds
+ * 12.327 seconds
+ * 12.498 seconds
  */
 const insertionSort = function insertionSort(arr) {
   const array = [...arr];
@@ -430,19 +442,25 @@ const mergeSort = function (array) {
 
 const array = gen(10);
 console.log(array); //这两个表现形式的区别需要进一步探讨
-console.log(`array:\t\t\t${array}`);
-console.log(`...array:\t\t${[...array]}`);
-console.log(`shuffleFalse:\t${verifyProbality(array, shuffleFalse)}`);
-console.log(`shuffle:\t\t${verifyProbality(array, shuffle)}`);
+console.log(`array:\t\t\t\t\t${array}`);
+console.log(`...array:\t\t\t\t${[...array]}`);
+console.log(`shuffleFalse:\t\t${verifyProbality(array, shuffleFalse)}`);
+console.log(`shuffle:\t\t\t\t${verifyProbality(array, shuffle)}`);
 
 const shuffledArray = shuffle(array);
 console.log(`shuffledArray:\t${[...shuffledArray]}`);
 
 const bubbleArray = bubbleSort(shuffledArray);
-console.log(`bubbleArray:\t${[...bubbleArray]}`);
+console.log(`bubbleArray:\t\t${[...bubbleArray]}`);
 
-// const selectionArray = selectionSort(shuffledArray);
-// console.log(`selectionArray:\t${[...selectionArray]}`);
+const bidBubbleArray = bidBubbleSort(shuffledArray);
+console.log(`bidBubbleArray:\t${[...bidBubbleArray]}`);
+
+const selectionArray = selectionSort(shuffledArray);
+console.log(`selectionArray:\t${[...selectionArray]}`);
+
+const insertionArray = insertionSort(shuffledArray);
+console.log(`insertionArray:\t${[...insertionArray]}`);
 
 // console.log(`selection:${[...selectionArray]}`);
 // const bubbleArray = bubbleSort(array);
