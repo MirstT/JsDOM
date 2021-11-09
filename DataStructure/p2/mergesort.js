@@ -17,7 +17,6 @@
 // 自包含（不使用全局变量）。
 // 它不应修改程序的状态或引起副作用（修改全局变量）。
 // 这样理解纯函数
-
 /**
  * @brief:纯函数 第一版合并有序数组
  * @param {*} a
@@ -27,7 +26,8 @@
  *        避免不必要的三元运算符。 eslint rules: no-unneeded-ternary.
  * @note: 有点费空间
  * @see:
- */
+ */ 
+
 const mergeA = function mergeSortedArrayA(a, b) {
   const left = [...a];
   const right = [...b];

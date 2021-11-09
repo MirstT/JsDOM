@@ -4,7 +4,7 @@
  * @Author: Mirst
  * @Date: 2021-10-22 23:24:04
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-08 16:30:35
+ * @LastEditTime : 2021-11-09 18:02:32
  * @version
  */
 ////////////////////////////////////////////////////////////////////////////////////////////
@@ -164,6 +164,25 @@ const shuffle4 = function shuffleFinal(array) {
 };
 
 ////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 插入排序
+ * @param {*}
+ * @return {*}
+ * @see:
+ */
+const selectionSort = (arr) => {
+  const array = [...arr];
+  for (let i = 0; i < array.length; i++) {
+    for (let j = 0; j < i; j++) {
+      if (array[i] < array[j]) {
+        [array[j], array[i]] = [array[i], array[j]];
+      }
+    }
+  }
+  return array;
+};
+
 /**
  * @brief: 选择排序而非冒泡排序，升序，时间复杂度n2
  * @param {*} oldArray
@@ -174,7 +193,7 @@ const shuffle4 = function shuffleFinal(array) {
  * @note: 这果然不是冒泡而是选择排序，，，，，，改个错误，i<array.lenth-1;不然j就会越界
  * @see:
  */
-const selectionSort = function selectionSort(oldArray) {
+const selectionSortP = function selectionSortP(oldArray) {
   const array = [...oldArray];
   for (let i = 0; i < array.length - 1; i++) {
     for (let j = i + 1; j < array.length; j++) {
@@ -189,20 +208,33 @@ const selectionSort = function selectionSort(oldArray) {
 };
 
 /**
- * @summary 这才是正宗的冒泡排序
+ * 冒泡排序
+ * 1.比较相邻的两个元素，如果前一个比后一个大，则交换位置。
+ * 2.第一轮的时候最后一个元素应该是最大的一个。
+ * 3.按照步骤一的方法进行相邻两个元素的比较，这个时候由于最后一个元素已经是最大的了，所以最后一个元素不用比较。
  * @param {*} oldArray
  * @return {*}
- * @see {可以在第一个循环里加一个标志位，如果在第二个循环体内，一
- * 整轮标志位都没有发生改变，说明，排序已提前完成，就可以提前结束，
- * 可以减少渐进下线，虽然实际上大多数情况下并没有多大的用处
+ * @see {可以在第一个循环里加一个标志位，如果在第二个循环体内，一整轮标志位都没有发生改变，说明，排序已提前完成，就可以提前结束，可以减少渐进下线，虽然实际上大多数情况下并没有多大的用处
  */
-const bubbleSort = function bubbleSort(oldArray) {
-  const array = [...oldArray];
-  for (let i = 0; i < array.length; i++) {
+const bubbleSort1 = (arr) => {
+  const array = [...arr];
+  for (let i = 0; i < array.length - 1; i++) {
+    for (let j = array.length - 1; j > i; j--) {
+      if (array[j] < array[j - 1]) {
+        [array[j], array[j - 1]] = [array[j - 1], array[j]];
+      }
+    }
+  }
+  return array;
+};
+
+const bubbleSort = (arr) => {
+  const array = [...arr];
+  for (let i = 0; i < array.length - 1; i++) {
     let flag = false;
-    for (let j = 0; j < array.length - i; j++) {
-      if (array[j] > array[j + 1]) {
-        [array[j], array[j + 1]] = [array[j + 1], array[j]];
+    for (let j = array.length - 1; j > i; j--) {
+      if (array[j] < array[j - 1]) {
+        [array[j], array[j - 1]] = [array[j - 1], array[j]];
         flag = true;
       }
     }
@@ -210,6 +242,7 @@ const bubbleSort = function bubbleSort(oldArray) {
   }
   return array;
 };
+
 
 /**
  * @brief: 插入排序第一版
@@ -396,14 +429,21 @@ const mergeSort = function (array) {
 //=============================================================================================
 
 const array = gen(10);
-console.log(array);//这两个表现形式的区别需要进一步探讨
+console.log(array); //这两个表现形式的区别需要进一步探讨
 console.log(`array:\t\t\t${array}`);
 console.log(`...array:\t\t${[...array]}`);
-console.log(`shuffleFalse:\t${verifyProbality(array,shuffleFalse)}`)
-console.log(`shuffle:\t\t${verifyProbality(array,shuffle)}`)
+console.log(`shuffleFalse:\t${verifyProbality(array, shuffleFalse)}`);
+console.log(`shuffle:\t\t${verifyProbality(array, shuffle)}`);
 
+const shuffledArray = shuffle(array);
+console.log(`shuffledArray:\t${[...shuffledArray]}`);
 
-// const selectionArray = selectionSort(array);
+const bubbleArray = bubbleSort(shuffledArray);
+console.log(`bubbleArray:\t${[...bubbleArray]}`);
+
+// const selectionArray = selectionSort(shuffledArray);
+// console.log(`selectionArray:\t${[...selectionArray]}`);
+
 // console.log(`selection:${[...selectionArray]}`);
 // const bubbleArray = bubbleSort(array);
 // console.log(`bubble:${[...bubbleArray]}`);
