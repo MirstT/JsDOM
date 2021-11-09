@@ -4,7 +4,7 @@
  * @Author: Mirst
  * @Date: 2021-10-22 23:24:04
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-09 21:18:04
+ * @LastEditTime : 2021-11-09 23:38:11
  * @version
  */
 //===============================================================================================
@@ -283,7 +283,7 @@ const selectionSort = (arr) => {
  * 12.327 seconds
  * 12.498 seconds
  */
-const insertionSort = function insertionSort(arr) {
+const insertionSort = (arr) => {
   const array = [...arr];
   for (let i = 0; i < array.length - 1; i++) {
     for (let j = i + 1; j > 0; j--) {
@@ -293,6 +293,35 @@ const insertionSort = function insertionSort(arr) {
   }
   return array;
 };
+
+const insertionGapSort = (arr, gap) => {
+  const array = [...arr];
+  for (let i = 0; i < array.length - gap; i++) {
+    for (let j = i + gap; j - gap + 1 > 0; j -= gap) {
+      if (array[j] > array[j - gap]) break;
+      [array[j - gap], array[j]] = [array[j], array[j - gap]];
+    }
+  }
+  return array;
+};
+
+//===========================================================================================
+
+/**
+ * 希尔排序
+ *  
+ */
+const shellSort = (arr) => {
+  let array = [...arr];
+  let gap = Math.floor(array.length / 2);
+  while (gap) {
+    array = insertionGapSort(array, gap);
+    gap = Math.floor(gap / 2);
+  }
+  return array;
+};
+
+
 
 //==========================================================================================
 /**
@@ -442,26 +471,33 @@ const mergeSort = function (array) {
 
 const array = gen(10);
 console.log(array); //这两个表现形式的区别需要进一步探讨
-console.log(`array:\t\t\t\t\t${array}`);
-console.log(`...array:\t\t\t\t${[...array]}`);
+console.log(`array:\t\t\t\t${array}`);
+console.log(`...array:\t\t\t${[...array]}`);
 console.log(`shuffleFalse:\t\t${verifyProbality(array, shuffleFalse)}`);
-console.log(`shuffle:\t\t\t\t${verifyProbality(array, shuffle)}`);
+console.log(`shuffle:\t\t\t${verifyProbality(array, shuffle)}`);
 
 const shuffledArray = shuffle(array);
-console.log(`shuffledArray:\t${[...shuffledArray]}`);
+console.log(`shuffledArray:\t\t${[...shuffledArray]}`);
 
 const bubbleArray = bubbleSort(shuffledArray);
 console.log(`bubbleArray:\t\t${[...bubbleArray]}`);
 
 const bidBubbleArray = bidBubbleSort(shuffledArray);
-console.log(`bidBubbleArray:\t${[...bidBubbleArray]}`);
+console.log(`bidBubbleArray:\t\t${[...bidBubbleArray]}`);
 
 const selectionArray = selectionSort(shuffledArray);
-console.log(`selectionArray:\t${[...selectionArray]}`);
+console.log(`selectionArray:\t\t${[...selectionArray]}`);
 
 const insertionArray = insertionSort(shuffledArray);
-console.log(`insertionArray:\t${[...insertionArray]}`);
+console.log(`insertionArray:\t\t${[...insertionArray]}`);
 
+const insertionGapArray = insertionGapSort(shuffledArray, 1);
+console.log(`insertionGapArray:\t${[...insertionGapArray]}`);
+
+const shellArray = shellSort(shuffledArray);
+console.log(`shellArray:\t\t\t${[...shellArray]}`);
+
+//====================================================================================================
 // console.log(`selection:${[...selectionArray]}`);
 // const bubbleArray = bubbleSort(array);
 // console.log(`bubble:${[...bubbleArray]}`);
