@@ -135,10 +135,6 @@ const merge = function mergeSortedArray(a, b) {
   return array;
 };
 
-// const array1 = merge([-100, 1, 1, 2, 3, 4], [-1, 3, 5, 100]);
-// const array2 = merge([-100], []);
-// console.log(...array2);
-// console.log(~~0.5);
 
 /**
  * @brief:  怎么divide呢> ,其实没必要了，直接进行mergesort就行了，分完就直接合并了
