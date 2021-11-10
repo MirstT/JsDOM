@@ -4,7 +4,7 @@
  * @Author: Mirst
  * @Date: 2021-10-22 23:24:04
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-10 12:50:01
+ * @LastEditTime : 2021-11-10 15:30:33
  * @version
  */
 //===============================================================================================
@@ -396,7 +396,7 @@ const merge3 = (left = [], right = []) => {
   return array;
 };
 
-const merge = (left = [], right = []) => {
+const merge4 = (left = [], right = []) => {
   const array = [];
   let lp = 0;
   let rp = 0;
@@ -414,13 +414,22 @@ const merge = (left = [], right = []) => {
   }
   return array;
 };
+
+const merge = (left = [], right = []) => {
+  const array = [];
+  let lp = 0;
+  let rp = 0;
+
+  while (lp < left.length && rp < right.length)
+    left[lp] < right[rp] ? array.push(left[lp++]) : array.push(right[rp++]);
+  if (rp < right.length) array.push(...right.slice(rp));
+  if (lp < left.length) array.push(...left.slice(lp));
+  return array;
+};
 //---------------------------------------------------------------------------------------------------
 /**
  *怎么divide呢> ,其实没必要了，直接进行mergesort就行了，分完就直接合并了
- * @param {*}
- * @return {*}
  * @note 数字取整 https://www.jianshu.com/p/a3202bc3f7a4
- * @note: mid=0时，stop
  * @see:
  */
 const divide = function (array) {
@@ -445,24 +454,18 @@ const divide = function (array) {
   return a; //回传
 };
 
-const mergeSort = function (array) {
+const mergeSort = (array) => {
   const mid = ~~(array.length / 2);
-  if (mid === 0) return array; //单个值
-  let arr = [];
+  if (mid === 0) return array;
   let left = [];
   let right = [];
-  for (let i = 0; i < array.length; i++) {
-    if (i < mid) {
-      left[left.length] = array[i];
-    } else {
-      right[right.length] = array[i];
-    }
-  }
-  left = mergeSort(left);
-  right = mergeSort(right);
-  arr = merge(left, right);
-  return arr; //回传
+  left.push(...array.slice(0, mid));
+  left = mergeSort(left); //左半部分排好序
+  right.push(...array.slice(mid));
+  right = mergeSort(right); //右半部分排好序
+  return merge(left, right); //合并左右部分
 };
+
 //=============================================================================================
 
 const array = gen(10);
@@ -493,6 +496,7 @@ console.log(`insertionGapArray:\t${[...insertionGapArray]}`);
 const shellArray = shellSort(shuffledArray);
 console.log(`shellArray:\t\t\t${[...shellArray]}`);
 
-//====================================================================================================
+const mergeSortArray = mergeSort(shuffledArray);
+console.log(`mergeSortArray:\t\t${[...mergeSortArray]}`);
 
-// const mergeSortArray = mergeSort(array);
+//====================================================================================================
