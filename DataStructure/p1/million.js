@@ -4,7 +4,7 @@
  * @Author: Mirst
  * @Date: 2021-10-22 23:24:04
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-09 23:38:11
+ * @LastEditTime : 2021-11-10 12:50:01
  * @version
  */
 //===============================================================================================
@@ -309,32 +309,24 @@ const insertionGapSort = (arr, gap) => {
 
 /**
  * 希尔排序
- *  
+ * 类比插入排序，写一个带有gap的通用插入排序 insertionGapSort
+ * @see insertionGapSort
  */
 const shellSort = (arr) => {
   let array = [...arr];
-  let gap = Math.floor(array.length / 2);
+  let gap = ~~(array.length / 2);
   while (gap) {
     array = insertionGapSort(array, gap);
-    gap = Math.floor(gap / 2);
+    gap = ~~(gap / 2);
   }
   return array;
 };
-
-
-
 //==========================================================================================
+
 /**
- * @brief:纯函数 第一版合并有序数组
- * @param {*} a
- * @param {*} b
- * @return {*}
- * @note: 三元运算符通常应该是简单的单行表达式，而不是嵌套的。 eslint rules: no-nested-ternary.
- *        避免不必要的三元运算符。 eslint rules: no-unneeded-ternary.
- * @note: 有点费空间
- * @see:
+ * 纯函数 第一版合并有序数组
  */
-const mergeA = function mergeSortedArrayA(a, b) {
+const merge1 = function mergeSortedArrayA(a, b) {
   const left = [...a];
   const right = [...b];
   const array = [];
@@ -361,69 +353,73 @@ const mergeA = function mergeSortedArrayA(a, b) {
 };
 
 /**
- * @brief:纯函数 第二版合并有序数组
- * @param {*} a
- * @param {*} b
- * @return {*}
- * @note: 这个简化了代码量，但实际上更复杂了,而且变相增加left right长度？改了left和right 属实不太好
- * @see:
+ * 纯函数 第二版合并有序数组
+ * 这个简化了代码量，但变相增加left right长度？改了left和right 属实不太好???
  */
-const mergeB = function mergeSortedArrayB(a, b) {
+const merge2 = (a, b) => {
   const left = [...a];
   const right = [...b];
+  left.push(Number.POSITIVE_INFINITY);
+  right.push(Number.POSITIVE_INFINITY);
   const array = [];
   let lp = 0;
   let rp = 0;
-
-  while (array.length != a.length + b.length) {
-    if (lp == a.length) left[lp] = Number.POSITIVE_INFINITY;
-    if (rp == b.length) right[rp] = Number.POSITIVE_INFINITY;
-    array[array.length] = left[lp] <= right[rp] ? left[lp++] : right[rp++];
+  while (lp < left.length - 1 || rp < right.length - 1) {
+    left[lp] <= right[rp] ? array.push(left[lp++]) : array.push(right[rp++]);
   }
   return array;
 };
 
 /**
- * @brief:纯函数 第三版合并有序数组 优化代码观感
- * @param {*}
- * @param {*}
- * @return {*}
- * @note: 既然要求纯函数，我就把返回值当作参数传入就行了，
- * @note: 此处是分治法中的治？还是 合 应该说合 更为合适， 然后就是循环调用直至全部合并
- * @note: 也可用于合并单个数组 ，合并的过程就是排序了，，，，所以，第一轮合并是兼具排序，所以治也被包含在其中
- *        所以整个函数就是治？
- *        如果.length都不让用的话，left和right的length做为参数传入确实是需要的》。。。也可自己遍历获取，但没必要
- * @see:
+ * 纯函数 第三版合并有序数组 优化代码观感
+ * 既然要求纯函数，我就把返回值当作参数传入就行了，且更节省空间
+ * @note 此处是分治法中的治？还是 合 应该说合 更为合适， 然后就是循环调用直至全部合并
+ * @note 也可用于合并单个数组 ，合并的过程就是排序了，，，，所以，第一轮合并是兼具排序，所以治也被包含在其中，所以整个函数就是治？
+ * @see 注意left=[],right=[],提高容错
  */
-const merge = function mergeSortedArray(left = [], right = []) {
+const merge3 = (left = [], right = []) => {
   const array = [];
   let lp = 0;
   let rp = 0;
 
   while (array.length < left.length + right.length) {
     if (lp == left.length) {
-      while (rp != right.length) array[array.length] = right[rp++];
+      while (rp != right.length) array.push(right[rp++]);
       break;
     }
     if (rp == right.length) {
-      while (lp != left.length) array[array.length] = left[lp++];
+      while (lp != left.length) array.push(left[lp++]);
       break;
     }
-    array[array.length] = left[lp] < right[rp] ? left[lp++] : right[rp++];
+    left[lp] < right[rp] ? array.push(left[lp++]) : array.push(right[rp++]);
   }
   return array;
 };
 
-// const array1 = merge([-100, 1, 1, 2, 3, 4], [-1, 3, 5, 100]);
-// const array2 = merge([-100], []);
-// console.log(...array2);
-// console.log(~~0.5);
+const merge = (left = [], right = []) => {
+  const array = [];
+  let lp = 0;
+  let rp = 0;
 
+  while (array.length < left.length + right.length) {
+    if (lp == left.length && rp < right.length) {
+      array.push(...right.slice(rp));
+      break;
+    }
+    if (rp == right.length && lp < left.length) {
+      array.push(...left.slice(lp));
+      break;
+    }
+    left[lp] < right[rp] ? array.push(left[lp++]) : array.push(right[rp++]);
+  }
+  return array;
+};
+//---------------------------------------------------------------------------------------------------
 /**
- * @brief:  怎么divide呢> ,其实没必要了，直接进行mergesort就行了，分完就直接合并了
+ *怎么divide呢> ,其实没必要了，直接进行mergesort就行了，分完就直接合并了
  * @param {*}
  * @return {*}
- * @note: 数字取整 https://www.jianshu.com/p/a3202bc3f7a4
+ * @note 数字取整 https://www.jianshu.com/p/a3202bc3f7a4
  * @note: mid=0时，stop
  * @see:
  */
@@ -498,11 +494,5 @@ const shellArray = shellSort(shuffledArray);
 console.log(`shellArray:\t\t\t${[...shellArray]}`);
 
 //====================================================================================================
-// console.log(`selection:${[...selectionArray]}`);
-// const bubbleArray = bubbleSort(array);
-// console.log(`bubble:${[...bubbleArray]}`);
-// const insertionArray = insertionSort(array);
-// console.log(`insertion:${[...insertionArray]}`);
-// console.log(...array);
 
 // const mergeSortArray = mergeSort(array);
