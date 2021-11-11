@@ -4,7 +4,7 @@
  * @Author: Mirst
  * @Date: 2021-10-22 23:24:04
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-10 17:26:59
+ * @LastEditTime : 2021-11-11 22:25:24
  * @version
  */
 //===============================================================================================
@@ -521,16 +521,43 @@ const mergeSort4 = function (array) {
 };
 //===============================================================================================
 
-const balance = (arr) => {
-  const array = new Array(arr.length);
-  const pivot = arr[arr.length - 1];
-  let start = 0;
-  let end = arr.length - 1;
-  arr.forEach((element) => {
-    element <= pivot ? array[start++]=element : (array[end--] = element);
-  });
+// const balance = (arr,start,end,pivot=arr[end]) => {
+//   const array = new Array(end-start+1);
+//   arr.forEach((element) => {
+//     element <= pivot ? array[start++]=element : (array[end--] = element);
+//   });
+//   return array;
+// };
+
+// const quickSort = (arr) =>{
+//   let array = [...arr];
+
+//   let start = 0;
+//   let end = arr.length - 1;
+//   while (start<end) {
+    
+//     array = balance(array,start,end);
+
+
+//   }
+
+//   return array;
+// }
+
+const quickSort =(arr)=>{
+  const array =[...arr];
+
+  for (let index = 1; index < array.length; index++) {
+    if (array[index]) {
+      
+    }
+    
+  }
+
+
+
   return array;
-};
+}
 
 //=============================================================================================
 
