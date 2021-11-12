@@ -4,7 +4,7 @@
  * @Author: Mirst
  * @Date: 2021-10-22 23:24:04
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-12 16:24:59
+ * @LastEditTime : 2021-11-12 18:15:52
  * @version
  */
 //===============================================================================================
@@ -431,10 +431,10 @@ const merge = (left = [], right = []) => {
   const array = [];
   let lp = 0;
   let rp = 0;
-  
+
   while (lp < left.length && rp < right.length)
     left[lp] < right[rp] ? array.push(left[lp++]) : array.push(right[rp++]);
-  return array.concat(right.slice(rp)).concat(left.slice(lp));;
+  return array.concat(right.slice(rp)).concat(left.slice(lp));
 };
 //---------------------------------------------------------------------------------------------------
 /**
@@ -531,28 +531,9 @@ const mergeSort4 = function (array) {
 };
 //===============================================================================================
 
-// const balance = (arr,start,end,pivot=arr[end]) => {
-//   const array = new Array(end-start+1);
-//   arr.forEach((element) => {
-//     element <= pivot ? array[start++]=element : (array[end--] = element);
-//   });
-//   return array;
-// };
-
-// const quickSort = (arr) =>{
-//   let array = [...arr];
-
-//   let start = 0;
-//   let end = arr.length - 1;
-//   while (start<end) {
-
-//     array = balance(array,start,end);
-
-//   }
-
-//   return array;
-// }
-
+/**
+ * 快速排序
+ */
 const quickSort = (array) => {
   if (array.length < 2) return array;
   const pviot = ~~(array.length / 2);
@@ -569,6 +550,27 @@ const quickSort = (array) => {
     }
   });
   return quickSort(left).concat(middle, quickSort(right));
+};
+
+//===============================================================================================
+/**
+ * 计数排序
+ */
+const countingSort = (arr) => {
+  const countingArray = [];
+  const array = [];
+  arr.forEach((index) => {
+    countingArray[index] === undefined
+      ? (countingArray[index] = 1)
+      : countingArray[index]++;
+  });
+  countingArray.forEach((count, value) => {
+    while (count-- !== 0) {
+      array.push(value);
+    }
+  });
+
+  return array;
 };
 
 //=============================================================================================
@@ -606,5 +608,8 @@ console.log(`mergeSortArray:\t\t${[...mergeSortArray]}`);
 
 const quickSortArray = quickSort(shuffledArray);
 console.log(`quickSortArray:\t\t${[...quickSortArray]}`);
+
+const countingSortArray = countingSort(shuffledArray);
+console.log(`countingSortArray:\t${[...countingSortArray]}`);
 
 //====================================================================================================

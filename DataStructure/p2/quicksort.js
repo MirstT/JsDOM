@@ -4,7 +4,7 @@
  * @Author: Mirst
  * @Date: 2021-10-25 09:34:58
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-10 17:18:18
+ * @LastEditTime : 2021-11-12 17:29:31
  */
 
 const balance = (arr) => {
@@ -18,15 +18,22 @@ const balance = (arr) => {
 };
 
 /**
- * @note 相比合并排序，快排少了向上合并的过程，拆分完成后就是最终排好序的空间复杂度相比合并排序低了很多
+ * 快速排序 
  */
-const quickSort = function quickSortA(arr) {
-  let array = [...arr];
-  let pivot = array.length - 1;
-  for (let i = 0; i < pivot; i++) {
-    if (array[i] > array[pivot]) {
-      [array[i], array[pivot]] = array[(array[pivot], array[i])];
-      pivot = i;
+ const quickSort = (array) => {
+  if (array.length < 2) return array;
+  const pviot = ~~(array.length / 2);
+  const left = [];
+  const right = [];
+  const middle = [];
+  array.forEach((value) => {
+    if (value < array[pviot]) {
+      left.push(value);
+    } else if (value > array[pviot]) {
+      right.push(value);
+    } else {
+      middle.push(value);
     }
-  }
+  });
+  return quickSort(left).concat(middle, quickSort(right));
 };
