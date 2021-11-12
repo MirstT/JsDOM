@@ -4,7 +4,7 @@
  * @Author: Mirst
  * @Date: 2021-10-22 23:24:04
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-11 22:25:24
+ * @LastEditTime : 2021-11-12 16:24:59
  * @version
  */
 //===============================================================================================
@@ -415,7 +415,7 @@ const merge4 = (left = [], right = []) => {
   return array;
 };
 
-const merge = (left = [], right = []) => {
+const merge5 = (left = [], right = []) => {
   const array = [];
   let lp = 0;
   let rp = 0;
@@ -425,6 +425,16 @@ const merge = (left = [], right = []) => {
   if (rp < right.length) array.push(...right.slice(rp));
   if (lp < left.length) array.push(...left.slice(lp));
   return array;
+};
+
+const merge = (left = [], right = []) => {
+  const array = [];
+  let lp = 0;
+  let rp = 0;
+  
+  while (lp < left.length && rp < right.length)
+    left[lp] < right[rp] ? array.push(left[lp++]) : array.push(right[rp++]);
+  return array.concat(right.slice(rp)).concat(left.slice(lp));;
 };
 //---------------------------------------------------------------------------------------------------
 /**
@@ -485,7 +495,7 @@ const mergeSort2 = (array) => {
 };
 
 /**
- * faster 和下面的相差无几 
+ * faster 和下面的相差无几
  */
 const mergeSort = (array) => {
   const mid = ~~(array.length / 2);
@@ -500,7 +510,7 @@ const mergeSort = (array) => {
 };
 
 /**
- * fastest 
+ * fastest
  */
 const mergeSort4 = function (array) {
   const mid = ~~(array.length / 2);
@@ -535,29 +545,31 @@ const mergeSort4 = function (array) {
 //   let start = 0;
 //   let end = arr.length - 1;
 //   while (start<end) {
-    
-//     array = balance(array,start,end);
 
+//     array = balance(array,start,end);
 
 //   }
 
 //   return array;
 // }
 
-const quickSort =(arr)=>{
-  const array =[...arr];
-
-  for (let index = 1; index < array.length; index++) {
-    if (array[index]) {
-      
+const quickSort = (array) => {
+  if (array.length < 2) return array;
+  const pviot = ~~(array.length / 2);
+  const left = [];
+  const right = [];
+  const middle = [];
+  array.forEach((value) => {
+    if (value < array[pviot]) {
+      left.push(value);
+    } else if (value > array[pviot]) {
+      right.push(value);
+    } else {
+      middle.push(value);
     }
-    
-  }
-
-
-
-  return array;
-}
+  });
+  return quickSort(left).concat(middle, quickSort(right));
+};
 
 //=============================================================================================
 
@@ -571,28 +583,28 @@ console.log(`shuffle:\t\t\t${verifyProbality(array, shuffle)}`);
 const shuffledArray = shuffle(array);
 console.log(`shuffledArray:\t\t${[...shuffledArray]}`);
 
-// const bubbleArray = bubbleSort(shuffledArray);
-// console.log(`bubbleArray:\t\t${[...bubbleArray]}`);
+const bubbleArray = bubbleSort(shuffledArray);
+console.log(`bubbleArray:\t\t${[...bubbleArray]}`);
 
-// const bidBubbleArray = bidBubbleSort(shuffledArray);
-// console.log(`bidBubbleArray:\t\t${[...bidBubbleArray]}`);
+const bidBubbleArray = bidBubbleSort(shuffledArray);
+console.log(`bidBubbleArray:\t\t${[...bidBubbleArray]}`);
 
-// const selectionArray = selectionSort(shuffledArray);
-// console.log(`selectionArray:\t\t${[...selectionArray]}`);
+const selectionArray = selectionSort(shuffledArray);
+console.log(`selectionArray:\t\t${[...selectionArray]}`);
 
-// const insertionArray = insertionSort(shuffledArray);
-// console.log(`insertionArray:\t\t${[...insertionArray]}`);
+const insertionArray = insertionSort(shuffledArray);
+console.log(`insertionArray:\t\t${[...insertionArray]}`);
 
-// const insertionGapArray = insertionGapSort(shuffledArray, 1);
-// console.log(`insertionGapArray:\t${[...insertionGapArray]}`);
+const insertionGapArray = insertionGapSort(shuffledArray, 1);
+console.log(`insertionGapArray:\t${[...insertionGapArray]}`);
 
-// const shellArray = shellSort(shuffledArray);
-// console.log(`shellArray:\t\t\t${[...shellArray]}`);
+const shellArray = shellSort(shuffledArray);
+console.log(`shellArray:\t\t\t${[...shellArray]}`);
 
-// const mergeSortArray = mergeSort(shuffledArray);
-// console.log(`mergeSortArray:\t\t${[...mergeSortArray]}`);
+const mergeSortArray = mergeSort(shuffledArray);
+console.log(`mergeSortArray:\t\t${[...mergeSortArray]}`);
 
-const quickSortArray = balance(shuffledArray);
+const quickSortArray = quickSort(shuffledArray);
 console.log(`quickSortArray:\t\t${[...quickSortArray]}`);
 
 //====================================================================================================
