@@ -4,7 +4,7 @@
  * @Author: Mirst
  * @Date: 2021-10-22 23:24:04
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-12 18:15:52
+ * @LastEditTime : 2021-11-12 18:20:16
  * @version
  */
 //===============================================================================================
@@ -575,41 +575,42 @@ const countingSort = (arr) => {
 
 //=============================================================================================
 
-const array = gen(10);
-console.log(array); //这两个表现形式的区别需要进一步探讨
-console.log(`array:\t\t\t\t${array}`);
-console.log(`...array:\t\t\t${[...array]}`);
-console.log(`shuffleFalse:\t\t${verifyProbality(array, shuffleFalse)}`);
-console.log(`shuffle:\t\t\t${verifyProbality(array, shuffle)}`);
-
+const array = gen(10000000);
 const shuffledArray = shuffle(array);
-console.log(`shuffledArray:\t\t${[...shuffledArray]}`);
 
-const bubbleArray = bubbleSort(shuffledArray);
-console.log(`bubbleArray:\t\t${[...bubbleArray]}`);
+// console.log(array); //这两个表现形式的区别需要进一步探讨
+// console.log(`array:\t\t\t\t${array}`);
+// console.log(`...array:\t\t\t${[...array]}`);
+// console.log(`shuffleFalse:\t\t${verifyProbality(array, shuffleFalse)}`);
+// console.log(`shuffle:\t\t\t${verifyProbality(array, shuffle)}`);
 
-const bidBubbleArray = bidBubbleSort(shuffledArray);
-console.log(`bidBubbleArray:\t\t${[...bidBubbleArray]}`);
+// console.log(`shuffledArray:\t\t${[...shuffledArray]}`);
 
-const selectionArray = selectionSort(shuffledArray);
-console.log(`selectionArray:\t\t${[...selectionArray]}`);
+// const bubbleArray = bubbleSort(shuffledArray);
+// console.log(`bubbleArray:\t\t${[...bubbleArray]}`);
 
-const insertionArray = insertionSort(shuffledArray);
-console.log(`insertionArray:\t\t${[...insertionArray]}`);
+// const bidBubbleArray = bidBubbleSort(shuffledArray);
+// console.log(`bidBubbleArray:\t\t${[...bidBubbleArray]}`);
 
-const insertionGapArray = insertionGapSort(shuffledArray, 1);
-console.log(`insertionGapArray:\t${[...insertionGapArray]}`);
+// const selectionArray = selectionSort(shuffledArray);
+// console.log(`selectionArray:\t\t${[...selectionArray]}`);
 
-const shellArray = shellSort(shuffledArray);
-console.log(`shellArray:\t\t\t${[...shellArray]}`);
+// const insertionArray = insertionSort(shuffledArray);
+// console.log(`insertionArray:\t\t${[...insertionArray]}`);
 
-const mergeSortArray = mergeSort(shuffledArray);
-console.log(`mergeSortArray:\t\t${[...mergeSortArray]}`);
+// const insertionGapArray = insertionGapSort(shuffledArray, 1);
+// console.log(`insertionGapArray:\t${[...insertionGapArray]}`);
 
-const quickSortArray = quickSort(shuffledArray);
-console.log(`quickSortArray:\t\t${[...quickSortArray]}`);
+// const shellArray = shellSort(shuffledArray);
+// console.log(`shellArray:\t\t\t${[...shellArray]}`);
 
-const countingSortArray = countingSort(shuffledArray);
-console.log(`countingSortArray:\t${[...countingSortArray]}`);
+// const mergeSortArray = mergeSort(shuffledArray);
+// console.log(`mergeSortArray:\t\t${[...mergeSortArray]}`);
+
+// const quickSortArray = quickSort(shuffledArray);
+// console.log(`quickSortArray:\t\t${[...quickSortArray]}`);
+
+// const countingSortArray = countingSort(shuffledArray);
+// console.log(`countingSortArray:\t${[...countingSortArray]}`);
 
 //====================================================================================================
