@@ -4,7 +4,7 @@
  * @Author: Mirst
  * @Date: 2021-10-22 23:24:04
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-12 18:20:16
+ * @LastEditTime : 2021-11-15 11:52:59
  * @version
  */
 //===============================================================================================
@@ -556,7 +556,7 @@ const quickSort = (array) => {
 /**
  * 计数排序
  */
-const countingSort = (arr) => {
+const countingSort1 = (arr) => {
   const countingArray = [];
   const array = [];
   arr.forEach((index) => {
@@ -573,10 +573,77 @@ const countingSort = (arr) => {
   return array;
 };
 
+const countingSort2 = (arr) => {
+  const max = arr.reduce((a, b) => Math.max(a, b), -Infinity);
+  const min = arr.reduce((a, b) => Math.min(a, b), Infinity);
+  const countingArray = new Array(max - min + 1);
+  arr.forEach((index) => {
+    countingArray[index - min] === undefined
+      ? (countingArray[index - min] = 1)
+      : countingArray[index - min]++;
+  });
+
+  return countingArray
+    .map((count, value) => [...new Array(count).fill(value + min)])
+    .filter((value) => value !== undefined);
+};
+
+const countingSort3 = (arr) => {
+  const max = arr.reduce((a, b) => Math.max(a, b), -Infinity);
+  const min = arr.reduce((a, b) => Math.min(a, b), Infinity);
+  let countingArray = new Array(max - min + 1);
+  countingArray = arr.reduce((countingArray, fromValueToIndex) => {
+    countingArray[fromValueToIndex - min] === undefined
+      ? (countingArray[fromValueToIndex - min] = 1)
+      : countingArray[fromValueToIndex - min]++;
+    return countingArray;
+  }, []);
+
+  return countingArray.reduce((array, numOfValue, valueSubtractedByMin) => {
+    if (numOfValue !== undefined)
+      array = array.concat(
+        ...new Array(numOfValue).fill(valueSubtractedByMin + min)
+      );
+    return array;
+  }, []);
+};
+
+const countingSort4 = (arr) => {
+  const min = arr.reduce((a, b) => Math.min(a, b), Infinity);
+  return arr
+    .reduce((array, fromValueToIndex) => {
+      array[fromValueToIndex - min] === undefined
+        ? (array[fromValueToIndex - min] = 1)
+        : array[fromValueToIndex - min]++;
+      return array;
+    }, [])
+    .reduce((array, numOfValue, valueSubtractedByMin) => {
+      if (numOfValue !== undefined)
+        array = array.concat(
+          ...new Array(numOfValue).fill(valueSubtractedByMin + min)
+        );
+      return array;
+    }, []);
+};
+
+const countingSort = (arr) => {
+  const min = arr.reduce((a, b) => Math.min(a, b), Infinity);
+  return arr
+    .reduce((array, fromValueToIndex) => {
+      array[fromValueToIndex - min] === undefined
+        ? (array[fromValueToIndex - min] = 1)
+        : array[fromValueToIndex - min]++;
+      return array;
+    }, [])
+    .map((count, value) => [...new Array(count).fill(value + min)])
+    .filter((value) => value !== undefined);
+};
+
 //=============================================================================================
 
-const array = gen(10000000);
-const shuffledArray = shuffle(array);
+const array = gen(10);
+let shuffledArray = shuffle(array);
+shuffledArray = [0, -1000, 0, -1, -3, 233, 233, 1000, 2, 2, 4, 4, 4, 4, 7, -4];
 
 // console.log(array); //这两个表现形式的区别需要进一步探讨
 // console.log(`array:\t\t\t\t${array}`);
@@ -584,10 +651,10 @@ const shuffledArray = shuffle(array);
 // console.log(`shuffleFalse:\t\t${verifyProbality(array, shuffleFalse)}`);
 // console.log(`shuffle:\t\t\t${verifyProbality(array, shuffle)}`);
 
-// console.log(`shuffledArray:\t\t${[...shuffledArray]}`);
+console.log(`shuffledArray:\t\t${[...shuffledArray]}`);
 
-// const bubbleArray = bubbleSort(shuffledArray);
-// console.log(`bubbleArray:\t\t${[...bubbleArray]}`);
+const bubbleArray = bubbleSort(shuffledArray);
+console.log(`bubbleArray:\t\t${[...bubbleArray]}`);
 
 // const bidBubbleArray = bidBubbleSort(shuffledArray);
 // console.log(`bidBubbleArray:\t\t${[...bidBubbleArray]}`);
@@ -610,7 +677,7 @@ const shuffledArray = shuffle(array);
 // const quickSortArray = quickSort(shuffledArray);
 // console.log(`quickSortArray:\t\t${[...quickSortArray]}`);
 
-// const countingSortArray = countingSort(shuffledArray);
-// console.log(`countingSortArray:\t${[...countingSortArray]}`);
+const countingSortArray = countingSort(shuffledArray);
+console.log(`countingSortArray:\t${[...countingSortArray]}`);
 
 //====================================================================================================
