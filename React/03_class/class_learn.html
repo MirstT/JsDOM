@@ -1,0 +1,66 @@
+<!--
+ * @Description  : 
+ * @version      : 
+ * @Author       : Mirst
+ * @Date         : 2021-11-16 06:15:56
+ * @LastEditors  : Mirst
+ * @LastEditTime : 2021-11-17 00:32:02
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class</title>
+</head>
+
+<body>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <script type="text/babel">
+        const person = {
+            name: {
+                first: 'Bob',
+                last: 'Smith'
+            },
+            age: 32,
+            gender: 'male',
+            interests: ['music', 'skiing'],
+            // bio() {
+            //     console.log(`${this.name.join()} is ${this.age} years old. He like ${this.interests.join(' ')}.`);
+            // },
+            bio() {
+                console.log(`${this.name.first} ${this['name']['last']} is ${this.age} years old. He like ${this.interests.join(' ')}.`);
+            },
+            greeting() {
+
+            }
+        }
+
+        function createNewPerson(name) {
+            const obj = {}
+            obj.name = name
+            obj.greeting = function () {
+                console.log(`Hi! I\'m ${this.name[0]}.`)
+            }
+
+            return obj
+        }
+
+        const salva = createNewPerson('Salva')
+        console.log(salva);
+        console.log(salva.name);
+        class te{
+            static ttt(){
+                console.log(2333);
+            }
+        }
+        salva.greeting()
+        te.ttt();
+    </script>
+</body>
+
+</html>

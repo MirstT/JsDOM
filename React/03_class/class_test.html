@@ -4,30 +4,108 @@
  * @Author       : Mirst
  * @Date         : 2021-11-16 06:15:56
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-16 06:21:11
+ * @LastEditTime : 2021-11-17 04:17:34
 -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>class</title>
 </head>
+
 <body>
     <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
     <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
     <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
     <script type="text/babel">
-        class Person{}
-        class Dog{}
-        const p1 = new Person()
-        const p2 = new Person()
+        class Person {
+            constructor(name, age) {
+                this.nameee = name
+                this.age = age
+            }
+
+            testt = 9999
+
+            static testt = 1111
+
+            speak() {
+                console.log(`I am ${this.nameee}, I am ${this.age} years old.`);
+            }
+            speakOnProto() {
+
+            }
+
+            static speak() {
+                console.log(`testing......${this.nameee}`);
+            }
+            static speakOnCons() {
+
+            }
+        }
+
+        class Student extends Person {
+            constructor(name, a, grade) {
+                a = a + 1000
+                super(name, a)
+                this.grade = grade
+                this.aaInstaceBeOverwirtted=33
+            }
+            aaInstaceBeOverwirtted=333333333
+            bbInstance=33
+            static aaCons=55
+            speak(){
+                console.log(`I am ${this.nameee}, I am ${this.age} years old. and I am in ${this.grade}`);
+            }
+            speakOnnnProto(){}
+            speakOnnnInstance=()=>{}
+            speakOnInstaceByEEEEE111=this.speak
+            speakOnInstaceByEEEEE222=function testFunc(){}
+            static speakOnnnCons1(){}
+            static speakOnnnCons2(){}
+            static speakOnnnCons3=()=>{}
+        }
+
+        class Dog { }
+        const p1 = new Person('tom', 22)
+        const p2 = new Person('jerry', 8)
+        const s1 = new Student('st1', 15, '高一')
         const d1 = new Dog()
+
+        p1.speak()
+        p2.speak()
+
+        p1.speak.call(p2)
+        Person.speak.call(p2)
+        Person.speak()
 
         console.log(p1);
         console.log(p2);
         console.log(d1);
+
+        console.log(s1);
+        console.log(p1.testt);
+        p2.testt = 111
+        console.log(p2.testt);
+        console.log(Person.testt);
+        console.log(p2.__proto__.testt);
+        console.log(p2.__proto__.constructor.testt);
+        p2.__proto__.constructor.testt = 6666
+        console.log(Person.testt);
+
+        s1.speak()
+        console.log(s1 instanceof Student);
+        console.log(s1 instanceof Person);
+        console.log(typeof s1);
+        console.log(s1.constructor);
+        console.log(s1.constructor.name);
+        console.log(s1.__proto__);
+        console.log(Object.prototype.toString.call(s1));
+        console.log(Object.prototype.toString.call(p1));
+
     </script>
 </body>
+
 </html>

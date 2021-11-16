@@ -1,0 +1,36 @@
+<!--
+ * @Description  : 
+ * @version      : 
+ * @Author       : Mirst
+ * @Date         : 2021-11-16 06:15:56
+ * @LastEditors  : Mirst
+ * @LastEditTime : 2021-11-17 02:51:39
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class</title>
+</head>
+
+<body>
+    <div id="test"></div>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <script type="text/babel">
+        class MyComponent extends React.Component {
+            render() {
+                return <h2>simple compoent</h2>
+            }
+        }
+
+        ReactDOM.render(<MyComponent/>,document.getElementById('test'))
+
+    </script>
+</body>
+
+</html>

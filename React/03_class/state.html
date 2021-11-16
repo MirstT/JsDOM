@@ -1,0 +1,77 @@
+<!--
+ * @Description  : 
+ * @version      : 
+ * @Author       : Mirst
+ * @Date         : 2021-11-16 06:15:56
+ * @LastEditors  : Mirst
+ * @LastEditTime : 2021-11-17 03:46:35
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>state</title>
+</head>
+
+<body>
+    <div id="test"></div>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <script type="text/babel">
+        let that
+
+        class Weather extends React.Component {
+            // gettt1 = this.changeWeather2.bind(this)
+            constructor(props) {
+                super(props)
+                this.state = { isHot: true, wind: 'big' }
+                that = this
+                this.gettt2 = this.changeWeather2.bind(this)
+            }
+            // changeWeatherClouser = (tt) => () => {
+            //     console.log('click');
+            //     console.log(tt.state.isHot);
+            // }
+            changeWeather2() {
+                console.log('click');
+                console.log(this.state.isHot);
+            }
+            // static changeWeather3 = (tt) => () => {
+            //     console.log('click');
+            //     console.log(tt.state.isHot);
+            // }
+            // changeWeather4 = () => {
+            //     console.log('click');
+            //     console.log(this.state.isHot);
+            // }
+
+            changeWeather=()=>{
+                // const {isHot} = this.state
+                this.setState({isHot:!this.state.isHot,})
+            }
+            render() {
+                console.log(this);
+                const { isHot } = this.state
+                // return <h1 onClick={changeWeatherOut(this)}>Today {isHot ? 'Hot' : 'Cold'}</h1>
+                // return <h1 onClick={this.changeWeatherClouser(this)}>Today {isHot ? 'Hot' : 'Cold'}</h1>
+                // return <h1 onClick={this.gettt1}>Today {isHot ? 'Hot' : 'Cold'}</h1>
+                // return <h1 onClick={this.gettt2}>Today {isHot ? 'Hot' : 'Cold'}</h1>
+                // return <h1 onClick={Weather.changeWeather3(this)}>Today {isHot ? 'Hot' : 'Cold'}</h1>
+                // return <h1 onClick={this.changeWeather4}>Today {isHot ? 'Hot' : 'Cold'}</h1>
+                return <h1 onClick={this.changeWeather}>Today {isHot ? 'Hot' : 'Cold'}</h1>
+            }
+        }
+
+        ReactDOM.render(<Weather />, document.getElementById('test'))
+        const changeWeatherOut = (that) => {
+            console.log('click');
+            console.log(that.state.isHot);
+        }
+    </script>
+</body>
+
+</html>

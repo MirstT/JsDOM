@@ -1,0 +1,42 @@
+<!--
+ * @Description  : 
+ * @version      : 
+ * @Author       : Mirst
+ * @Date         : 2021-11-17 01:58:57
+ * @LastEditors  : Mirst
+ * @LastEditTime : 2021-11-17 02:04:35
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event</title>
+</head>
+
+<body>
+    <button id="btn1">按钮1</button>
+    <button id="btn2">按钮2</button>
+    <button id="btn3" onclick="demo()">按钮3</button>
+
+    <script>
+        const btn1 = document.getElementById('btn1')
+        btn1.addEventListener('click',()=>{
+            alert('btn1')
+        })
+
+        const btn2 = document.getElementById('btn2')
+        btn2.onclick=()=>{
+            alert('btn2')
+        }
+
+        const demo = ()=>{
+            alert('btn3')
+        }
+
+    </script>
+</body>
+
+</html>
