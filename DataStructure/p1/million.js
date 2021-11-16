@@ -4,7 +4,7 @@
  * @Author: Mirst
  * @Date: 2021-10-22 23:24:04
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-15 11:52:59
+ * @LastEditTime : 2021-11-15 18:34:52
  * @version
  */
 //===============================================================================================
@@ -638,12 +638,45 @@ const countingSort = (arr) => {
     .map((count, value) => [...new Array(count).fill(value + min)])
     .filter((value) => value !== undefined);
 };
+//=============================================================================================
+
+const bucketSort = (arr, bucketSize = 10) => {
+  const min = arr.reduce((a, b) => Math.min(a, b), Infinity);
+
+  return arr.reduce((array, fromValueToIndex) => {
+    const index = ~~(fromValueToIndex / bucketSize);
+    array[index] ?? (array[index] = []);
+    array[index].push(fromValueToIndex);
+    return array;
+  }, []);
+};
 
 //=============================================================================================
 
 const array = gen(10);
 let shuffledArray = shuffle(array);
-shuffledArray = [0, -1000, 0, -1, -3, 233, 233, 1000, 2, 2, 4, 4, 4, 4, 7, -4];
+// shuffledArray = [0, -1000, 0, -1, -3, 233, 233, 1000, 2, 2, 4, 4, 4, 4, 7, -4];
+shuffledArray = [
+  0,
+  233,
+  233,
+  1000,
+  2,
+  2,
+  4,
+  1,
+  4,
+  4,
+  ,
+  2,
+  2,
+  34,
+  2,
+  2,
+  4,
+  7,
+  19,
+];
 
 // console.log(array); //这两个表现形式的区别需要进一步探讨
 // console.log(`array:\t\t\t\t${array}`);
@@ -679,5 +712,10 @@ console.log(`bubbleArray:\t\t${[...bubbleArray]}`);
 
 const countingSortArray = countingSort(shuffledArray);
 console.log(`countingSortArray:\t${[...countingSortArray]}`);
+console.log(countingSortArray);
+
+const bucketSortArray = bucketSort(shuffledArray, 10);
+console.log(`bucketSortArray:\t${[...bucketSortArray]}`);
+console.log(bucketSortArray);
 
 //====================================================================================================

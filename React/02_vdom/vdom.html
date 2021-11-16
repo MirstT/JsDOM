@@ -1,0 +1,61 @@
+<!--
+ * @Description  : 
+ * @version      : 
+ * @Author       : Mirst
+ * @Date         : 2021-11-16 04:54:44
+ * @LastEditors  : Mirst
+ * @LastEditTime : 2021-11-16 06:08:49
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello react</title>
+</head>
+
+<body>
+    <div id="test">
+
+    </div>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <script type="text/babel">
+        const data = ['2333', 'dsfadf', 'dfsafdsfasfsa']
+        const obj = { n1: 2333, n2: test, n3: 'test testttt' }
+
+        function Demo() {
+            return <h2>simple compoent</h2>
+        }
+
+        function demo(){
+            return <p>sssssssssssssb</p>
+        }
+
+
+        const VDOM = (
+            <div>
+                <h1>h11111</h1>
+                <ul>
+                    <li>{data[0]}</li>
+                    <li>{data[1]}</li>
+                    <li>{data[2]}</li>
+                    {data}
+                    {
+                        data.map((value, index) => {
+                            return <li key={index}>{index}---{value}</li>
+                        })
+                    }
+                </ul>
+                <div>
+                    {demo()}
+                </div>
+            </div>
+        )
+
+        ReactDOM.render(<Demo/>, document.getElementById('test'))
+    </script>
+</body>
