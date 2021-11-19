@@ -1,0 +1,48 @@
+<!--
+ * @Description  : 
+ * @version      : 
+ * @Author       : Mirst
+ * @Date         : 2021-11-16 06:15:56
+ * @LastEditors  : Mirst
+ * @LastEditTime : 2021-11-17 07:11:54
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>props</title>
+</head>
+
+<body>
+    <div id="test1"></div>
+    <div id="test2"></div>
+    <div id="test3"></div>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <script type="text/babel">
+        class Person extends React.Component {
+            render() {
+                const {name,age,gender} = this.props
+                return (
+                    <ul>
+                        <li>姓名:{name}</li>
+                        <li>性别:{gender}</li>
+                        <li>年龄:{age}</li>
+                    </ul>
+                )
+            }
+        }
+
+        ReactDOM.render(<Person name='tom' age='18' gender='male' />, document.getElementById('test1'))
+        ReactDOM.render(<Person name='j' age='28' gender='female' />, document.getElementById('test2'))
+        ReactDOM.render(<Person name='bob' age='38' gender='male' />, document.getElementById('test3'))
+
+
+    </script>
+</body>
+
+</html>

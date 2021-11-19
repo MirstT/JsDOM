@@ -4,7 +4,7 @@
  * @Author       : Mirst
  * @Date         : 2021-11-11 17:53:32
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-14 00:24:11
+ * @LastEditTime : 2021-11-20 05:45:23
  */
 
 var a = 0;
@@ -14,9 +14,7 @@ console.log(a);
 function show(num) {
   console.log(num);
 }
-
-function start() {
-  for (var a = 0; a < 3; a++) {
+   for (var a = 0; a < 3; a++) {
     var num = a;
   }
   return;
@@ -41,7 +39,7 @@ Object.defineProperties(book, {
     set(year) {
       this.year_ = year;
       this.edition += year - 2017;
-    },
+    k
     get() {
       return this.year_;
     },
@@ -74,3 +72,7 @@ console.log(src.a);
 console.log(Object.getOwnPropertyDescriptors(dest));
 
 Object.is()
+
+
+
+// expected output: 42
