@@ -4,7 +4,7 @@
  * @Author: Mirst
  * @Date: 2021-10-22 23:24:04
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-15 18:34:52
+ * @LastEditTime : 2021-11-22 14:21:51
  * @version
  */
 //===============================================================================================
@@ -30,9 +30,9 @@ const gen = (length = 10) => [...new Array(length).keys()];
 //=============================================================================================
 /**
  * 验证shuffleFuc的有效性
- * @param {Number} n 验证次数
- * @param {Number} m 在某一位置上验证
- * @return {[]}
+ * @param {number} n 验证次数
+ * @param {number} m 在某一位置上验证
+ * @return {Array}
  * @TODO 继续用函数式改进
  * @tutorial 纯函数的实现还需要深入挖掘 https://blog.csdn.net/c_kite/article/details/79138814
  * @tutorial js函数参数默认值设置ES5 https://blog.csdn.net/weixin_34128501/article/details/89143250
@@ -64,12 +64,10 @@ const verifyProbality = (
 //   const array = [...arr];
 //   return array.sort(() => Math.random() - 0.5);
 // };
-
 const shuffleFalse = (array) => {
   const arr = [...array];
   return arr.sort(() => Math.random() - 0.5);
 };
-
 // targetArray.sort(() => Math.random() - 0.5);
 
 //===========================================================================================
