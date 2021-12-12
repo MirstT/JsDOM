@@ -1,0 +1,46 @@
+<!--
+ * @Description  : 
+ * @version      : 
+ * @Author       : Mirst
+ * @Date         : 2021-12-12 21:54:51
+ * @LastEditors  : Mirst
+ * @LastEditTime : 2021-12-12 22:18:45
+-->
+
+<!--
+ * @Description  : 
+ * @version      : 
+ * @Author       : Mirst
+ * @Date         : 2021-12-10 18:28:19
+ * @LastEditors  : Mirst
+ * @LastEditTime : 2021-12-12 21:41:20
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+    <title>code sample for script tag setup</title>
+</head>
+
+<body>
+    <script>
+        const createLotsOfTensors = tf.tidy(() => {
+            for (let i = 0; i < 1000; i++) {
+                const a = tf.tensor1d([1, 2, 3]);
+                const b = tf.keep(tf.scalar(i));
+                a.mul(b).print();
+            }
+        });
+    </script>
+    <h1>Number of tensors in memory:
+        <script>
+            document.write(tf.memory().numTensors);
+        </script>
+    </h1>
+</body>
+
+</html>
