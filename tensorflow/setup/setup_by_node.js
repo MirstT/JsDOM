@@ -4,13 +4,13 @@
  * @Author       : Mirst
  * @Date         : 2021-12-06 23:59:04
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-12-11 16:39:11
+ * @LastEditTime : 2021-12-13 04:26:53
  */
 const tf = require("@tensorflow/tfjs");
 
 // Optional Load the binding:
 // Use '@tensorflow/tfjs-node-gpu' if running with GPU.
-// require("@tensorflow/tfjs-node");
+require("@tensorflow/tfjs-node");
 
 // Train a simple model:
 const model = tf.sequential();
