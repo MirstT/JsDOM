@@ -4,7 +4,7 @@
  * @Author       : Mirst
  * @Date         : 2021-12-12 21:54:51
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-12-13 04:28:55
+ * @LastEditTime : 2021-12-13 21:49:48
 -->
 
 <!--
@@ -23,14 +23,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis"></script>
     <title>code sample for script tag setup</title>
 </head>
 
 <body>
     <script>
-        const localCsvFilePath = './kc_house_data.csv';
-        const csvDataset = tf.data.csv(localCsvFilePath);
+        async function plot(pointsArray, featureName) {
+            const surface = { name: `${featureName} vs House price`, tab: 'Chart' };
+            const data = { values: [pointsArray], series: ["original"] };
+            const opts = { xLabel: 'sqft_living', yLabel: 'price' };
+            tfvis.render.scatterplot(surface, data, opts);
+        }
 
+        const run = async () => {
+            const localCsvFilePath = './kc_house_data.csv';
+            const csvDataset = tf.data.csv(localCsvFilePath);
+            const sampleDataset = csvDataset.take(10);
+            // await sampleDataset.forEachAsync(e => console.log(e));
+            // const dataArray = await sampleDataset.toArray();
+            // console.log(dataArray);
+
+            const points = csvDataset.map(record => ({
+                x: record.sqft_living,
+                y: record.price,
+            }));
+
+            plot(await points.toArray(), "Square feet");
+
+            const featureValues = await points.map(row => row.x).toArray();
+            const featureTensor = tf.tensor2d(featureValues, [featureValues.length, 1]);
+            const labelValues = await points.map(row => row.y).toArray();
+            const labelTensor = tf.tensor2d(labelValues, [labelValues.length, 1]);
+
+            featureTensor.print();
+            labelTensor.print();
+        }
+
+        run();
 
     </script>
     <h1>Number of tensors in memory:
@@ -38,7 +68,6 @@
             document.write(tf.memory().numTensors);
         </script>
     </h1>
-
 
 </body>
 
