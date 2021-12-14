@@ -2,18 +2,9 @@
  * @Description  : 
  * @version      : 
  * @Author       : Mirst
- * @Date         : 2021-12-12 21:54:51
- * @LastEditors  : Mirst
- * @LastEditTime : 2021-12-13 21:49:48
--->
-
-<!--
- * @Description  : 
- * @version      : 
- * @Author       : Mirst
  * @Date         : 2021-12-10 18:28:19
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-12-12 21:41:20
+ * @LastEditTime : 2021-12-14 11:29:44
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -29,17 +20,44 @@
 
 <body>
     <script>
+        const normalise = (tensorData) => {
+            return {
+                max: tensorData.max(),
+                min: tensorData.min(),
+                tensor: tensorData.sub(tensorData.min()).div(tensorData.max().sub(tensorData.min()))
+            };
+        }
+
+        const denormalise = (normalisedTensor, min, max) => {
+            return normalisedTensor.mul(max.sub(min)).add(min);
+        }
+
         async function plot(pointsArray, featureName) {
-            const surface = { name: `${featureName} vs House price`, tab: 'Chart' };
-            const data = { values: [pointsArray], series: ["original"] };
-            const opts = { xLabel: 'sqft_living', yLabel: 'price' };
-            tfvis.render.scatterplot(surface, data, opts);
+            tfvis.render.scatterplot(
+                { name: `${featureName} vs House price`, tab: 'Chart' },
+                { values: [pointsArray], series: ["original"] },
+                { xLabel: 'sqft_living', yLabel: 'price' }
+            );
         }
 
         const run = async () => {
             const localCsvFilePath = './kc_house_data.csv';
-            const csvDataset = tf.data.csv(localCsvFilePath);
-            const sampleDataset = csvDataset.take(10);
+            const csvDataset = tf.data.csv(
+                localCsvFilePath,
+                {
+                    hasHeader: true,
+                    // columnNames: ['id', 'date', 'price', 'bedrooms', 'bathrooms', 'sqft_living', 'sqft_lot', 'floors', 'waterfront', 'view', 'condition', 'grade', 'sqft_above', 'sqft_basement', 'yr_built', 'yr_renovated', 'zipcode', 'lat', 'long', 'sqft_living15', 'sqft_lot15'],
+                    columnConfigs: {
+                        sqft_living: {
+                            required: true
+                        },
+                        price: {
+                            isLabel: true
+                        }
+                    },
+                    configuredColumnsOnly: true
+                });
+            // const sampleDataset = csvDataset.take(10);
             // await sampleDataset.forEachAsync(e => console.log(e));
             // const dataArray = await sampleDataset.toArray();
             // console.log(dataArray);
@@ -58,17 +76,15 @@
 
             featureTensor.print();
             labelTensor.print();
+
+            normalisedFeature = normalise(featureTensor);
+            normalisedLable = normalise(labelTensor);
+            console.log(csvDataset.sqft_living);
         }
 
         run();
 
     </script>
-    <h1>Number of tensors in memory:
-        <script>
-            document.write(tf.memory().numTensors);
-        </script>
-    </h1>
-
 </body>
 
 </html>
