@@ -4,7 +4,7 @@
  * @Author       : Mirst
  * @Date         : 2021-12-10 18:28:19
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-12-14 23:20:07
+ * @LastEditTime : 2021-12-15 23:44:37
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -46,7 +46,6 @@
                 localCsvFilePath,
                 {
                     hasHeader: true,
-                    // columnNames: ['id', 'date', 'price', 'bedrooms', 'bathrooms', 'sqft_living', 'sqft_lot', 'floors', 'waterfront', 'view', 'condition', 'grade', 'sqft_above', 'sqft_basement', 'yr_built', 'yr_renovated', 'zipcode', 'lat', 'long', 'sqft_living15', 'sqft_lot15'],
                     columnConfigs: {
                         sqft_living: {
                             required: true
@@ -57,37 +56,33 @@
                     },
                     configuredColumnsOnly: true
                 });
-            csvDataset.take(10).forEachAsync(element => console.log(element));
-            console.log(await csvDataset.take(10).toArray());
-
-            // const points = csvDataset.map(record => ({
-            //     x: record.sqft_living,
-            //     y: record.price,
-            // }));
+            // csvDataset.take(10).forEachAsync(element => console.log(element));
+            // console.log(await csvDataset.take(10).toArray());
 
             const points = csvDataset.map(({ xs, ys }) => ({
                 x: xs.sqft_living,
                 y: ys.price,
             }));
-            console.log(points);
+            // console.log(points);
 
-            // plot(await points.toArray(), "Square feet");
-            points.take(5).forEachAsync(e => console.log(e));
-            const featureValues = await points.map(e => e.x).toArray();
-            const featureTensor = tf.tensor2d(featureValues, [featureValues.length, 1]);
-            const labelValues = await points.map(e => e.y).toArray();
-            const labelTensor = tf.tensor2d(labelValues, [labelValues.length, 1]);
+            plot(await points.toArray(), "Square feet");
 
-            featureTensor.print();
-            labelTensor.print();
-            console.log("tttttttttttttttttttttttttt");
+            // points.take(5).forEachAsync(e => console.log(e));
 
-
+            const featureArray = await points.map(e => e.x).toArray();
+            const featureTensor = tf.tensor2d(featureArray, [featureArray.length, 1]);
+            const labelArray = await points.map(e => e.y).toArray();
+            const labelTensor = tf.tensor2d(labelArray, [labelArray.length, 1]);
 
             normalisedFeature = normalise(featureTensor);
             normalisedLable = normalise(labelTensor);
-            normalisedFeature.tensor.print();
-            // console.log(csvDataset.sqft_living);
+
+            const normalisedPoints = await tf.concat([normalisedFeature.tensor, normalisedLable.tensor], 1).array();
+            const normalisedPointsForPainting = normalisedPoints.map(e => ({
+                x: e[0],
+                y: e[1]
+            }));
+            plot(normalisedPointsForPainting, "Normalised square feet");
         }
 
         run();
