@@ -4,7 +4,7 @@
  * @Author       : Mirst
  * @Date         : 2021-12-10 18:28:19
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-12-15 23:44:37
+ * @LastEditTime : 2021-12-16 00:01:23
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +32,7 @@
             return normalisedTensor.mul(max.sub(min)).add(min);
         }
 
-        async function plot(pointsArray, featureName) {
+        const plot = async (pointsArray, featureName) => {
             tfvis.render.scatterplot(
                 { name: `${featureName} vs House price`, tab: 'Chart' },
                 { values: [pointsArray], series: ["original"] },
@@ -56,18 +56,13 @@
                     },
                     configuredColumnsOnly: true
                 });
-            // csvDataset.take(10).forEachAsync(element => console.log(element));
-            // console.log(await csvDataset.take(10).toArray());
 
             const points = csvDataset.map(({ xs, ys }) => ({
                 x: xs.sqft_living,
                 y: ys.price,
             }));
-            // console.log(points);
 
             plot(await points.toArray(), "Square feet");
-
-            // points.take(5).forEachAsync(e => console.log(e));
 
             const featureArray = await points.map(e => e.x).toArray();
             const featureTensor = tf.tensor2d(featureArray, [featureArray.length, 1]);
@@ -82,6 +77,7 @@
                 x: e[0],
                 y: e[1]
             }));
+
             plot(normalisedPointsForPainting, "Normalised square feet");
         }
 
