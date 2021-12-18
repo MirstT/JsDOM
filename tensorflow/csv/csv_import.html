@@ -4,7 +4,7 @@
  * @Author       : Mirst
  * @Date         : 2021-12-10 18:28:19
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-12-16 00:01:23
+ * @LastEditTime : 2021-12-18 15:57:28
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -57,16 +57,21 @@
                     configuredColumnsOnly: true
                 });
 
-            const points = csvDataset.map(({ xs, ys }) => ({
+            const points = await csvDataset.map(({ xs, ys }) => ({
                 x: xs.sqft_living,
                 y: ys.price,
-            }));
+            })).toArray();
 
-            plot(await points.toArray(), "Square feet");
+            if (points.length % 2 !== 0) {
+                points.pop();
+            }
 
-            const featureArray = await points.map(e => e.x).toArray();
+            plot(points, "Square feet");
+            tf.util.shuffle(points);
+
+            const featureArray = points.map(e => e.x);
             const featureTensor = tf.tensor2d(featureArray, [featureArray.length, 1]);
-            const labelArray = await points.map(e => e.y).toArray();
+            const labelArray = points.map(e => e.y);
             const labelTensor = tf.tensor2d(labelArray, [labelArray.length, 1]);
 
             normalisedFeature = normalise(featureTensor);
@@ -79,6 +84,12 @@
             }));
 
             plot(normalisedPointsForPainting, "Normalised square feet");
+
+            const [trainingNormalisedFeatureTensor, testingNormalisedFeatureTensor] = tf.split(normalisedFeature.tensor, 2);
+            const [trainingNormalisedLabelTensor, testingNormalisedLabelTensor] = tf.split(normalisedLable.tensor, 2);
+
+
+
         }
 
         run();
