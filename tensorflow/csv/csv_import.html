@@ -4,7 +4,7 @@
  * @Author       : Mirst
  * @Date         : 2021-12-10 18:28:19
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-12-18 15:57:28
+ * @LastEditTime : 2021-12-18 19:02:49
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +20,37 @@
 
 <body>
     <script>
+        const createSequentialModel = () => {
+            const model = tf.sequential();
+            model.add(tf.layers.dense({
+                units: 10,
+                useBias: true,
+                activation: 'linear',
+                inputDim: 1,
+            }));
+
+            // const optimizer = tf.train.sgd(0.1);
+            model.compile({
+                loss: 'meanSquaredError',
+                // optimizer,
+                optimizer: tf.train.sgd(0.1),
+            })
+
+
+            return model;
+        }
+
+        const createLayersModel = () => {
+            const inputs = tf.input({ shape: [1] });
+
+
+
+            const output;
+
+            const model = tf.model({ inputs, outputs });
+            return model;
+        }
+
         const normalise = (tensorData) => {
             return {
                 max: tensorData.max(),
@@ -89,7 +120,10 @@
             const [trainingNormalisedLabelTensor, testingNormalisedLabelTensor] = tf.split(normalisedLable.tensor, 2);
 
 
-
+            const model = createSequentialModel();
+            tfvis.show.modelSummary({ name: "Model summary" }, model);
+            const layer = model.getLayer(undefined, 0);
+            tfvis.show.layer({ name: "Layer 1" }, layer);
         }
 
         run();
