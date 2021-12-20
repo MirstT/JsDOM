@@ -4,131 +4,156 @@
  * @Author       : Mirst
  * @Date         : 2021-12-10 18:28:19
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-12-18 19:02:49
+ * @LastEditTime : 2021-12-20 21:04:32
 -->
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis"></script>
     <title>code sample for script tag setup</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <script>
-        const createSequentialModel = () => {
-            const model = tf.sequential();
-            model.add(tf.layers.dense({
-                units: 10,
-                useBias: true,
-                activation: 'linear',
-                inputDim: 1,
-            }));
+      const createSequentialModel = () => {
+        const model = tf.sequential();
+        model.add(
+          tf.layers.dense({
+            units: 1,
+            useBias: true,
+            activation: "linear",
+            inputDim: 1,
+          })
+        );
+        model.compile({
+          loss: "meanSquaredError",
+          optimizer: tf.train.sgd(0.1),
+        });
+        return model;
+      };
 
-            // const optimizer = tf.train.sgd(0.1);
-            model.compile({
-                loss: 'meanSquaredError',
-                // optimizer,
-                optimizer: tf.train.sgd(0.1),
-            })
+      const createLayersModel = () => {
+        const inputs = tf.input({ shape: [1] });
+        const denseLayer1 = tf.layers.dense({
+          units: 1,
+          useBias: true,
+          activation: "linear",
+        });
+        const outputs = denseLayer1.apply(inputs);
+        const model = tf.model({
+          inputs,
+          outputs,
+        });
+        model.compile({
+          loss: "meanSquaredError",
+          optimizer: tf.train.sgd(0.1),
+        });
+        return model;
+      };
 
+      const normalise = (tensorData) => {
+        return {
+          max: tensorData.max(),
+          min: tensorData.min(),
+          tensor: tensorData
+            .sub(tensorData.min())
+            .div(tensorData.max().sub(tensorData.min())),
+        };
+      };
 
-            return model;
+      const denormalise = (normalisedTensor, min, max) => {
+        return normalisedTensor.mul(max.sub(min)).add(min);
+      };
+
+      const plot = async (pointsArray, featureName) => {
+        tfvis.render.scatterplot(
+          { name: `${featureName} vs House price`, tab: "Chart" },
+          { values: [pointsArray], series: ["original"] },
+          { xLabel: "sqft_living", yLabel: "price" }
+        );
+      };
+
+      const run = async () => {
+        const localCsvFilePath = "./kc_house_data.csv";
+        const csvDataset = tf.data.csv(localCsvFilePath, {
+          hasHeader: true,
+          columnConfigs: {
+            sqft_living: {
+              required: true,
+            },
+            price: {
+              isLabel: true,
+            },
+          },
+          configuredColumnsOnly: true,
+        });
+
+        const points = await csvDataset
+          .map(({ xs, ys }) => ({
+            x: xs.sqft_living,
+            y: ys.price,
+          }))
+          .toArray();
+
+        if (points.length % 2 !== 0) {
+          points.pop();
         }
 
-        const createLayersModel = () => {
-            const inputs = tf.input({ shape: [1] });
+        plot(points, "Square feet");
+        tf.util.shuffle(points);
 
+        const featureArray = points.map((e) => e.x);
+        const featureTensor = tf.tensor2d(featureArray, [
+          featureArray.length,
+          1,
+        ]);
+        const labelArray = points.map((e) => e.y);
+        const labelTensor = tf.tensor2d(labelArray, [labelArray.length, 1]);
 
+        normalisedFeature = normalise(featureTensor);
+        normalisedLable = normalise(labelTensor);
 
-            const output;
+        const normalisedPoints = await tf
+          .concat([normalisedFeature.tensor, normalisedLable.tensor], 1)
+          .array();
+        const normalisedPointsForPainting = normalisedPoints.map((e) => ({
+          x: e[0],
+          y: e[1],
+        }));
 
-            const model = tf.model({ inputs, outputs });
-            return model;
-        }
+        plot(normalisedPointsForPainting, "Normalised square feet");
 
-        const normalise = (tensorData) => {
-            return {
-                max: tensorData.max(),
-                min: tensorData.min(),
-                tensor: tensorData.sub(tensorData.min()).div(tensorData.max().sub(tensorData.min()))
-            };
-        }
+        const [
+          trainingNormalisedFeatureTensor,
+          testingNormalisedFeatureTensor,
+        ] = tf.split(normalisedFeature.tensor, 2);
+        const [trainingNormalisedLabelTensor, testingNormalisedLabelTensor] =
+          tf.split(normalisedLable.tensor, 2);
 
-        const denormalise = (normalisedTensor, min, max) => {
-            return normalisedTensor.mul(max.sub(min)).add(min);
-        }
+        const model = createSequentialModel();
+        tfvis.show.modelSummary({ name: "Model summary" }, model);
+        const layer = model.getLayer(undefined, 0);
+        tfvis.show.layer({ name: "Layer 1" }, layer);
 
-        const plot = async (pointsArray, featureName) => {
-            tfvis.render.scatterplot(
-                { name: `${featureName} vs House price`, tab: 'Chart' },
-                { values: [pointsArray], series: ["original"] },
-                { xLabel: 'sqft_living', yLabel: 'price' }
-            );
-        }
+        await model.fit(
+          trainingNormalisedFeatureTensor,
+          trainingNormalisedLabelTensor,
+          {
+            batchSize: 32,
+            epochs: 30,
+            callbacks: {
+              onEpochEnd: (epoch, log) =>
+                console.log(`Epoch ${epoch}: loss = ${log.loss}`),
+            },
+          }
+        );
+      };
 
-        const run = async () => {
-            const localCsvFilePath = './kc_house_data.csv';
-            const csvDataset = tf.data.csv(
-                localCsvFilePath,
-                {
-                    hasHeader: true,
-                    columnConfigs: {
-                        sqft_living: {
-                            required: true
-                        },
-                        price: {
-                            isLabel: true
-                        }
-                    },
-                    configuredColumnsOnly: true
-                });
-
-            const points = await csvDataset.map(({ xs, ys }) => ({
-                x: xs.sqft_living,
-                y: ys.price,
-            })).toArray();
-
-            if (points.length % 2 !== 0) {
-                points.pop();
-            }
-
-            plot(points, "Square feet");
-            tf.util.shuffle(points);
-
-            const featureArray = points.map(e => e.x);
-            const featureTensor = tf.tensor2d(featureArray, [featureArray.length, 1]);
-            const labelArray = points.map(e => e.y);
-            const labelTensor = tf.tensor2d(labelArray, [labelArray.length, 1]);
-
-            normalisedFeature = normalise(featureTensor);
-            normalisedLable = normalise(labelTensor);
-
-            const normalisedPoints = await tf.concat([normalisedFeature.tensor, normalisedLable.tensor], 1).array();
-            const normalisedPointsForPainting = normalisedPoints.map(e => ({
-                x: e[0],
-                y: e[1]
-            }));
-
-            plot(normalisedPointsForPainting, "Normalised square feet");
-
-            const [trainingNormalisedFeatureTensor, testingNormalisedFeatureTensor] = tf.split(normalisedFeature.tensor, 2);
-            const [trainingNormalisedLabelTensor, testingNormalisedLabelTensor] = tf.split(normalisedLable.tensor, 2);
-
-
-            const model = createSequentialModel();
-            tfvis.show.modelSummary({ name: "Model summary" }, model);
-            const layer = model.getLayer(undefined, 0);
-            tfvis.show.layer({ name: "Layer 1" }, layer);
-        }
-
-        run();
-
+      run();
     </script>
-</body>
-
+  </body>
 </html>
