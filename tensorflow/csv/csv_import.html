@@ -4,7 +4,7 @@
  * @Author       : Mirst
  * @Date         : 2021-12-10 18:28:19
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-12-20 21:04:32
+ * @LastEditTime : 2021-12-22 16:39:38
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -139,18 +139,32 @@
         const layer = model.getLayer(undefined, 0);
         tfvis.show.layer({ name: "Layer 1" }, layer);
 
-        await model.fit(
+        const result = await model.fit(
           trainingNormalisedFeatureTensor,
           trainingNormalisedLabelTensor,
           {
-            batchSize: 32,
-            epochs: 30,
-            callbacks: {
-              onEpochEnd: (epoch, log) =>
-                console.log(`Epoch ${epoch}: loss = ${log.loss}`),
-            },
+            batchSize: 128,
+            epochs: 1,
+            validationSplit: 0.2,
+            callbacks: tfvis.show.fitCallbacks({ name: "training" }, [
+              "loss",
+              "acc",
+            ]),
           }
         );
+
+        console.log(result);
+        const trainingLoss = result.history.loss.pop();
+        console.log(`Training set loss: ${trainingLoss}`);
+        const validationLoss = result.history.val_loss.pop();
+        console.log(`Validation set loss: ${validationLoss}`);
+
+        const lossTensor = model.evaluate(
+          testingNormalisedFeatureTensor,
+          testingNormalisedLabelTensor
+        );
+        const loss = await lossTensor.dataSync();
+        console.log(`Testing set loss: ${loss}`);
       };
 
       run();
