@@ -4,31 +4,35 @@
  * @Author       : Mirst
  * @Date         : 2021-11-16 04:42:28
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-16 04:47:47
+ * @LastEditTime : 2022-03-14 08:13:56
 -->
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>hello react</title>
-</head>
+  </head>
 
-<body>
-    <div id="test">
-
-    </div>
+  <body>
+    <!-- 准备好一个容器 -->
+    <div id="test"></div>
+    <!-- 引入react核心库 -->
     <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <!-- 引入react-dom，用于支持react操作Dom -->
     <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <!-- 引入babel，用于奖jsx转为js -->
     <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+
+    <!-- 此处一定要写babel -->
     <script type="text/babel">
-        const VDOM = <h1>Hello,React</h1>
+      const VDOM = <h1>Hello,React</h1>;
+      //   此方法是替换式
+      ReactDOM.render(VDOM, document.getElementById("test"));
 
-        ReactDOM.render(VDOM, document.getElementById('test'))
-
+      const TDom = document.getElementById("test");
+      debugger;
     </script>
-</body>
-
+  </body>
 </html>

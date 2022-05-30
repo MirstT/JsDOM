@@ -4,7 +4,7 @@
  * @Author       : Mirst
  * @Date         : 2021-11-16 06:15:56
  * @LastEditors  : Mirst
- * @LastEditTime : 2022-03-14 10:18:39
+ * @LastEditTime : 2022-04-13 15:19:58
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +12,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>class</title>
+    <title>state</title>
   </head>
 
   <body>
@@ -21,13 +21,31 @@
     <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
     <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
     <script type="text/babel">
-      class MyComponent extends React.Component {
+      class Weather extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = { weather: { isHot: true } };
+        }
+
+        changeWeather = () => {
+          this.setState({ weather: { isHot: !this.state.weather.isHot } });
+        };
+
         render() {
-          return <h2>simple compoent</h2>;
+          return (
+            <div>
+              <h1 onClick={this.changeWeather}>
+                今天天气很{this.state.weather.isHot ? "炎热" : "凉爽"}
+              </h1>
+              <button>天气</button>
+            </div>
+          );
         }
       }
 
-      ReactDOM.render(<MyComponent />, document.getElementById("test"));
+      ReactDOM.render(<Weather />, document.getElementById("test"));
+      // const www = new Weather();
+      // console.log(www);
     </script>
   </body>
 </html>

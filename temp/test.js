@@ -4,7 +4,7 @@
  * @Author       : Mirst
  * @Date         : 2021-11-11 17:53:32
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-20 05:45:23
+ * @LastEditTime : 2022-04-14 12:21:21
  */
 
 var a = 0;
@@ -76,3 +76,12 @@ Object.is()
 
 
 // expected output: 42
+
+
+let person ={name:'tom',age:18}
+let person2 = {...person}
+console.log(person2)
+person={...person,name:'jack',address:'unknown'}
+console.log(person2)
+// console.log(...person)
+console.log({...person})
